@@ -1,0 +1,485 @@
+.pricing-config-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.pricing-config-header {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pricing-config-header h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: #333;
+}
+
+.pricing-config-header p {
+  color: #666;
+  margin: 0.5rem 0 0 0;
+  flex-basis: 100%;
+}
+
+.btn-save {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.pricing-config-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 1rem;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #d4af37;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.pricing-config-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #e0e0e0;
+  overflow-x: auto;
+}
+
+.tab {
+  padding: 1rem 1.5rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.tab:hover {
+  color: #d4af37;
+  background: #f9f9f9;
+}
+
+.tab.active {
+  color: #d4af37;
+  border-bottom-color: #d4af37;
+}
+
+.pricing-config-content {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.tab-content h2 {
+  margin-top: 0;
+  color: #333;
+  font-size: 1.75rem;
+}
+
+.tab-description {
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Composition Cards */
+.composition-card {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.composition-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.composition-header h3 {
+  margin: 0;
+  color: #d4af37;
+  font-size: 1.5rem;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.form-group small {
+  display: block;
+  margin-top: 0.25rem;
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.material-item {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+}
+
+.material-item label {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.calculation-example {
+  background: #fff9e6;
+  border-left: 4px solid #d4af37;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 4px;
+}
+
+.calculation-example strong {
+  color: #d4af37;
+}
+
+.calculation-example .price {
+  color: #2e7d32;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-left: 0.5rem;
+}
+
+.calculation-example ul {
+  margin: 0.5rem 0 0 0;
+  padding-left: 1.5rem;
+}
+
+/* Diamond Cards */
+.diamond-card {
+  background: #f5f5ff;
+  border: 1px solid #d0d0ff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.diamond-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #d0d0ff;
+}
+
+.diamond-header h3 {
+  margin: 0;
+  color: #5555ff;
+  font-size: 1.5rem;
+}
+
+/* Ring Size Card */
+.ring-size-card {
+  background: #fff5f5;
+  border: 1px solid #ffd0d0;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.ring-sizes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ring-size-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ring-size-item label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.input-with-prefix {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-with-prefix .prefix {
+  position: absolute;
+  left: 12px;
+  color: #666;
+  font-weight: 500;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.input-with-prefix input {
+  padding-left: 28px !important;
+  width: 100%;
+}
+
+.info-box {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.info-box strong {
+  color: #d4af37;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.info-box ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.info-box li {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Costs Cards */
+.costs-card {
+  background: #f0f9f0;
+  border: 1px solid #c0e0c0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.costs-card h3 {
+  margin-top: 0;
+  color: #2e7d32;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.formula-display {
+  background: #f9f9f9;
+  border: 2px solid #d4af37;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.formula-display h3 {
+  margin-top: 0;
+  color: #d4af37;
+}
+
+.formula {
+  font-family: 'Courier New', monospace;
+  background: white;
+  padding: 1rem;
+  border-radius: 4px;
+  line-height: 2;
+}
+
+.formula p {
+  margin: 0.5rem 0;
+}
+
+.formula strong {
+  color: #d4af37;
+}
+
+/* Calculator */
+.calculator-card {
+  background: #f0f8ff;
+  border: 2px solid #4a90e2;
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.btn-calculate {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.125rem;
+  margin-top: 1rem;
+}
+
+.calculation-result {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  border: 2px solid #2e7d32;
+  text-align: center;
+}
+
+.calculation-result h3 {
+  margin-top: 0;
+  color: #2e7d32;
+}
+
+.result-price {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #2e7d32;
+  margin: 1rem 0;
+}
+
+.result-details {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+  text-align: left;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.5rem;
+}
+
+.result-details p {
+  margin: 0.25rem 0;
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pricing-config-container {
+    padding: 1rem;
+  }
+
+  .pricing-config-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-save {
+    width: 100%;
+  }
+
+  .pricing-config-tabs {
+    flex-wrap: wrap;
+  }
+
+  .tab {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+  }
+
+  .pricing-config-content {
+    padding: 1rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .materials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .result-price {
+    font-size: 2rem;
+  }
+}
+
+/* Button Styles */
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: #d4af37;
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #c29d2f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

@@ -1,0 +1,151 @@
+.admin-customers {
+  padding: 40px 20px;
+  background: #f8f8f8;
+  min-height: 100vh;
+}
+
+.customers-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.customers-header {
+  margin-bottom: 30px;
+}
+
+.customers-header h1 {
+  font-size: 32px;
+  color: #222222;
+  margin-bottom: 8px;
+}
+
+.customers-header p {
+  font-size: 16px;
+  color: #777777;
+}
+
+.admin-loading {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 18px;
+  color: #777777;
+}
+
+/* Customers Table */
+.customers-table-wrapper {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+}
+
+.customers-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.customers-table th {
+  text-align: left;
+  padding: 12px;
+  font-size: 13px;
+  color: #777777;
+  border-bottom: 2px solid #e5e5e5;
+  font-weight: 500;
+}
+
+.customers-table td {
+  padding: 16px 12px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+  color: #222222;
+}
+
+.customer-name {
+  font-weight: 500;
+  color: #222222;
+}
+
+.role-badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.role-badge.admin {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+.role-badge.customer {
+  background: #e2e3e5;
+  color: #383d41;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-badge.active {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-badge.inactive {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.btn-toggle-status {
+  padding: 6px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Jost', sans-serif;
+  transition: all 0.2s;
+}
+
+.btn-toggle-status.deactivate {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.btn-toggle-status.deactivate:hover {
+  background: #f1b9bd;
+}
+
+.btn-toggle-status.activate {
+  background: #d4edda;
+  color: #155724;
+}
+
+.btn-toggle-status.activate:hover {
+  background: #c3e6cb;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-customers {
+    padding: 20px 15px;
+  }
+
+  .customers-header h1 {
+    font-size: 24px;
+  }
+
+  .customers-table {
+    font-size: 12px;
+  }
+
+  .customers-table th,
+  .customers-table td {
+    padding: 8px 6px;
+  }
+}

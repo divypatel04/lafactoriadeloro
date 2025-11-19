@@ -1,0 +1,264 @@
+.hero-slider-container {
+  position: relative;
+  margin-top: -20px;
+  margin-bottom: 60px;
+}
+
+.hero-slide {
+  position: relative;
+  outline: none;
+}
+
+.hero-slide-image {
+  width: 100%;
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.4));
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  color: white !important;
+  padding: 40px 0 40px 80px;
+  animation: slideInLeft 1s ease;
+}
+
+.hero-subtitle {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #fff !important;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.hero-title {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 25px;
+  color: white !important;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-description {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 35px;
+  color: rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 18px 50px;
+  background: #fff;
+  color: #000;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  border: 2px solid #fff;
+}
+
+.hero-btn:hover {
+  background: transparent;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slick Dots Styling */
+.hero-slider-container .slick-dots {
+  bottom: 40px;
+  z-index: 2;
+  display: flex !important;
+  justify-content: center;
+  gap: 6px;
+}
+
+.hero-slider-container .slick-dots li {
+  margin: 0;
+  width: auto;
+  height: auto;
+}
+
+.hero-slider-container .slick-dots li button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+}
+
+.hero-slider-container .slick-dots li button:before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  opacity: 1;
+}
+
+.hero-slider-container .slick-dots li.slick-active button:before {
+  background: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.3);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+/* Slick Arrows Styling */
+.hero-slider-container .slick-prev,
+.hero-slider-container .slick-next {
+  width: 35px;
+  height: 35px;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.hero-slider-container .slick-prev:hover,
+.hero-slider-container .slick-next:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: scale(1.1);
+}
+
+.hero-slider-container .slick-prev {
+  left: 20px;
+}
+
+.hero-slider-container .slick-next {
+  right: 40px;
+}
+
+.hero-slider-container .slick-prev:before,
+.hero-slider-container .slick-next:before {
+  font-size: 16px;
+  color: white;
+  opacity: 1;
+}
+
+.hero-slider-container .slick-prev:hover:before,
+.hero-slider-container .slick-next:hover:before {
+  color: #1a1a1a;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .hero-slide-image {
+    height: 500px;
+  }
+
+  .hero-title {
+    font-size: 42px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+  }
+
+  .hero-content {
+    padding: 40px 0 40px 60px;
+  }
+
+  .hero-slider-container .slick-prev {
+    left: 20px;
+  }
+
+  .hero-slider-container .slick-next {
+    right: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-slide-image {
+    height: 400px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+  }
+
+  .hero-description {
+    font-size: 15px;
+  }
+
+  .hero-btn {
+    padding: 12px 30px;
+    font-size: 14px;
+  }
+
+  .hero-slider-container .slick-prev {
+    left: 15px;
+  }
+
+  .hero-slider-container .slick-next {
+    right: 15px;
+  }
+
+  .hero-slider-container .slick-prev,
+  .hero-slider-container .slick-next {
+    width: 30px;
+    height: 30px;
+  }
+
+  .hero-slider-container .slick-prev:before,
+  .hero-slider-container .slick-next:before {
+    font-size: 14px;
+  }
+
+  .hero-slider-container .slick-dots {
+    bottom: 25px;
+  }
+
+  .hero-slider-container .slick-dots li button {
+    width: 6px;
+    height: 6px;
+  }
+
+  .hero-slider-container .slick-dots li button:before {
+    width: 5px;
+    height: 5px;
+  }
+}

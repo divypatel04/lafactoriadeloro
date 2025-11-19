@@ -1,0 +1,245 @@
+.admin-products {
+  padding: 40px 20px;
+  background: #f8f8f8;
+  min-height: 100vh;
+}
+
+.products-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.products-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.products-header > div h1 {
+  font-size: 32px;
+  color: #222222;
+  margin: 0;
+}
+
+.products-count {
+  color: #777;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.btn-add-product {
+  padding: 12px 24px;
+  background: #222222;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Jost', sans-serif;
+}
+
+.btn-add-product:hover {
+  background: #000000;
+}
+
+.admin-loading {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 18px;
+  color: #777777;
+}
+
+.products-table-wrapper {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+}
+
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.products-table th {
+  text-align: left;
+  padding: 12px;
+  font-size: 13px;
+  color: #777777;
+  border-bottom: 2px solid #e5e5e5;
+  font-weight: 500;
+}
+
+.products-table td {
+  padding: 12px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+}
+
+.product-thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.product-name {
+  font-weight: 500;
+  color: #222222;
+  margin-bottom: 4px;
+}
+
+.product-slug {
+  font-size: 12px;
+  color: #777777;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-badge.active {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-badge.inactive {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Jost', sans-serif;
+}
+
+.btn-edit {
+  background: #f8f8f8;
+  color: #222222;
+}
+
+.btn-edit:hover {
+  background: #e5e5e5;
+}
+
+.btn-delete {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.btn-delete:hover {
+  background: #f1b9bd;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90%;
+}
+
+.modal-content h3 {
+  font-size: 20px;
+  color: #222222;
+  margin-bottom: 12px;
+}
+
+.modal-content p {
+  color: #777777;
+  margin-bottom: 24px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.btn-cancel,
+.btn-confirm-delete {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Jost', sans-serif;
+}
+
+.btn-cancel {
+  background: #f8f8f8;
+  color: #222222;
+}
+
+.btn-cancel:hover {
+  background: #e5e5e5;
+}
+
+.btn-confirm-delete {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-confirm-delete:hover {
+  background: #c82333;
+}
+
+@media (max-width: 768px) {
+  .admin-products {
+    padding: 20px 15px;
+  }
+
+  .products-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .products-header h1 {
+    font-size: 24px;
+  }
+
+  .btn-add-product {
+    width: 100%;
+  }
+
+  .products-table {
+    font-size: 12px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+}
