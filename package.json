@@ -1,0 +1,14 @@
+{
+  "name": "la-factoria-ecommerce",
+  "version": "1.0.0",
+  "description": "La Factoria del Oro E-commerce Platform",
+  "scripts": {
+    "install-backend": "cd backend && npm install",
+    "start": "cd backend && npm start",
+    "dev": "cd backend && npm run dev"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
