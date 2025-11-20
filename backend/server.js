@@ -18,27 +18,52 @@ app.use(helmet());
 // CORS Configuration
 const allowedOrigins = [
   'http://localhost:3000',
+  'http://localhost:5000',
   'https://lafactoriadeloro.vercel.app',
-  process.env.FRONTEND_URL
-].filter(Boolean).map(origin => origin.replace(/\/$/, '')); // Remove trailing slashes
+  'https://lafactoriadeloro-production.up.railway.app'
+];
+
+// Add FRONTEND_URL from environment if set
+if (process.env.FRONTEND_URL) {
+  const cleanFrontendUrl = process.env.FRONTEND_URL.replace(/\/$/, '');
+  if (!allowedOrigins.includes(cleanFrontendUrl)) {
+    allowedOrigins.push(cleanFrontendUrl);
+  }
+}
+
+console.log('🔐 CORS allowed origins:', allowedOrigins);
 
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps, curl, Postman)
-    if (!origin) return callback(null, true);
+    // Allow requests with no origin (like mobile apps, curl, Postman, server-to-server)
+    if (!origin) {
+      console.log('✅ CORS: Allowing request with no origin');
+      return callback(null, true);
+    }
     
     // Remove trailing slash from origin
     const cleanOrigin = origin.replace(/\/$/, '');
     
+    // Check if origin is allowed
     if (allowedOrigins.includes(cleanOrigin)) {
+      console.log(`✅ CORS: Allowing origin: ${cleanOrigin}`);
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      console.error(`❌ CORS: Blocking origin: ${cleanOrigin}`);
+      console.error(`   Allowed origins: ${allowedOrigins.join(', ')}`);
+      // In production, be more permissive with Vercel preview URLs
+      if (process.env.NODE_ENV === 'production' && cleanOrigin.includes('vercel.app')) {
+        console.log(`⚠️  CORS: Allowing Vercel preview URL: ${cleanOrigin}`);
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
     }
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  exposedHeaders: ['Content-Range', 'X-Content-Range']
 }));
 
 // Body Parser Middleware
