@@ -16,9 +16,29 @@ const app = express();
 app.use(helmet());
 
 // CORS Configuration
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://lafactoriadeloro.vercel.app',
+  process.env.FRONTEND_URL
+].filter(Boolean).map(origin => origin.replace(/\/$/, '')); // Remove trailing slashes
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-  credentials: true
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl, Postman)
+    if (!origin) return callback(null, true);
+    
+    // Remove trailing slash from origin
+    const cleanOrigin = origin.replace(/\/$/, '');
+    
+    if (allowedOrigins.includes(cleanOrigin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
 
 // Body Parser Middleware
