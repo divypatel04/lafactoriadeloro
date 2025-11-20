@@ -1,47 +1,24 @@
 let nodemailer;
-let sgMail; // SendGrid mail client
-
 try {
   nodemailer = require('nodemailer');
 } catch (error) {
   console.error('❌ Failed to load nodemailer:', error.message);
 }
 
-try {
-  sgMail = require('@sendgrid/mail');
-} catch (error) {
-  console.log('ℹ️  SendGrid not installed (optional for Railway)');
-}
-
 const emailTemplates = require('../utils/emailTemplates');
 
 /**
  * Email Service
- * Handles all email sending functionality using SendGrid (preferred) or nodemailer
- * Railway blocks SMTP ports, so SendGrid HTTP API is more reliable in production
+ * Handles all email sending functionality using nodemailer with Gmail SMTP
+ * Optimized for Vercel deployment (SMTP ports work on Vercel)
  */
 
 // Create transporter
 let transporter = null;
-let useSendGrid = false;
 
 const createTransporter = () => {
   if (transporter) return transporter;
 
-  // Try SendGrid first (works on Railway)
-  if (process.env.SENDGRID_API_KEY && sgMail) {
-    try {
-      sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-      useSendGrid = true;
-      console.log('✅ Using SendGrid for email service (Railway-compatible)');
-      console.log(`  - Sender: ${process.env.EMAIL_USER || process.env.SENDGRID_FROM_EMAIL}`);
-      return { sendGrid: true }; // Return dummy transporter
-    } catch (error) {
-      console.error('❌ SendGrid initialization failed:', error.message);
-    }
-  }
-
-  // Fallback to SMTP (for local development)
   // Check if nodemailer is available
   if (!nodemailer || typeof nodemailer.createTransport !== 'function') {
     console.error('❌ Nodemailer not properly loaded or createTransport is not a function');
@@ -60,7 +37,7 @@ const createTransporter = () => {
     // Remove spaces from password (Gmail App Password format)
     const cleanPassword = process.env.EMAIL_PASSWORD.replace(/\s+/g, '');
     
-    // Try port 465 with SSL if 587 fails (Railway may block both)
+    // Use port 587 with STARTTLS (works great on Vercel)
     const port = parseInt(process.env.EMAIL_PORT) || 587;
     const isSecure = port === 465;
     
@@ -72,15 +49,12 @@ const createTransporter = () => {
         user: process.env.EMAIL_USER,
         pass: cleanPassword
       },
-      connectionTimeout: 10000, // 10 seconds
-      greetingTimeout: 10000,
-      socketTimeout: 10000,
       tls: {
         rejectUnauthorized: false
       }
     };
 
-    console.log(`📧 Using SMTP for email service (local dev)`);
+    console.log(`📧 Initializing SMTP email service`);
     console.log(`  - Connecting to ${emailConfig.host}:${emailConfig.port} (secure: ${isSecure})`);
 
     // Use createTransport (correct method name)
@@ -90,7 +64,6 @@ const createTransporter = () => {
     transporter.verify((error, success) => {
       if (error) {
         console.error('❌ SMTP verification failed:', error.message);
-        console.error('💡 For Railway deployment, use SendGrid instead (SMTP ports blocked)');
         console.error('Check your email credentials:');
         console.error(`  - EMAIL_HOST: ${emailConfig.host}`);
         console.error(`  - EMAIL_PORT: ${emailConfig.port}`);
@@ -112,7 +85,7 @@ const createTransporter = () => {
 
 /**
  * Send email helper function
- * Uses SendGrid if available (Railway), otherwise falls back to SMTP (local dev)
+ * Uses Gmail SMTP via nodemailer (works perfectly on Vercel)
  */
 const sendEmail = async (to, subject, html) => {
   const emailTransporter = createTransporter();
@@ -123,28 +96,6 @@ const sendEmail = async (to, subject, html) => {
   }
 
   try {
-    // Use SendGrid if configured (Railway)
-    if (useSendGrid && sgMail) {
-      const fromEmail = process.env.SENDGRID_FROM_EMAIL || process.env.EMAIL_USER;
-      
-      const msg = {
-        to: to,
-        from: {
-          email: fromEmail,
-          name: 'La Factoria Del Oro'
-        },
-        subject: subject,
-        html: html
-      };
-
-      const result = await sgMail.send(msg);
-      console.log('✅ Email sent successfully via SendGrid');
-      console.log(`   To: ${to}`);
-      console.log(`   Subject: ${subject}`);
-      return { success: true, messageId: result[0].headers['x-message-id'] };
-    }
-
-    // Use SMTP (nodemailer) for local dev
     const mailOptions = {
       from: `"La Factoria Del Oro" <${process.env.EMAIL_USER}>`,
       to,
@@ -153,7 +104,7 @@ const sendEmail = async (to, subject, html) => {
     };
 
     const info = await emailTransporter.sendMail(mailOptions);
-    console.log('✅ Email sent successfully via SMTP');
+    console.log('✅ Email sent successfully');
     console.log(`   To: ${to}`);
     console.log(`   Subject: ${subject}`);
     return { success: true, messageId: info.messageId };
@@ -163,14 +114,6 @@ const sendEmail = async (to, subject, html) => {
     console.error(`   Subject: ${subject}`);
     console.error(`   Error Code: ${error.code}`);
     console.error(`   Error Response: ${error.response}`);
-    
-    // Provide helpful message for Railway users
-    if (error.code === 'ETIMEDOUT') {
-      console.error('💡 SMTP timeout detected. Railway blocks SMTP ports.');
-      console.error('   Solution: Install SendGrid and set SENDGRID_API_KEY');
-      console.error('   Run: npm install @sendgrid/mail');
-    }
-    
     return { success: false, error: error.message };
   }
 };
