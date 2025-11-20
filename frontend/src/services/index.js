@@ -94,6 +94,11 @@ export const cartService = {
     return response.data;
   },
 
+  removeCartItem: async (itemId) => {
+    const response = await api.delete(`/cart/remove/${itemId}`);
+    return response.data;
+  },
+
   removeFromCart: async (itemId) => {
     const response = await api.delete(`/cart/remove/${itemId}`);
     return response.data;
