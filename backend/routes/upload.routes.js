@@ -63,7 +63,9 @@ router.post('/product-images', authorize('admin'), upload.array('images', 10), a
 router.delete('/product-image/:filename', authorize('admin'), async (req, res) => {
   try {
     const fs = require('fs');
-    const filePath = path.join(__dirname, '../uploads/products', req.params.filename);
+    const isVercel = process.env.VERCEL || process.env.NOW_REGION;
+    const uploadsDir = isVercel ? '/tmp/uploads/products' : path.join(__dirname, '../uploads/products');
+    const filePath = path.join(uploadsDir, req.params.filename);
 
     // Check if file exists
     if (!fs.existsSync(filePath)) {

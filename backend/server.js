@@ -87,7 +87,10 @@ app.use(compression());
 app.use(morgan('dev'));
 
 // Static files for uploads
-app.use('/uploads', express.static('uploads'));
+// Vercel uses /tmp for writable storage, local uses ./uploads
+const isVercel = process.env.VERCEL || process.env.NOW_REGION;
+const uploadsPath = isVercel ? '/tmp/uploads' : 'uploads';
+app.use('/uploads', express.static(uploadsPath));
 
 // Rate Limiting Configuration
 const generalLimiter = rateLimit({
