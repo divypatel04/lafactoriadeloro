@@ -19,14 +19,22 @@ Your email wasn't working because Gmail App Passwords can have spaces, but we ne
 
 ## 🔧 Railway Environment Variables
 
+**IMPORTANT**: Railway may block port 587. Use port 465 instead!
+
 Set these **EXACT** values in Railway:
 
 ```bash
 EMAIL_HOST=smtp.gmail.com
-EMAIL_PORT=587
+EMAIL_PORT=465
 EMAIL_USER=samitom11jewelry@gmail.com
-EMAIL_PASSWORD=khtwhofy rkudmtmw
+EMAIL_PASSWORD=khtwhofyrkudmtmw
 ```
+
+**Why Port 465?**
+- Port 465 uses SSL/TLS from the start (more secure)
+- Port 587 uses STARTTLS (Railway may block this)
+- Cloud platforms like Railway, Heroku often block port 587
+- Port 465 is more reliable on production servers
 
 **IMPORTANT**: You can include the spaces in the password! The code now automatically removes them.
 

@@ -36,18 +36,28 @@ const createTransporter = () => {
     // Remove spaces from password (Gmail App Password format)
     const cleanPassword = process.env.EMAIL_PASSWORD.replace(/\s+/g, '');
     
+    // Try port 465 with SSL if 587 fails (Railway may block 587)
+    const port = parseInt(process.env.EMAIL_PORT) || 465;
+    const isSecure = port === 465;
+    
     const emailConfig = {
       host: process.env.EMAIL_HOST || 'smtp.gmail.com',
-      port: parseInt(process.env.EMAIL_PORT) || 587,
-      secure: parseInt(process.env.EMAIL_PORT) === 465, // true for 465, false for 587
+      port: port,
+      secure: isSecure, // true for 465, false for 587
       auth: {
         user: process.env.EMAIL_USER,
         pass: cleanPassword
       },
+      connectionTimeout: 10000, // 10 seconds
+      greetingTimeout: 10000,
+      socketTimeout: 10000,
       tls: {
-        rejectUnauthorized: false // Allow self-signed certificates
+        rejectUnauthorized: false,
+        ciphers: 'SSLv3'
       }
     };
+
+    console.log(`📧 Attempting to connect to ${emailConfig.host}:${emailConfig.port} (secure: ${isSecure})`);
 
     // Use createTransport (correct method name)
     transporter = nodemailer.createTransport(emailConfig);
