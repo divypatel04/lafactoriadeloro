@@ -21,20 +21,43 @@ const createTransporter = () => {
   }
 
   try {
-    transporter = nodemailer.createTransporter({
+    // Remove spaces from password (Gmail App Password format)
+    const cleanPassword = process.env.EMAIL_PASSWORD.replace(/\s+/g, '');
+    
+    const emailConfig = {
       host: process.env.EMAIL_HOST || 'smtp.gmail.com',
       port: parseInt(process.env.EMAIL_PORT) || 587,
-      secure: false, // true for 465, false for other ports
+      secure: parseInt(process.env.EMAIL_PORT) === 465, // true for 465, false for 587
       auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD
+        pass: cleanPassword
+      },
+      tls: {
+        rejectUnauthorized: false // Allow self-signed certificates
+      }
+    };
+
+    transporter = nodemailer.createTransporter(emailConfig);
+
+    // Verify connection configuration
+    transporter.verify((error, success) => {
+      if (error) {
+        console.error('❌ Email service verification failed:', error.message);
+        console.error('Check your email credentials:');
+        console.error(`  - EMAIL_HOST: ${emailConfig.host}`);
+        console.error(`  - EMAIL_PORT: ${emailConfig.port}`);
+        console.error(`  - EMAIL_USER: ${process.env.EMAIL_USER}`);
+        console.error(`  - EMAIL_PASSWORD: ${cleanPassword ? '***configured***' : 'NOT SET'}`);
+      } else {
+        console.log('✅ Email service verified and ready to send emails');
+        console.log(`  - Using: ${process.env.EMAIL_USER}`);
+        console.log(`  - Host: ${emailConfig.host}:${emailConfig.port}`);
       }
     });
 
-    console.log('✅ Email service initialized successfully');
     return transporter;
   } catch (error) {
-    console.error('Failed to create email transporter:', error);
+    console.error('❌ Failed to create email transporter:', error.message);
     return null;
   }
 };
@@ -59,10 +82,16 @@ const sendEmail = async (to, subject, html) => {
     };
 
     const info = await emailTransporter.sendMail(mailOptions);
-    console.log('Email sent successfully:', info.messageId);
+    console.log('✅ Email sent successfully:', info.messageId);
+    console.log(`   To: ${to}`);
+    console.log(`   Subject: ${subject}`);
     return { success: true, messageId: info.messageId };
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error('❌ Error sending email:', error.message);
+    console.error(`   To: ${to}`);
+    console.error(`   Subject: ${subject}`);
+    console.error(`   Error Code: ${error.code}`);
+    console.error(`   Error Response: ${error.response}`);
     return { success: false, error: error.message };
   }
 };
