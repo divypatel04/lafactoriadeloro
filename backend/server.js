@@ -12,6 +12,9 @@ require('dotenv').config();
 
 const app = express();
 
+// Trust proxy - Required for Railway, Heroku, etc.
+app.set('trust proxy', 1);
+
 // Security Middleware
 app.use(helmet());
 

@@ -1,4 +1,10 @@
-const nodemailer = require('nodemailer');
+let nodemailer;
+try {
+  nodemailer = require('nodemailer');
+} catch (error) {
+  console.error('❌ Failed to load nodemailer:', error.message);
+}
+
 const emailTemplates = require('../utils/emailTemplates');
 
 /**
@@ -11,6 +17,12 @@ let transporter = null;
 
 const createTransporter = () => {
   if (transporter) return transporter;
+
+  // Check if nodemailer is available
+  if (!nodemailer || typeof nodemailer.createTransport !== 'function') {
+    console.error('❌ Nodemailer not properly loaded or createTransport is not a function');
+    return null;
+  }
 
   // Check if email configuration is set
   if (!process.env.EMAIL_USER || 
@@ -37,7 +49,8 @@ const createTransporter = () => {
       }
     };
 
-    transporter = nodemailer.createTransporter(emailConfig);
+    // Use createTransport (correct method name)
+    transporter = nodemailer.createTransport(emailConfig);
 
     // Verify connection configuration
     transporter.verify((error, success) => {
