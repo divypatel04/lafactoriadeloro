@@ -159,7 +159,7 @@ export default function Cart() {
 
                     <div className="item-price">
                       <span className="price-label">Price</span>
-                      <span className="price">${item.price}</span>
+                      <span className="price">${item.price?.toFixed(2)}</span>
                     </div>
 
                     <div className="item-quantity">

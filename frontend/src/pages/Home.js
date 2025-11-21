@@ -129,11 +129,11 @@ const Home = () => {
                       <div className="product-price">
                         {product.onSale && product.salePrice ? (
                           <>
-                            <span className="price-sale">${product.salePrice}</span>
-                            <span className="price-original">${product.basePrice}</span>
+                            <span className="price-sale">${product.salePrice?.toFixed(2)}</span>
+                            <span className="price-original">${product.basePrice?.toFixed(2)}</span>
                           </>
                         ) : (
-                          <span className="price">${product.basePrice}</span>
+                          <span className="price">${product.basePrice?.toFixed(2)}</span>
                         )}
                       </div>
                     </div>

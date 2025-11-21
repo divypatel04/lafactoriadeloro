@@ -692,7 +692,7 @@ export default function ProductDetail() {
                       <div className="product-info">
                         <h3 className="product-name">{relatedProduct.name}</h3>
                         <div className="product-price">
-                          <span className="price">${relatedProduct.basePrice}</span>
+                          <span className="price">${relatedProduct.basePrice?.toFixed(2)}</span>
                         </div>
                       </div>
                     </Link>
