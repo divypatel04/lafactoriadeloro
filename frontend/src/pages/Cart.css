@@ -186,18 +186,31 @@
 
 .quantity-selector {
   display: flex;
+  align-items: center;
   border: 1px solid var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
   height: 40px;
+  background: white;
 }
 
 .quantity-selector button {
   width: 35px;
+  height: 40px;
+  min-height: 40px;
   border: none;
   background: #f8f8f8;
   color: var(--primary-color);
   font-size: 18px;
+  font-weight: 600;
   cursor: pointer;
   transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
 }
 
 .quantity-selector button:hover:not(:disabled) {
@@ -212,11 +225,30 @@
 
 .quantity-selector input {
   width: 50px;
+  height: 40px;
+  min-height: 40px;
   border: none;
   border-left: 1px solid var(--border-color);
   border-right: 1px solid var(--border-color);
   text-align: center;
   font-size: 14px;
+  font-weight: 500;
+  padding: 0;
+  margin: 0;
+  line-height: 40px;
+  background: white;
+}
+
+/* Remove spinner arrows from number input */
+.quantity-selector input::-webkit-outer-spin-button,
+.quantity-selector input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.quantity-selector input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 .stock-warning {

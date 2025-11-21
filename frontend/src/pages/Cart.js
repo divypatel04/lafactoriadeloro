@@ -31,10 +31,13 @@ export default function Cart() {
 
     setUpdatingItem(itemId);
     try {
+      console.log('Updating cart item:', itemId, 'to quantity:', newQuantity);
       const response = await cartService.updateCartItem(itemId, newQuantity);
+      console.log('Cart update response:', response);
       setCart(response.data);
       toast.success('Cart updated');
     } catch (error) {
+      console.error('Cart update error:', error);
       toast.error(error.response?.data?.message || 'Failed to update cart');
     } finally {
       setUpdatingItem(null);
