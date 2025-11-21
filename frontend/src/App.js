@@ -44,6 +44,7 @@ import PricingConfig from './pages/admin/PricingConfigNew';
 import EmailSettings from './pages/admin/EmailSettings';
 import Settings from './pages/admin/Settings';
 import Coupons from './pages/admin/Coupons';
+import AdminNewsletter from './pages/admin/Newsletter';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminRoute from './components/AdminRoute';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -176,6 +177,11 @@ function AppContent() {
             <Route path="/admin/coupons" element={
               <AdminRoute>
                 <Coupons />
+              </AdminRoute>
+            } />
+            <Route path="/admin/newsletter" element={
+              <AdminRoute>
+                <AdminNewsletter />
               </AdminRoute>
             } />
           </Routes>

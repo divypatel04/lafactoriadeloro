@@ -1,9 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { newsletterService } from '../../services';
 import './Footer.css';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleNewsletterSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!email) {
+      toast.error('Please enter your email address');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      await newsletterService.subscribe(email);
+      toast.success('Successfully subscribed to newsletter! Check your email.');
+      setEmail('');
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'Failed to subscribe. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <footer className="footer">
@@ -46,15 +70,18 @@ const Footer = () => {
             <div className="footer-col">
               <h3>Newsletter</h3>
               <p>Subscribe to receive updates, offers, and more.</p>
-              <form className="newsletter-form">
+              <form className="newsletter-form" onSubmit={handleNewsletterSubmit}>
                 <input 
                   type="email" 
                   placeholder="Your email address" 
                   className="newsletter-input"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={loading}
                   required
                 />
-                <button type="submit" className="newsletter-btn">
-                  Subscribe
+                <button type="submit" className="newsletter-btn" disabled={loading}>
+                  {loading ? 'Subscribing...' : 'Subscribe'}
                 </button>
               </form>
               <div className="contact-info">

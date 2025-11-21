@@ -57,6 +57,12 @@ const AdminSidebar = () => {
       exact: false
     },
     {
+      path: '/admin/newsletter',
+      icon: '📬',
+      label: 'Newsletter',
+      exact: false
+    },
+    {
       path: '/admin/settings',
       icon: '⚙️',
       label: 'Settings',
