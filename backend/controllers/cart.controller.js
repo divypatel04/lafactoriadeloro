@@ -124,12 +124,28 @@ exports.updateCartItem = async (req, res) => {
 
     // Validate stock
     const product = await Product.findById(item.product);
-    const variant = product.variants.find(v => v.sku === item.variant.sku);
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        message: 'Product not found'
+      });
+    }
+
+    // Check stock availability
+    let availableStock = product.stock || product.totalStock || 0;
     
-    if (variant.stock < quantity) {
+    // If product has variants, check variant stock
+    if (product.variants && product.variants.length > 0 && item.variant && item.variant.sku) {
+      const variant = product.variants.find(v => v.sku === item.variant.sku);
+      if (variant) {
+        availableStock = variant.stock || 0;
+      }
+    }
+    
+    if (availableStock < quantity) {
       return res.status(400).json({
         success: false,
-        message: 'Insufficient stock'
+        message: `Only ${availableStock} items available in stock`
       });
     }
 
