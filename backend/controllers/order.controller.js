@@ -46,10 +46,6 @@ exports.createOrder = async (req, res) => {
         price,
         subtotal: itemSubtotal
       });
-
-      // Update stock
-      product.stock -= item.quantity;
-      await product.save();
     }
 
     // Calculate tax and shipping (simplified - you can make this more complex)
@@ -118,13 +114,12 @@ exports.createOrder = async (req, res) => {
     // Save order (this will trigger the pre-save hook to generate orderNumber)
     await order.save();
 
-    // Update product stock for each item
+    // Update product stock for each item (using updateOne to avoid validation issues)
     for (const item of orderItems) {
-      const product = await Product.findById(item.product);
-      if (product) {
-        product.stock -= item.quantity;
-        await product.save();
-      }
+      await Product.updateOne(
+        { _id: item.product },
+        { $inc: { stock: -item.quantity, totalStock: -item.quantity } }
+      );
     }
 
     // Clear user's cart
