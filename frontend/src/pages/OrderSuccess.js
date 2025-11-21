@@ -1,22 +1,67 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { orderService } from '../services';
+import { useParams, Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { orderService, cartService } from '../services';
+import { toast } from 'react-toastify';
+import useStore from '../store/useStore';
 import './OrderSuccess.css';
 
 export default function OrderSuccess() {
   const { orderId } = useParams();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const { setCart } = useStore();
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [paymentVerified, setPaymentVerified] = useState(false);
 
   useEffect(() => {
     if (orderId) {
-      loadOrder();
+      // Check if returning from Stripe
+      const sessionId = searchParams.get('session_id');
+      if (sessionId) {
+        // Verify the Stripe session and update order status
+        verifyStripeSession(sessionId);
+      } else {
+        // Just load the order
+        loadOrder();
+      }
+      
+      // Clear pending order from session storage
+      sessionStorage.removeItem('pendingOrderId');
     } else {
       // If no orderId in params, redirect to orders
       navigate('/account/orders');
     }
-  }, [orderId]);
+  }, [orderId, searchParams]);
+
+  const verifyStripeSession = async (sessionId) => {
+    try {
+      // Verify payment with backend
+      await paymentService.verifySession(sessionId, orderId);
+      
+      // Clear cart after successful Stripe payment
+      await clearCartAfterPayment();
+      
+      setPaymentVerified(true);
+      toast.success('✅ Payment successful! Your order has been confirmed.');
+      
+      // Load updated order
+      await loadOrder();
+    } catch (error) {
+      console.error('Failed to verify payment:', error);
+      toast.error('Payment verification failed. Please contact support.');
+      loadOrder(); // Still load the order to show details
+    }
+  };
+
+  const clearCartAfterPayment = async () => {
+    try {
+      await cartService.clearCart();
+      setCart({ items: [], totalItems: 0, totalPrice: 0 });
+    } catch (error) {
+      console.error('Failed to clear cart:', error);
+    }
+  };
 
   const loadOrder = async () => {
     try {

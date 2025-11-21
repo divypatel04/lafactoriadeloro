@@ -6,6 +6,12 @@ const { protect, authorize } = require('../middleware/auth.middleware');
 // Get Stripe publishable key (public)
 router.get('/config', paymentController.getConfig);
 
+// Create Stripe Checkout Session (protected) - for hosted payment page
+router.post('/create-checkout-session', protect, paymentController.createCheckoutSession);
+
+// Verify Stripe Checkout Session (protected)
+router.post('/verify-session', protect, paymentController.verifySession);
+
 // Create payment intent (protected)
 router.post('/create-intent', protect, paymentController.createPaymentIntent);
 

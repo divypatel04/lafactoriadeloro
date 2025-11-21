@@ -32,12 +32,14 @@ exports.getAllProducts = async (req, res) => {
         'Platinum': 'platinum'
       };
       const materialValue = materialMap[req.query.material] || req.query.material.toLowerCase().replace(' ', '-');
-      filter['availableOptions.materials'] = materialValue;
+      // Use $in operator for array matching
+      filter['availableOptions.materials'] = { $in: [materialValue] };
     }
 
     // Purity/Composition filter
     if (req.query.purity) {
-      filter['availableOptions.compositions'] = req.query.purity;
+      // Use $in operator for array matching
+      filter['availableOptions.compositions'] = { $in: [req.query.purity] };
     }
 
     // Weight filter

@@ -6,6 +6,23 @@ export const paymentService = {
     return response.data;
   },
 
+  createCheckoutSession: async (orderId, amount, currency = 'usd') => {
+    const response = await api.post('/payment/create-checkout-session', {
+      orderId,
+      amount,
+      currency
+    });
+    return response.data;
+  },
+
+  verifySession: async (sessionId, orderId) => {
+    const response = await api.post('/payment/verify-session', {
+      sessionId,
+      orderId
+    });
+    return response.data;
+  },
+
   createPaymentIntent: async (amount, currency = 'usd', orderId = null) => {
     const response = await api.post('/payment/create-intent', {
       amount,

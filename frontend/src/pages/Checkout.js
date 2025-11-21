@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useStore from '../store/useStore';
 import { orderService, cartService, couponService, paymentService } from '../services';
@@ -7,6 +7,7 @@ import './Checkout.css';
 
 export default function Checkout() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { user, cart, setCart } = useStore();
   
   const [step, setStep] = useState(1);
@@ -43,6 +44,12 @@ export default function Checkout() {
   const [agreedToTerms, setAgreedToTerms] = useState(false);
 
   useEffect(() => {
+    // Check if payment was canceled
+    const canceled = searchParams.get('canceled');
+    if (canceled === 'true') {
+      toast.error('Payment was canceled. Please try again or choose a different payment method.');
+    }
+
     if (!user) {
       toast.info('Please login to checkout');
       navigate('/login');
@@ -56,7 +63,7 @@ export default function Checkout() {
     }
 
     loadCart();
-  }, [user]);
+  }, [user, searchParams]);
 
   const loadCart = async () => {
     try {
@@ -236,53 +243,54 @@ export default function Checkout() {
         couponCode: appliedCoupon?.code || null
       };
 
-      // Create order first
-      const orderResponse = await orderService.createOrder(orderData);
-      const order = orderResponse.data;
-
       // Handle payment based on method
       if (paymentMethod === 'card') {
-        // Create Stripe payment intent
+        // Create order first (without clearing cart yet)
+        const orderResponse = await orderService.createOrder(orderData);
+        const order = orderResponse.data;
+
+        // Create Stripe Checkout Session and redirect
         const totalAmount = parseFloat(calculateTotal());
         
         try {
-          const paymentResponse = await paymentService.createPaymentIntent(
+          toast.info('Redirecting to secure payment...');
+          
+          const sessionResponse = await paymentService.createCheckoutSession(
+            order._id,
             totalAmount,
-            'usd',
-            order._id
+            'usd'
           );
 
-          // For now, redirect to Stripe Checkout
-          // In production, you would use Stripe Elements for card input
-          const { clientSecret } = paymentResponse.data;
+          // Store order ID in session storage for later retrieval
+          sessionStorage.setItem('pendingOrderId', order._id);
           
-          // Simple redirect to Stripe hosted page
-          // Note: This requires Stripe Checkout Session, not Payment Intent
-          // For now, we'll simulate payment success
-          toast.info('Redirecting to payment...');
+          // Redirect to Stripe Checkout
+          window.location.href = sessionResponse.data.url;
           
-          // Simulate payment processing
-          await new Promise(resolve => setTimeout(resolve, 2000));
-          
-          toast.success('Payment processed successfully!');
+          // Don't set loading to false or clear cart yet
+          // User will be redirected to Stripe
+          return;
         } catch (paymentError) {
           console.error('Payment error:', paymentError);
-          toast.error('Payment failed. Please try again or use Cash on Delivery.');
+          toast.error('Failed to initiate payment. Please try again or use Cash on Delivery.');
           setLoading(false);
           setProcessingPayment(false);
           return;
         }
       } else {
-        // Cash on Delivery
+        // Cash on Delivery - create order and complete immediately
+        const orderResponse = await orderService.createOrder(orderData);
+        const order = orderResponse.data;
+        
         toast.success('Order placed with Cash on Delivery!');
+        
+        // Clear cart
+        await cartService.clearCart();
+        setCart({ items: [], totalItems: 0, totalPrice: 0 });
+        
+        // Navigate to success page with order ID
+        navigate(`/order-success/${order._id}`);
       }
-
-      // Clear cart
-      await cartService.clearCart();
-      setCart({ items: [], totalItems: 0, totalPrice: 0 });
-      
-      // Navigate to success page with order ID
-      navigate(`/order-success/${order._id}`);
     } catch (error) {
       console.error('Order creation error:', error);
       toast.error(error.response?.data?.message || 'Failed to place order');
