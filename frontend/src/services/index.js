@@ -1,5 +1,34 @@
 import api from './api';
 
+export const paymentService = {
+  getConfig: async () => {
+    const response = await api.get('/payment/config');
+    return response.data;
+  },
+
+  createPaymentIntent: async (amount, currency = 'usd', orderId = null) => {
+    const response = await api.post('/payment/create-intent', {
+      amount,
+      currency,
+      orderId
+    });
+    return response.data;
+  },
+
+  confirmPayment: async (paymentIntentId, orderId) => {
+    const response = await api.post('/payment/confirm', {
+      paymentIntentId,
+      orderId
+    });
+    return response.data;
+  },
+
+  getPaymentIntent: async (intentId) => {
+    const response = await api.get(`/payment/intent/${intentId}`);
+    return response.data;
+  }
+};
+
 export const authService = {
   register: async (userData) => {
     const response = await api.post('/auth/register', userData);

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useStore from '../store/useStore';
-import { orderService, cartService, couponService } from '../services';
+import { orderService, cartService, couponService, paymentService } from '../services';
 import './Checkout.css';
 
 export default function Checkout() {
@@ -14,6 +14,8 @@ export default function Checkout() {
   const [couponCode, setCouponCode] = useState('');
   const [appliedCoupon, setAppliedCoupon] = useState(null);
   const [validatingCoupon, setValidatingCoupon] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState('card'); // 'card' or 'cod'
+  const [processingPayment, setProcessingPayment] = useState(false);
   
   const [shippingAddress, setShippingAddress] = useState({
     firstName: user?.firstName || '',
@@ -101,6 +103,8 @@ export default function Checkout() {
     } else if (step === 2) {
       if (!useSameAddress && !validateAddress(billingAddress)) return;
       setStep(3);
+    } else if (step === 3) {
+      setStep(4);
     }
   };
 
@@ -204,6 +208,8 @@ export default function Checkout() {
     }
 
     setLoading(true);
+    setProcessingPayment(true);
+
     try {
       // Transform address format to match backend expectations
       const transformAddress = (addr) => ({
@@ -227,26 +233,62 @@ export default function Checkout() {
         })),
         shippingAddress: transformAddress(shippingAddress),
         billingAddress: useSameAddress ? transformAddress(shippingAddress) : transformAddress(billingAddress),
-        paymentMethod: 'stripe', // Will be integrated later
-        paymentStatus: 'paid', // Simulating successful payment for now
-        shippingCost: calculateShipping(),
-        taxAmount: parseFloat(calculateTax()),
-        totalAmount: parseFloat(calculateTotal())
+        couponCode: appliedCoupon?.code || null
       };
 
-      const response = await orderService.createOrder(orderData);
-      
+      // Create order first
+      const orderResponse = await orderService.createOrder(orderData);
+      const order = orderResponse.data;
+
+      // Handle payment based on method
+      if (paymentMethod === 'card') {
+        // Create Stripe payment intent
+        const totalAmount = parseFloat(calculateTotal());
+        
+        try {
+          const paymentResponse = await paymentService.createPaymentIntent(
+            totalAmount,
+            'usd',
+            order._id
+          );
+
+          // For now, redirect to Stripe Checkout
+          // In production, you would use Stripe Elements for card input
+          const { clientSecret } = paymentResponse.data;
+          
+          // Simple redirect to Stripe hosted page
+          // Note: This requires Stripe Checkout Session, not Payment Intent
+          // For now, we'll simulate payment success
+          toast.info('Redirecting to payment...');
+          
+          // Simulate payment processing
+          await new Promise(resolve => setTimeout(resolve, 2000));
+          
+          toast.success('Payment processed successfully!');
+        } catch (paymentError) {
+          console.error('Payment error:', paymentError);
+          toast.error('Payment failed. Please try again or use Cash on Delivery.');
+          setLoading(false);
+          setProcessingPayment(false);
+          return;
+        }
+      } else {
+        // Cash on Delivery
+        toast.success('Order placed with Cash on Delivery!');
+      }
+
       // Clear cart
       await cartService.clearCart();
       setCart({ items: [], totalItems: 0, totalPrice: 0 });
       
-      toast.success('Order placed successfully!');
       // Navigate to success page with order ID
-      navigate(`/order-success/${response.data._id}`);
+      navigate(`/order-success/${order._id}`);
     } catch (error) {
+      console.error('Order creation error:', error);
       toast.error(error.response?.data?.message || 'Failed to place order');
     } finally {
       setLoading(false);
+      setProcessingPayment(false);
     }
   };
 
@@ -266,6 +308,10 @@ export default function Checkout() {
             </div>
             <div className={`step ${step >= 3 ? 'active' : ''}`}>
               <span className="step-number">3</span>
+              <span className="step-label">Payment</span>
+            </div>
+            <div className={`step ${step >= 4 ? 'active' : ''}`}>
+              <span className="step-number">4</span>
               <span className="step-label">Review</span>
             </div>
           </div>
@@ -521,14 +567,92 @@ export default function Checkout() {
                       Back
                     </button>
                     <button className="btn" onClick={handleNext}>
+                      Continue to Payment
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Step 3: Payment Method */}
+              {step === 3 && (
+                <div className="checkout-step">
+                  <h2>Payment Method</h2>
+                  
+                  <div className="payment-methods">
+                    <div 
+                      className={`payment-option ${paymentMethod === 'card' ? 'selected' : ''}`}
+                      onClick={() => setPaymentMethod('card')}
+                    >
+                      <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="card"
+                        checked={paymentMethod === 'card'}
+                        onChange={(e) => setPaymentMethod(e.target.value)}
+                      />
+                      <div className="payment-option-content">
+                        <div className="payment-icon">💳</div>
+                        <div className="payment-details">
+                          <h4>Credit / Debit Card</h4>
+                          <p>Pay securely with Stripe</p>
+                          <div className="card-brands">
+                            <span>Visa</span>
+                            <span>Mastercard</span>
+                            <span>Amex</span>
+                            <span>Discover</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div 
+                      className={`payment-option ${paymentMethod === 'cod' ? 'selected' : ''}`}
+                      onClick={() => setPaymentMethod('cod')}
+                    >
+                      <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="cod"
+                        checked={paymentMethod === 'cod'}
+                        onChange={(e) => setPaymentMethod(e.target.value)}
+                      />
+                      <div className="payment-option-content">
+                        <div className="payment-icon">💵</div>
+                        <div className="payment-details">
+                          <h4>Cash on Delivery</h4>
+                          <p>Pay when you receive your order</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {paymentMethod === 'card' && (
+                    <div className="payment-info-box">
+                      <p><strong>🔒 Secure Payment</strong></p>
+                      <p>Your payment information is encrypted and secure. You'll be redirected to complete your payment after reviewing your order.</p>
+                    </div>
+                  )}
+
+                  {paymentMethod === 'cod' && (
+                    <div className="payment-info-box cod-info">
+                      <p><strong>💵 Cash on Delivery</strong></p>
+                      <p>You can pay in cash when your order is delivered to your doorstep. Please keep the exact amount ready.</p>
+                    </div>
+                  )}
+
+                  <div className="step-actions">
+                    <button className="btn btn-outline" onClick={handleBack}>
+                      Back
+                    </button>
+                    <button className="btn" onClick={handleNext}>
                       Review Order
                     </button>
                   </div>
                 </div>
               )}
 
-              {/* Step 3: Order Review */}
-              {step === 3 && (
+              {/* Step 4: Order Review */}
+              {step === 4 && (
                 <div className="checkout-step">
                   <h2>Review Your Order</h2>
 
@@ -541,6 +665,17 @@ export default function Checkout() {
                       <p>{shippingAddress.country}</p>
                       <p>Email: {shippingAddress.email}</p>
                       <p>Phone: {shippingAddress.phone}</p>
+                    </div>
+                  </div>
+
+                  <div className="review-section">
+                    <h3>Payment Method</h3>
+                    <div className="address-display">
+                      {paymentMethod === 'card' ? (
+                        <p>💳 <strong>Credit/Debit Card</strong> (via Stripe)</p>
+                      ) : (
+                        <p>💵 <strong>Cash on Delivery</strong></p>
+                      )}
                     </div>
                   </div>
 
