@@ -91,15 +91,12 @@ export default function Shop() {
   };
 
   const handleFilterChange = (key, value) => {
-    setFilters(prev => {
-      // If the same filter value is clicked again, clear it
-      const newValue = prev[key] === value ? '' : value;
-      return {
-        ...prev,
-        [key]: newValue,
-        page: 1 // Reset to first page on filter change
-      };
-    });
+    const newFilters = {
+      ...filters,
+      [key]: value,
+      page: 1 // Reset to first page on filter change
+    };
+    setFilters(newFilters);
   };
 
   const handleAddToWishlist = async (productId, e) => {
@@ -249,7 +246,8 @@ export default function Shop() {
                     type="number"
                     placeholder="Min"
                     value={filters.minPrice}
-                    onChange={(e) => handleFilterChange('minPrice', e.target.value)}
+                    onChange={(e) => setFilters(prev => ({ ...prev, minPrice: e.target.value }))}
+                    onBlur={() => setFilters(prev => ({ ...prev, page: 1 }))}
                     className="form-control"
                   />
                   <span>-</span>
@@ -257,7 +255,8 @@ export default function Shop() {
                     type="number"
                     placeholder="Max"
                     value={filters.maxPrice}
-                    onChange={(e) => handleFilterChange('maxPrice', e.target.value)}
+                    onChange={(e) => setFilters(prev => ({ ...prev, maxPrice: e.target.value }))}
+                    onBlur={() => setFilters(prev => ({ ...prev, page: 1 }))}
                     className="form-control"
                   />
                 </div>
@@ -271,7 +270,8 @@ export default function Shop() {
                     type="number"
                     placeholder="Min"
                     value={filters.minWeight}
-                    onChange={(e) => handleFilterChange('minWeight', e.target.value)}
+                    onChange={(e) => setFilters(prev => ({ ...prev, minWeight: e.target.value }))}
+                    onBlur={() => setFilters(prev => ({ ...prev, page: 1 }))}
                     className="form-control"
                   />
                   <span>-</span>
@@ -279,7 +279,8 @@ export default function Shop() {
                     type="number"
                     placeholder="Max"
                     value={filters.maxWeight}
-                    onChange={(e) => handleFilterChange('maxWeight', e.target.value)}
+                    onChange={(e) => setFilters(prev => ({ ...prev, maxWeight: e.target.value }))}
+                    onBlur={() => setFilters(prev => ({ ...prev, page: 1 }))}
                     className="form-control"
                   />
                 </div>

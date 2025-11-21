@@ -30,15 +30,36 @@ export default function ProductDetail() {
     setLoading(true);
     try {
       const response = await productService.getProductBySlug(slug);
+      console.log('🔍 Product data received:', response.data);
+      console.log('🔍 Available Options:', response.data.availableOptions);
+      console.log('🔍 Price Modifiers:', response.data.priceModifiers);
       setProduct(response.data);
       
       // Set initial calculated price to base price
       setCalculatedPrice(response.data.basePrice);
       
       // Set default options if available
-      if (response.data.priceModifiers) {
-        const defaultOptions = {};
+      const defaultOptions = {};
+      
+      // Check for availableOptions structure (current)
+      if (response.data.availableOptions) {
+        // Set first available material
+        if (response.data.availableOptions.materials?.length > 0) {
+          defaultOptions.material = response.data.availableOptions.materials[0];
+        }
         
+        // Set first available composition/purity
+        if (response.data.availableOptions.compositions?.length > 0) {
+          defaultOptions.purity = response.data.availableOptions.compositions[0];
+        }
+        
+        // Set first available diamond type
+        if (response.data.availableOptions.diamondTypes?.length > 0) {
+          defaultOptions.diamondType = response.data.availableOptions.diamondTypes[0];
+        }
+      }
+      // Fallback to priceModifiers structure (legacy)
+      else if (response.data.priceModifiers) {
         // Set first available material
         if (response.data.priceModifiers.materials?.length > 0) {
           const firstMaterial = response.data.priceModifiers.materials.find(m => m.available);
@@ -56,9 +77,9 @@ export default function ProductDetail() {
           const firstDiamond = response.data.priceModifiers.diamondTypes.find(d => d.available);
           if (firstDiamond) defaultOptions.diamondType = firstDiamond.name;
         }
-        
-        setSelectedOptions(prev => ({ ...prev, ...defaultOptions }));
       }
+      
+      setSelectedOptions(prev => ({ ...prev, ...defaultOptions }));
     } catch (error) {
       toast.error('Product not found');
       navigate('/shop');
@@ -216,25 +237,173 @@ export default function ProductDetail() {
     return product?.stock || 0;
   };
 
-  // Get available options from price modifiers
+  // Get available options from product
   const getAvailableMaterials = () => {
-    if (!product?.priceModifiers?.materials) return [];
-    return product.priceModifiers.materials.filter(m => m.available);
+    // If availableOptions exists, use it to filter priceModifiers
+    if (product?.availableOptions?.materials && product.availableOptions.materials.length > 0) {
+      const allowedMaterials = product.availableOptions.materials;
+      
+      // If priceModifiers exist, filter them based on availableOptions
+      if (product.priceModifiers?.materials) {
+        const filtered = product.priceModifiers.materials.filter(m => 
+          m.available && allowedMaterials.includes(m.name)
+        );
+        console.log('🎨 Materials (filtered priceModifiers by availableOptions):', filtered);
+        return filtered;
+      }
+      
+      // Otherwise, create from availableOptions
+      const materialLabels = {
+        'yellow-gold': 'Yellow Gold',
+        'white-gold': 'White Gold',
+        'rose-gold': 'Rose Gold',
+        'silver': 'Silver',
+        'platinum': 'Platinum'
+      };
+      
+      const result = allowedMaterials.map(material => ({
+        name: material,
+        label: materialLabels[material] || material,
+        available: true,
+        priceAdjustment: 0
+      }));
+      console.log('🎨 Materials (from availableOptions only):', result);
+      return result;
+    }
+    
+    // Fallback: use priceModifiers if availableOptions doesn't exist
+    if (product?.priceModifiers?.materials) {
+      const filtered = product.priceModifiers.materials.filter(m => m.available);
+      console.log('🎨 Materials (from priceModifiers - no filtering):', filtered);
+      return filtered;
+    }
+    
+    console.log('🎨 No materials available');
+    return [];
   };
 
   const getAvailablePurities = () => {
-    if (!product?.priceModifiers?.purities) return [];
-    return product.priceModifiers.purities.filter(p => p.available);
+    // If availableOptions exists, use it to filter priceModifiers
+    if (product?.availableOptions?.compositions && product.availableOptions.compositions.length > 0) {
+      const allowedCompositions = product.availableOptions.compositions;
+      
+      // If priceModifiers exist, filter them based on availableOptions
+      if (product.priceModifiers?.purities) {
+        const filtered = product.priceModifiers.purities.filter(p => 
+          p.available && allowedCompositions.includes(p.name)
+        );
+        console.log('💎 Purities (filtered priceModifiers by availableOptions):', filtered);
+        return filtered;
+      }
+      
+      // Otherwise, create from availableOptions
+      const purityLabels = {
+        '10K': '10K Gold',
+        '12K': '12K Gold',
+        '14K': '14K Gold',
+        '18K': '18K Gold',
+        '22K': '22K Gold',
+        '24K': '24K Gold',
+        '925-silver': '925 Sterling Silver',
+        'platinum': 'Platinum'
+      };
+      
+      const result = allowedCompositions.map(composition => ({
+        name: composition,
+        label: purityLabels[composition] || composition,
+        available: true,
+        priceAdjustment: 0
+      }));
+      console.log('💎 Purities (from availableOptions only):', result);
+      return result;
+    }
+    
+    // Fallback: use priceModifiers if availableOptions doesn't exist
+    if (product?.priceModifiers?.purities) {
+      const filtered = product.priceModifiers.purities.filter(p => p.available);
+      console.log('💎 Purities (from priceModifiers - no filtering):', filtered);
+      return filtered;
+    }
+    
+    console.log('💎 No purities available');
+    return [];
   };
 
   const getAvailableRingSizes = () => {
-    if (!product?.priceModifiers?.ringSizes) return [];
-    return product.priceModifiers.ringSizes.filter(rs => rs.available);
+    // If availableOptions exists, use it to filter priceModifiers
+    if (product?.availableOptions?.ringSizes && product.availableOptions.ringSizes.length > 0) {
+      const allowedSizes = product.availableOptions.ringSizes;
+      
+      // If priceModifiers exist, filter them based on availableOptions
+      if (product.priceModifiers?.ringSizes) {
+        const filtered = product.priceModifiers.ringSizes.filter(rs => 
+          rs.available && allowedSizes.includes(rs.size)
+        );
+        console.log('💍 Ring Sizes (filtered priceModifiers by availableOptions):', filtered);
+        return filtered;
+      }
+      
+      // Otherwise, create from availableOptions
+      const result = allowedSizes.map(size => ({
+        size: size,
+        available: true,
+        priceAdjustment: 0
+      }));
+      console.log('💍 Ring Sizes (from availableOptions only):', result);
+      return result;
+    }
+    
+    // Fallback: use priceModifiers if availableOptions doesn't exist
+    if (product?.priceModifiers?.ringSizes) {
+      const filtered = product.priceModifiers.ringSizes.filter(rs => rs.available);
+      console.log('💍 Ring Sizes (from priceModifiers - no filtering):', filtered);
+      return filtered;
+    }
+    
+    console.log('💍 No ring sizes available');
+    return [];
   };
 
   const getAvailableDiamondTypes = () => {
-    if (!product?.priceModifiers?.diamondTypes) return [];
-    return product.priceModifiers.diamondTypes.filter(dt => dt.available);
+    // If availableOptions exists, use it to filter priceModifiers
+    if (product?.availableOptions?.diamondTypes && product.availableOptions.diamondTypes.length > 0) {
+      const allowedTypes = product.availableOptions.diamondTypes;
+      
+      // If priceModifiers exist, filter them based on availableOptions
+      if (product.priceModifiers?.diamondTypes) {
+        const filtered = product.priceModifiers.diamondTypes.filter(dt => 
+          dt.available && allowedTypes.includes(dt.name)
+        );
+        console.log('💠 Diamond Types (filtered priceModifiers by availableOptions):', filtered);
+        return filtered;
+      }
+      
+      // Otherwise, create from availableOptions
+      const diamondLabels = {
+        'natural': 'Natural Diamond',
+        'lab-grown': 'Lab-Grown Diamond',
+        'none': 'No Diamond'
+      };
+      
+      const result = allowedTypes.map(type => ({
+        name: type,
+        label: diamondLabels[type] || type,
+        available: true,
+        priceAdjustment: 0
+      }));
+      console.log('💠 Diamond Types (from availableOptions only):', result);
+      return result;
+    }
+    
+    // Fallback: use priceModifiers if availableOptions doesn't exist
+    if (product?.priceModifiers?.diamondTypes) {
+      const filtered = product.priceModifiers.diamondTypes.filter(dt => dt.available);
+      console.log('💠 Diamond Types (from priceModifiers - no filtering):', filtered);
+      return filtered;
+    }
+    
+    console.log('💠 No diamond types available');
+    return [];
   };
 
   if (loading) {

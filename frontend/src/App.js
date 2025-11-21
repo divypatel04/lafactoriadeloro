@@ -23,6 +23,7 @@ import About from './pages/About';
 import FAQ from './pages/FAQ';
 import Shipping from './pages/Shipping';
 import Returns from './pages/Returns';
+import CustomRing from './pages/CustomRing';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import ForgotPassword from './pages/auth/ForgotPassword';
@@ -66,6 +67,7 @@ function AppContent() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/shipping" element={<Shipping />} />
             <Route path="/returns" element={<Returns />} />
+            <Route path="/custom-ring" element={<CustomRing />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-conditions" element={<TermsConditions />} />
             <Route path="/login" element={<Login />} />

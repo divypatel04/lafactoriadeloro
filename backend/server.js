@@ -134,6 +134,7 @@ app.use('/api/contact', require('./routes/contact.routes'));
 app.use('/api/settings', require('./routes/settings.routes'));
 app.use('/api/coupons', require('./routes/coupon.routes'));
 app.use('/api/reviews', require('./routes/review.routes'));
+app.use('/api/custom-ring-request', require('./routes/customRing.routes'));
 
 // Health check
 app.get('/api/health', (req, res) => {

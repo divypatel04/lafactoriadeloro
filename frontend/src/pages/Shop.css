@@ -260,7 +260,7 @@
 
 .product-image .wishlist-btn {
   position: absolute;
-  top: 10px;
+  bottom: 10px;
   left: 10px;
   width: 36px;
   height: 36px;

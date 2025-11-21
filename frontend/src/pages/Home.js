@@ -75,7 +75,7 @@ const Home = () => {
               <p>Explore our exquisite jewelry collections</p>
             </div>
             <div className="categories-grid">
-              {categories.slice(0, 4).map(category => (
+              {categories.slice(0, 3).map(category => (
                 <Link 
                   key={category._id} 
                   to={`/shop?category=${category._id}`}
@@ -86,6 +86,14 @@ const Home = () => {
                   <p>{category.description || 'Explore collection'}</p>
                 </Link>
               ))}
+              <Link 
+                to="/custom-ring"
+                className="category-card custom-ring-card"
+              >
+                <div className="category-icon">✨</div>
+                <h3>Customize Your Own Ring</h3>
+                <p>Create a unique piece designed just for you</p>
+              </Link>
             </div>
           </div>
         </section>
