@@ -22,12 +22,34 @@ exports.getAllProducts = async (req, res) => {
 
     // Material filter
     if (req.query.material) {
-      filter['variants.material'] = req.query.material;
+      // Convert frontend material name to match database format
+      const materialMap = {
+        'Gold': 'yellow-gold',
+        'Yellow Gold': 'yellow-gold',
+        'White Gold': 'white-gold',
+        'Rose Gold': 'rose-gold',
+        'Silver': 'silver',
+        'Platinum': 'platinum'
+      };
+      const materialValue = materialMap[req.query.material] || req.query.material.toLowerCase().replace(' ', '-');
+      filter['availableOptions.materials'] = materialValue;
     }
 
-    // Purity filter
+    // Purity/Composition filter
     if (req.query.purity) {
-      filter['variants.purity'] = req.query.purity;
+      filter['availableOptions.compositions'] = req.query.purity;
+    }
+
+    // Weight filter
+    if (req.query.minWeight || req.query.maxWeight) {
+      filter.weight = {};
+      if (req.query.minWeight) filter.weight.$gte = parseFloat(req.query.minWeight);
+      if (req.query.maxWeight) filter.weight.$lte = parseFloat(req.query.maxWeight);
+    }
+
+    // Stock filter
+    if (req.query.inStock === 'true') {
+      filter.stock = { $gt: 0 };
     }
 
     // Price filter
@@ -50,27 +72,26 @@ exports.getAllProducts = async (req, res) => {
     // Sorting
     let sort = {};
     if (req.query.sort) {
-      switch (req.query.sort) {
-        case 'price-asc':
-          sort.basePrice = 1;
-          break;
-        case 'price-desc':
-          sort.basePrice = -1;
-          break;
-        case 'name-asc':
-          sort.name = 1;
-          break;
-        case 'name-desc':
-          sort.name = -1;
-          break;
-        case 'newest':
-          sort.createdAt = -1;
-          break;
-        case 'rating':
-          sort.averageRating = -1;
-          break;
-        default:
-          sort.createdAt = -1;
+      const sortValue = req.query.sort;
+      
+      // Handle different sort formats
+      if (sortValue === 'basePrice' || sortValue === 'price-asc') {
+        sort.basePrice = 1;
+      } else if (sortValue === '-basePrice' || sortValue === 'price-desc') {
+        sort.basePrice = -1;
+      } else if (sortValue === 'name' || sortValue === 'name-asc') {
+        sort.name = 1;
+      } else if (sortValue === '-name' || sortValue === 'name-desc') {
+        sort.name = -1;
+      } else if (sortValue === 'createdAt' || sortValue === 'newest') {
+        sort.createdAt = -1;
+      } else if (sortValue === '-createdAt' || sortValue === 'oldest') {
+        sort.createdAt = 1;
+      } else if (sortValue === 'rating' || sortValue === '-averageRating') {
+        sort.averageRating = -1;
+      } else {
+        // Default sort
+        sort.createdAt = -1;
       }
     } else {
       sort.createdAt = -1;

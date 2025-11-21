@@ -238,8 +238,8 @@ const Returns = () => {
             Have questions about returns or need assistance? We're here to help!
           </p>
           <div className="contact-details">
-            <p><strong>Email:</strong> info@lafactoriadeloro.com</p>
-            <p><strong>Phone:</strong> (123) 456-7890</p>
+            <p><strong>Email:</strong> samitom11jewelry@gmail.com</p>
+            <p><strong>Phone:</strong> +1 (646)-884-1771</p>
             <p><strong>Hours:</strong> Monday - Saturday: 10:00 AM - 7:00 PM EST</p>
           </div>
         </section>

@@ -299,9 +299,10 @@ const TermsConditions = () => {
           <h2>18. Contact Information</h2>
           <p>For questions about these Terms, please contact us:</p>
           <ul className="contact-info">
-            <li><strong>Email:</strong> legal@lafactoriadeloro.com</li>
-            <li><strong>Phone:</strong> [Your Phone Number]</li>
-            <li><strong>Address:</strong> [Your Business Address]</li>
+            <li><strong>Email:</strong> samitom11jewelry@gmail.com</li>
+            <li><strong>Phone:</strong> +1 (646)-884-1771</li>
+            <li><strong>Address:</strong> 7021 Washington SQ.
+South New York, NY 10012</li>
           </ul>
         </section>
 

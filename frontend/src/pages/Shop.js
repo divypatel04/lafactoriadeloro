@@ -91,11 +91,15 @@ export default function Shop() {
   };
 
   const handleFilterChange = (key, value) => {
-    setFilters(prev => ({
-      ...prev,
-      [key]: value,
-      page: 1 // Reset to first page on filter change
-    }));
+    setFilters(prev => {
+      // If the same filter value is clicked again, clear it
+      const newValue = prev[key] === value ? '' : value;
+      return {
+        ...prev,
+        [key]: newValue,
+        page: 1 // Reset to first page on filter change
+      };
+    });
   };
 
   const handleAddToWishlist = async (productId, e) => {

@@ -83,7 +83,7 @@ export default function Contact() {
                   <div className="contact-icon">📞</div>
                   <div>
                     <h3>Call Us</h3>
-                    <p>+1 703 172 3412<br />Mon-Fri: 9am - 6pm EST</p>
+                    <p>+1 (646)-884-1771<br />Mon-Fri: 9am - 8pm EST</p>
                   </div>
                 </div>
 
@@ -91,7 +91,7 @@ export default function Contact() {
                   <div className="contact-icon">✉️</div>
                   <div>
                     <h3>Email Us</h3>
-                    <p>contact@lafactoriadeloro.com</p>
+                    <p>samitom11jewelry@gmail.com</p>
                   </div>
                 </div>
 

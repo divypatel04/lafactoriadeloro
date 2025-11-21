@@ -182,7 +182,7 @@ const FAQ = () => {
           <p>Our customer service team is here to help you with any additional questions or concerns.</p>
           <div className="cta-buttons">
             <a href="/contact" className="btn-primary">Contact Us</a>
-            <a href="mailto:info@lafactoriadeloro.com" className="btn-secondary">Email Support</a>
+            <a href="mailto:samitom11jewelry@gmail.com" className="btn-secondary">Email Support</a>
           </div>
         </section>
       </div>

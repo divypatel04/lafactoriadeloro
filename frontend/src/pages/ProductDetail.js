@@ -449,46 +449,72 @@ export default function ProductDetail() {
                 )}
               </div>
 
-              {/* Quantity and Add to Cart */}
-              <div className="product-actions">
-                <div className="quantity-selector">
-                  <button
-                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    disabled={quantity <= 1}
-                  >
-                    −
-                  </button>
-                  <input
-                    type="number"
-                    value={quantity}
-                    onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                    min="1"
-                    max={getAvailableStock()}
-                  />
-                  <button
-                    onClick={() => setQuantity(Math.min(getAvailableStock(), quantity + 1))}
-                    disabled={quantity >= getAvailableStock()}
-                  >
-                    +
-                  </button>
+              {/* Quantity and Action Buttons */}
+              <div className="product-actions-wrapper">
+                {/* Quantity Selector */}
+                <div className="quantity-section">
+                  <label className="quantity-label">Quantity:</label>
+                  <div className="quantity-controls">
+                    <button
+                      className="quantity-btn minus"
+                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                      disabled={quantity <= 1}
+                      aria-label="Decrease quantity"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M3 8h10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                      </svg>
+                    </button>
+                    <input
+                      type="text"
+                      className="quantity-input"
+                      value={quantity}
+                      onChange={(e) => {
+                        const val = parseInt(e.target.value) || 1;
+                        setQuantity(Math.max(1, Math.min(getAvailableStock(), val)));
+                      }}
+                      onBlur={(e) => {
+                        if (!e.target.value) setQuantity(1);
+                      }}
+                    />
+                    <button
+                      className="quantity-btn plus"
+                      onClick={() => setQuantity(Math.min(getAvailableStock(), quantity + 1))}
+                      disabled={quantity >= getAvailableStock()}
+                      aria-label="Increase quantity"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                      </svg>
+                    </button>
+                  </div>
                 </div>
 
-                <button
-                  className="btn btn-add-to-cart"
-                  onClick={handleAddToCart}
-                  disabled={addingToCart || getAvailableStock() === 0}
-                >
-                  {addingToCart ? 'Adding...' : 'Add to Cart'}
-                </button>
+                {/* Action Buttons */}
+                <div className="action-buttons-group">
+                  <button
+                    className="btn-primary-action add-to-cart-btn"
+                    onClick={handleAddToCart}
+                    disabled={addingToCart || getAvailableStock() === 0}
+                  >
+                    <svg className="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.707 1.707C4.79 15.21 5.29 16 6.207 16H17m0 0a2 2 0 100 4 2 2 0 000-4zm-10 0a2 2 0 100 4 2 2 0 000-4z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <span>{addingToCart ? 'Adding...' : 'Add to Cart'}</span>
+                  </button>
 
-                <button
-                  className="btn btn-wishlist"
-                  onClick={() => handleAddToWishlist()}
-                  disabled={addingToWishlist}
-                  title="Add to Wishlist"
-                >
-                  ♡
-                </button>
+                  <button
+                    className="btn-secondary-action wishlist-btn"
+                    onClick={() => handleAddToWishlist()}
+                    disabled={addingToWishlist}
+                    title="Add to Wishlist"
+                    aria-label="Add to wishlist"
+                  >
+                    <svg className="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
               </div>
 
               {/* Product Specifications */}
