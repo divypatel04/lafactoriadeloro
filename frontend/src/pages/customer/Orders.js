@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { orderService } from '../../services';
+import { generateOrderReceipt } from '../../utils/pdfGenerator';
 import './Orders.css';
 
 const Orders = () => {
@@ -50,6 +51,21 @@ const Orders = () => {
       paid: 'status-processing',
     };
     return statusClasses[status] || 'status-pending';
+  };
+
+  const handleDownloadReceipt = async (orderId, e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    try {
+      const response = await orderService.getOrderById(orderId);
+      const order = response.data;
+      generateOrderReceipt(order);
+      toast.success('Receipt downloaded successfully!');
+    } catch (error) {
+      console.error('Failed to generate receipt:', error);
+      toast.error('Failed to download receipt. Please try again.');
+    }
   };
 
   if (loading) {
@@ -156,9 +172,32 @@ const Orders = () => {
                     <span className="total-label">Total:</span>
                     <span className="total-amount">${(order.pricing?.total || order.totalPrice || 0).toFixed(2)}</span>
                   </div>
-                  <Link to={`/account/orders/${order._id}`} className="btn-view-order">
-                    View Details
-                  </Link>
+                  <div className="order-actions">
+                    <button 
+                      onClick={(e) => handleDownloadReceipt(order._id, e)} 
+                      className="btn-download-small"
+                      title="Download Receipt"
+                    >
+                      <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        width="16" 
+                        height="16" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="2" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round"
+                      >
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                      </svg>
+                    </button>
+                    <Link to={`/account/orders/${order._id}`} className="btn-view-order">
+                      View Details
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}

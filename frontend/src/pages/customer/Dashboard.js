@@ -31,14 +31,21 @@ const Dashboard = () => {
       
       // Fetch wishlist
       const wishlistRes = await wishlistService.getWishlist();
-      const wishlistItems = wishlistRes.data?.items || [];
+      console.log('Wishlist response:', wishlistRes);
+      const wishlistItems = wishlistRes.data || [];
       
       // Calculate stats
       setStats({
         totalOrders: orders.length,
-        pendingOrders: orders.filter(o => (o.orderStatus === 'pending' || o.orderStatus === 'processing')).length,
-        completedOrders: orders.filter(o => o.orderStatus === 'delivered').length,
-        wishlistItems: wishlistItems.length,
+        pendingOrders: orders.filter(o => {
+          const status = o.orderStatus || o.status;
+          return status === 'pending' || status === 'processing';
+        }).length,
+        completedOrders: orders.filter(o => {
+          const status = o.orderStatus || o.status;
+          return status === 'delivered' || status === 'completed';
+        }).length,
+        wishlistItems: Array.isArray(wishlistItems) ? wishlistItems.length : 0,
       });
       
       // Get recent 5 orders

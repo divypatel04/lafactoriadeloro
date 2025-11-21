@@ -148,10 +148,37 @@
   gap: 15px;
   justify-content: center;
   margin: 40px 0 30px;
+  flex-wrap: wrap;
 }
 
 .success-actions .btn {
   padding: 14px 32px;
+}
+
+.btn-download {
+  background: #C59764;
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.btn-download:hover {
+  background: #b08654;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(197, 151, 100, 0.3);
+}
+
+.btn-download svg {
+  flex-shrink: 0;
 }
 
 .order-notification {

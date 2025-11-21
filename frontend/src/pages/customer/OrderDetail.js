@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { orderService } from '../../services';
+import { generateOrderReceipt } from '../../utils/pdfGenerator';
 import './OrderDetail.css';
 
 const OrderDetail = () => {
@@ -57,6 +58,18 @@ const OrderDetail = () => {
     }));
   };
 
+  const handleDownloadReceipt = () => {
+    if (order) {
+      try {
+        generateOrderReceipt(order);
+        toast.success('Receipt downloaded successfully!');
+      } catch (error) {
+        console.error('Failed to generate receipt:', error);
+        toast.error('Failed to download receipt. Please try again.');
+      }
+    }
+  };
+
   if (loading) {
     return <div className="order-detail-loading">Loading order details...</div>;
   }
@@ -78,10 +91,34 @@ const OrderDetail = () => {
         <div className="order-detail-header">
           <Link to="/account/orders" className="back-link">← Back to Orders</Link>
           <div className="order-title-section">
-            <h1>Order #{order.orderNumber || order._id.slice(-6).toUpperCase()}</h1>
-            <span className={`order-status ${getStatusClass(order.orderStatus || order.status)}`}>
-              {order.orderStatus || order.status}
-            </span>
+            <div className="title-wrapper">
+              <h1>Order #{order.orderNumber || order._id.slice(-6).toUpperCase()}</h1>
+              <span className={`order-status ${getStatusClass(order.orderStatus || order.status)}`}>
+                {order.orderStatus || order.status}
+              </span>
+            </div>
+            <button 
+              onClick={handleDownloadReceipt} 
+              className="btn-download-receipt"
+              title="Download PDF Receipt"
+            >
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="16" 
+                height="16" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Download Receipt
+            </button>
           </div>
           <p className="order-date">
             Placed on {new Date(order.createdAt).toLocaleDateString('en-US', {

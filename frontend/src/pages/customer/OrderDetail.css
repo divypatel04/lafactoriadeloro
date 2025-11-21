@@ -49,13 +49,46 @@
 .order-title-section {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 16px;
   margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .order-title-section h1 {
   font-size: 28px;
   color: #222222;
+}
+
+.btn-download-receipt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #C59764;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-download-receipt:hover {
+  background: #b08654;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(197, 151, 100, 0.3);
+}
+
+.btn-download-receipt svg {
+  flex-shrink: 0;
 }
 
 .order-status {

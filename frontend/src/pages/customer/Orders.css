@@ -251,6 +251,31 @@
   font-weight: 600;
 }
 
+.order-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-download-small {
+  padding: 10px;
+  background: #C59764;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-download-small:hover {
+  background: #b08654;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(197, 151, 100, 0.3);
+}
+
 .btn-view-order {
   padding: 10px 24px;
   background: #222222;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { adminService } from '../../services';
+import { generateOrderReceipt } from '../../utils/pdfGenerator';
 import './Orders.css';
 
 const AdminOrders = () => {
@@ -84,6 +85,19 @@ const AdminOrders = () => {
       cancelled: 'status-cancelled',
     };
     return statusClasses[status] || 'status-pending';
+  };
+
+  const handleDownloadReceipt = (order, e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    try {
+      generateOrderReceipt(order);
+      toast.success('Receipt downloaded successfully!');
+    } catch (error) {
+      console.error('Failed to generate receipt:', error);
+      toast.error('Failed to download receipt. Please try again.');
+    }
   };
 
   const filteredOrders = statusFilter === 'all' 
@@ -201,6 +215,27 @@ const AdminOrders = () => {
                           👁️ View
                         </button>
                         <button 
+                          className="btn-download-admin"
+                          onClick={(e) => handleDownloadReceipt(order, e)}
+                          title="Download Receipt"
+                        >
+                          <svg 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            width="14" 
+                            height="14" 
+                            viewBox="0 0 24 24" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            strokeWidth="2" 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round"
+                          >
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                          </svg>
+                        </button>
+                        <button 
                           className="btn-update-status"
                           onClick={() => {
                             setShowStatusModal(order._id);
@@ -307,7 +342,31 @@ const AdminOrders = () => {
             <div className="modal-content modal-large" onClick={(e) => e.stopPropagation()}>
               <div className="modal-header">
                 <h3>Order Details - {selectedOrder.orderNumber}</h3>
-                <button className="btn-close" onClick={() => setSelectedOrder(null)}>×</button>
+                <div className="modal-header-actions">
+                  <button 
+                    className="btn-download-modal" 
+                    onClick={(e) => handleDownloadReceipt(selectedOrder, e)}
+                    title="Download Receipt"
+                  >
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      width="16" 
+                      height="16" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round"
+                    >
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="7 10 12 15 17 10"></polyline>
+                      <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download Receipt
+                  </button>
+                  <button className="btn-close" onClick={() => setSelectedOrder(null)}>×</button>
+                </div>
               </div>
               
               <div className="order-details-content">

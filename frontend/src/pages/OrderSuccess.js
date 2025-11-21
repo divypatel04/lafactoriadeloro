@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { orderService, cartService, paymentService } from '../services';
 import { toast } from 'react-toastify';
 import useStore from '../store/useStore';
+import { generateOrderReceipt } from '../utils/pdfGenerator';
 import './OrderSuccess.css';
 
 export default function OrderSuccess() {
@@ -71,6 +72,18 @@ export default function OrderSuccess() {
       console.error('Failed to load order:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleDownloadReceipt = () => {
+    if (order) {
+      try {
+        generateOrderReceipt(order);
+        toast.success('Receipt downloaded successfully!');
+      } catch (error) {
+        console.error('Failed to generate receipt:', error);
+        toast.error('Failed to download receipt. Please try again.');
+      }
     }
   };
 
@@ -150,6 +163,28 @@ export default function OrderSuccess() {
           )}
 
           <div className="success-actions">
+            <button 
+              onClick={handleDownloadReceipt} 
+              className="btn btn-download"
+              title="Download PDF Receipt"
+            >
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="18" 
+                height="18" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Download Receipt (PDF)
+            </button>
             <Link to="/account/orders" className="btn btn-primary">
               View All Orders
             </Link>

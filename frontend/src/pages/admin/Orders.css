@@ -183,7 +183,8 @@
 
 .btn-view,
 .btn-update-status,
-.btn-tracking {
+.btn-tracking,
+.btn-download-admin {
   padding: 6px 12px;
   border: none;
   border-radius: 4px;
@@ -201,6 +202,25 @@
 
 .btn-view:hover {
   background: #138496;
+}
+
+.btn-download-admin {
+  background: #C59764;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.btn-download-admin:hover {
+  background: #b08654;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(197, 151, 100, 0.3);
+}
+
+.btn-download-admin svg {
+  flex-shrink: 0;
 }
 
 .btn-update-status {
@@ -264,6 +284,38 @@
   font-size: 22px;
   color: #222;
   font-weight: 700;
+}
+
+.modal-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-download-modal {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #C59764;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Jost', sans-serif;
+}
+
+.btn-download-modal:hover {
+  background: #b08654;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(197, 151, 100, 0.3);
+}
+
+.btn-download-modal svg {
+  flex-shrink: 0;
 }
 
 .btn-close {
