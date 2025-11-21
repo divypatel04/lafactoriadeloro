@@ -380,7 +380,7 @@
 /* Product Actions */
 .product-actions {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   gap: 15px;
   margin-bottom: 30px;
   padding: 30px 0;
@@ -389,24 +389,23 @@
 }
 
 .quantity-selector {
-  display: flex;
-  align-items: stretch;
-  border: 2px solid var(--border-color);
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   overflow: hidden;
-  height: 56px;
   flex-shrink: 0;
   background: white;
 }
 
 .quantity-selector button {
-  width: 50px;
-  height: 100%;
+  width: 48px;
+  height: 54px;
   border: none;
   background: #f8f8f8;
   color: var(--primary-color);
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s;
   display: flex;
@@ -427,14 +426,14 @@
 }
 
 .quantity-selector input {
-  width: 70px;
-  height: 100%;
+  width: 65px;
+  height: 54px;
   border: none;
-  border-left: 2px solid var(--border-color);
-  border-right: 2px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
   text-align: center;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 500;
   padding: 0;
   margin: 0;
   background: white;
@@ -454,11 +453,11 @@
 
 .btn-add-to-cart {
   flex: 1;
-  height: 56px;
+  height: 54px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   border-radius: 4px;
   border: none;
   display: flex;
@@ -469,15 +468,15 @@
 }
 
 .btn-wishlist {
-  width: 56px;
-  height: 56px;
-  min-width: 56px;
+  width: 54px;
+  height: 54px;
+  min-width: 54px;
   flex-shrink: 0;
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   background: white;
   color: var(--primary-color);
-  font-size: 26px;
+  font-size: 24px;
   cursor: pointer;
   transition: all 0.3s;
   display: flex;
