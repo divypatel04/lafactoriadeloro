@@ -77,13 +77,13 @@ const baseStyles = `
 exports.orderConfirmationTemplate = (order, customer) => {
   const itemsHtml = order.items.map(item => `
     <div class="order-item">
-      <strong>${item.name}</strong><br>
+      <strong>${item.productName || item.name || 'Product'}</strong><br>
       <span style="color: #666;">
         ${item.selectedOptions?.material || ''} ${item.selectedOptions?.purity || ''} 
         ${item.selectedOptions?.ringSize ? `- Size ${item.selectedOptions.ringSize}` : ''}
       </span><br>
       <span style="color: #666;">Quantity: ${item.quantity}</span>
-      <span style="float: right; font-weight: 600;">$${item.price.toFixed(2)}</span>
+      <span style="float: right; font-weight: 600;">$${(item.price || 0).toFixed(2)}</span>
     </div>
   `).join('');
 
@@ -121,25 +121,25 @@ exports.orderConfirmationTemplate = (order, customer) => {
             <div style="margin-top: 20px;">
               <div style="display: flex; justify-content: space-between; padding: 5px 0;">
                 <span>Subtotal:</span>
-                <span>$${order.subtotal.toFixed(2)}</span>
+                <span>$${(order.pricing?.subtotal || order.subtotal || 0).toFixed(2)}</span>
               </div>
               <div style="display: flex; justify-content: space-between; padding: 5px 0;">
                 <span>Tax:</span>
-                <span>$${order.tax.toFixed(2)}</span>
+                <span>$${(order.pricing?.tax || order.tax || 0).toFixed(2)}</span>
               </div>
               <div style="display: flex; justify-content: space-between; padding: 5px 0;">
                 <span>Shipping:</span>
-                <span>$${order.shippingCost.toFixed(2)}</span>
+                <span>$${(order.pricing?.shipping || order.shippingCost || 0).toFixed(2)}</span>
               </div>
-              ${order.discount ? `
+              ${(order.pricing?.discount || order.discount) ? `
               <div style="display: flex; justify-content: space-between; padding: 5px 0; color: #27ae60;">
-                <span>Discount (${order.couponCode}):</span>
-                <span>-$${order.discount.toFixed(2)}</span>
+                <span>Discount (${order.couponCode || 'Coupon'}):</span>
+                <span>-$${(order.pricing?.discount || order.discount || 0).toFixed(2)}</span>
               </div>
               ` : ''}
               <div class="total-row" style="display: flex; justify-content: space-between; margin-top: 15px;">
                 <span>Total:</span>
-                <span>$${order.totalAmount.toFixed(2)}</span>
+                <span>$${(order.pricing?.total || order.totalAmount || 0).toFixed(2)}</span>
               </div>
             </div>
           </div>
