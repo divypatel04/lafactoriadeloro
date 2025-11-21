@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { orderService, cartService } from '../services';
+import { orderService, cartService, paymentService } from '../services';
 import { toast } from 'react-toastify';
 import useStore from '../store/useStore';
 import './OrderSuccess.css';
