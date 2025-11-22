@@ -40,7 +40,7 @@ export const generateOrderReceipt = (order) => {
       month: 'long',
       day: 'numeric'
     })],
-    ['Payment Method:', order.paymentMethod === 'card' ? 'Credit/Debit Card' : 'Cash on Delivery'],
+    ['Payment Method:', (order.paymentInfo?.method === 'card' || order.paymentMethod === 'card') ? 'Credit/Debit Card' : 'Cash on Delivery'],
     ['Payment Status:', order.paymentStatus || 'Pending'],
     ['Order Status:', order.orderStatus || order.status || 'Pending']
   ];

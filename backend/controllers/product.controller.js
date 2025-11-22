@@ -71,6 +71,16 @@ exports.getAllProducts = async (req, res) => {
       filter.tags = { $in: req.query.tags.split(',') };
     }
 
+    // Search filter
+    if (req.query.search) {
+      const searchRegex = new RegExp(req.query.search, 'i'); // Case-insensitive search
+      filter.$or = [
+        { name: searchRegex },
+        { description: searchRegex },
+        { sku: searchRegex }
+      ];
+    }
+
     // Sorting
     let sort = {};
     if (req.query.sort) {

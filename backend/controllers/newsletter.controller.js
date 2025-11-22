@@ -1,28 +1,5 @@
 const Newsletter = require('../models/Newsletter.model');
-const nodemailer = require('nodemailer');
-
-// Create email transporter
-const createTransporter = () => {
-  if (process.env.SENDGRID_API_KEY) {
-    return nodemailer.createTransport({
-      host: 'smtp.sendgrid.net',
-      port: 587,
-      secure: false,
-      auth: {
-        user: 'apikey',
-        pass: process.env.SENDGRID_API_KEY
-      }
-    });
-  } else {
-    return nodemailer.createTransporter({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD
-      }
-    });
-  }
-};
+const emailService = require('../services/emailService');
 
 // @desc    Subscribe to newsletter
 // @route   POST /api/newsletter/subscribe
@@ -71,45 +48,30 @@ exports.subscribe = async (req, res) => {
 
     // Send welcome email
     try {
-      const transporter = createTransporter();
-      await transporter.sendMail({
-        from: process.env.EMAIL_FROM || 'noreply@lafactoriadeloro.com',
-        to: email,
-        subject: 'Welcome to La Factoria del Oro Newsletter! 💍',
-        html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-            <h2 style="color: #d4af37;">Welcome to La Factoria del Oro!</h2>
-            <p>Thank you for subscribing to our newsletter!</p>
-            <p>You'll now receive:</p>
-            <ul>
-              <li>✨ Exclusive jewelry collection previews</li>
-              <li>💎 Special offers and discounts</li>
-              <li>🎁 Early access to new arrivals</li>
-              <li>📰 Jewelry care tips and trends</li>
-            </ul>
-            <p>We're excited to have you with us!</p>
-            <hr style="margin: 30px 0; border: none; border-top: 1px solid #ddd;">
-            <p style="font-size: 12px; color: #666;">
-              If you wish to unsubscribe, click <a href="${process.env.FRONTEND_URL || 'http://localhost:3000'}/newsletter/unsubscribe/${subscriber._id}">here</a>.
-            </p>
-          </div>
-        `,
-        text: `
-Welcome to La Factoria del Oro!
-
-Thank you for subscribing to our newsletter!
-
-You'll now receive:
-- Exclusive jewelry collection previews
-- Special offers and discounts
-- Early access to new arrivals
-- Jewelry care tips and trends
-
-We're excited to have you with us!
-
-If you wish to unsubscribe, visit: ${process.env.FRONTEND_URL || 'http://localhost:3000'}/newsletter/unsubscribe/${subscriber._id}
-        `
-      });
+      const welcomeEmailHtml = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+          <h2 style="color: #d4af37;">Welcome to La Factoria del Oro!</h2>
+          <p>Thank you for subscribing to our newsletter!</p>
+          <p>You'll now receive:</p>
+          <ul>
+            <li>✨ Exclusive jewelry collection previews</li>
+            <li>💎 Special offers and discounts</li>
+            <li>🎁 Early access to new arrivals</li>
+            <li>📰 Jewelry care tips and trends</li>
+          </ul>
+          <p>We're excited to have you with us!</p>
+          <hr style="margin: 30px 0; border: none; border-top: 1px solid #ddd;">
+          <p style="font-size: 12px; color: #666;">
+            If you wish to unsubscribe, click <a href="${process.env.FRONTEND_URL || 'http://localhost:3000'}/newsletter/unsubscribe/${subscriber._id}">here</a>.
+          </p>
+        </div>
+      `;
+      
+      await emailService.sendEmail(
+        email,
+        'Welcome to La Factoria del Oro Newsletter! 💍',
+        welcomeEmailHtml
+      );
     } catch (emailError) {
       console.error('Error sending welcome email:', emailError);
       // Don't fail the subscription if email fails
@@ -278,7 +240,6 @@ exports.sendNewsletter = async (req, res) => {
       });
     }
 
-    const transporter = createTransporter();
     let successCount = 0;
     let failCount = 0;
 
@@ -291,20 +252,20 @@ exports.sendNewsletter = async (req, res) => {
         try {
           const unsubscribeLink = `${process.env.FRONTEND_URL || 'http://localhost:3000'}/newsletter/unsubscribe/${subscriber._id}`;
           
-          await transporter.sendMail({
-            from: process.env.EMAIL_FROM || 'noreply@lafactoriadeloro.com',
-            to: subscriber.email,
-            subject: subject,
-            html: `
-              ${htmlContent}
-              <hr style="margin: 30px 0; border: none; border-top: 1px solid #ddd;">
-              <p style="font-size: 12px; color: #666;">
-                You're receiving this because you subscribed to La Factoria del Oro newsletter.<br>
-                <a href="${unsubscribeLink}">Unsubscribe</a>
-              </p>
-            `,
-            text: textContent || htmlContent.replace(/<[^>]*>/g, '')
-          });
+          const newsletterHtml = `
+            ${htmlContent}
+            <hr style="margin: 30px 0; border: none; border-top: 1px solid #ddd;">
+            <p style="font-size: 12px; color: #666;">
+              You're receiving this because you subscribed to La Factoria del Oro newsletter.<br>
+              <a href="${unsubscribeLink}">Unsubscribe</a>
+            </p>
+          `;
+          
+          await emailService.sendEmail(
+            subscriber.email,
+            subject,
+            newsletterHtml
+          );
           successCount++;
         } catch (error) {
           console.error(`Failed to send to ${subscriber.email}:`, error);
