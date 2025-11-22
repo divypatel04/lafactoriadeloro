@@ -240,7 +240,8 @@ export default function Checkout() {
         })),
         shippingAddress: transformAddress(shippingAddress),
         billingAddress: useSameAddress ? transformAddress(shippingAddress) : transformAddress(billingAddress),
-        couponCode: appliedCoupon?.code || null
+        couponCode: appliedCoupon?.code || null,
+        paymentMethod: paymentMethod // Add payment method to order data
       };
 
       // Handle payment based on method

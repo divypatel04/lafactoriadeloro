@@ -189,6 +189,13 @@
   gap: 6px;
 }
 
+.customize-price-note {
+  font-size: 14px;
+  color: #D4AF37;
+  font-weight: 500;
+  font-style: italic;
+}
+
 .from-price {
   font-size: 14px;
   color: #888;

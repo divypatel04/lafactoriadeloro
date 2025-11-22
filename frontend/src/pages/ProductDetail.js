@@ -8,7 +8,7 @@ import './ProductDetail.css';
 export default function ProductDetail() {
   const { slug } = useParams();
   const navigate = useNavigate();
-  const { user, setCart } = useStore();
+  const { user, setCart, wishlist, setWishlist } = useStore();
   
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -90,8 +90,26 @@ export default function ProductDetail() {
 
   useEffect(() => {
     loadProduct();
+    loadWishlist();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
+
+  const loadWishlist = async () => {
+    if (!user) return;
+    try {
+      const response = await wishlistService.getWishlist();
+      setWishlist(response.data || []);
+    } catch (error) {
+      console.error('Failed to load wishlist:', error);
+    }
+  };
+
+  const isInWishlist = (productId) => {
+    return wishlist.some(item => {
+      const itemId = typeof item === 'string' ? item : item._id;
+      return itemId === productId;
+    });
+  };
 
   // Filter images based on selected material
   const filteredImages = React.useMemo(() => {
@@ -208,6 +226,7 @@ export default function ProductDetail() {
 
     const targetProductId = productId || product._id;
     const isMainProduct = !productId;
+    const inWishlist = isInWishlist(targetProductId);
 
     if (isMainProduct) {
       setAddingToWishlist(true);
@@ -216,10 +235,22 @@ export default function ProductDetail() {
     }
 
     try {
-      await wishlistService.addToWishlist(targetProductId);
-      toast.success('Added to wishlist!');
+      if (inWishlist) {
+        // Remove from wishlist
+        await wishlistService.removeFromWishlist(targetProductId);
+        setWishlist(wishlist.filter(item => {
+          const itemId = typeof item === 'string' ? item : item._id;
+          return itemId !== targetProductId;
+        }));
+        toast.success('Removed from wishlist!');
+      } else {
+        // Add to wishlist
+        await wishlistService.addToWishlist(targetProductId);
+        await loadWishlist(); // Reload to get the full product data
+        toast.success('Added to wishlist!');
+      }
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Failed to add to wishlist');
+      toast.error(error.response?.data?.message || 'Failed to update wishlist');
     } finally {
       if (isMainProduct) {
         setAddingToWishlist(false);
@@ -673,13 +704,13 @@ export default function ProductDetail() {
                   </button>
 
                   <button
-                    className="btn-secondary-action wishlist-btn"
+                    className={`btn-secondary-action wishlist-btn ${isInWishlist(product._id) ? 'in-wishlist' : ''}`}
                     onClick={() => handleAddToWishlist()}
                     disabled={addingToWishlist}
-                    title="Add to Wishlist"
-                    aria-label="Add to wishlist"
+                    title={isInWishlist(product._id) ? 'Remove from Wishlist' : 'Add to Wishlist'}
+                    aria-label={isInWishlist(product._id) ? 'Remove from wishlist' : 'Add to wishlist'}
                   >
-                    <svg className="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <svg className="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill={isInWishlist(product._id) ? 'currentColor' : 'none'}>
                       <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </button>
@@ -872,12 +903,12 @@ export default function ProductDetail() {
                     <Link to={`/product/${relatedProduct.slug}`}>
                       <div className="product-image">
                         <button 
-                          className="wishlist-btn" 
+                          className={`wishlist-btn ${isInWishlist(relatedProduct._id) ? 'in-wishlist' : ''}`}
                           onClick={(e) => handleAddToWishlist(relatedProduct._id, e)}
                           disabled={wishlistLoading[relatedProduct._id]}
-                          title="Add to Wishlist"
+                          title={isInWishlist(relatedProduct._id) ? 'Remove from Wishlist' : 'Add to Wishlist'}
                         >
-                          {wishlistLoading[relatedProduct._id] ? '...' : '♡'}
+                          {wishlistLoading[relatedProduct._id] ? '...' : (isInWishlist(relatedProduct._id) ? '♥' : '♡')}
                         </button>
                         <img
                           src={relatedProduct.images[0]?.url || '/placeholder.jpg'}

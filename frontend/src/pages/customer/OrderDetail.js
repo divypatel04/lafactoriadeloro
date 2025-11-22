@@ -225,7 +225,7 @@ const OrderDetail = () => {
             {/* Payment Method */}
             <div className="payment-card">
               <h3>Payment Method</h3>
-              <p>{order.paymentMethod || 'Cash on Delivery'}</p>
+              <p>{order.paymentInfo?.method === 'card' ? 'Credit/Debit Card' : 'Cash on Delivery'}</p>
               <p className="payment-status">
                 {(order.paymentStatus === 'paid' || order.isPaid) ? '✓ Paid' : 'Payment Pending'}
               </p>

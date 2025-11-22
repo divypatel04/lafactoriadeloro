@@ -24,6 +24,8 @@ export default function CustomRing() {
   });
   
   const [loading, setLoading] = useState(false);
+  const [uploadedImages, setUploadedImages] = useState([]);
+  const [uploadingImages, setUploadingImages] = useState(false);
 
   const ringTypes = ['Engagement Ring', 'Wedding Band', 'Fashion Ring', 'Eternity Ring', 'Promise Ring', 'Other'];
   const metals = ['Gold', 'White Gold', 'Rose Gold', 'Platinum', 'Silver'];
@@ -37,6 +39,60 @@ export default function CustomRing() {
       ...prev,
       [name]: value
     }));
+  };
+
+  const handleImageUpload = async (e) => {
+    const files = Array.from(e.target.files);
+    
+    if (files.length === 0) return;
+    
+    // Limit to 5 images
+    if (uploadedImages.length + files.length > 5) {
+      toast.error('Maximum 5 images allowed');
+      return;
+    }
+
+    // Validate file types and sizes
+    for (let file of files) {
+      if (!file.type.startsWith('image/')) {
+        toast.error('Only image files are allowed');
+        return;
+      }
+      if (file.size > 5 * 1024 * 1024) { // 5MB limit
+        toast.error('Image size should be less than 5MB');
+        return;
+      }
+    }
+
+    setUploadingImages(true);
+
+    try {
+      const uploadPromises = files.map(async (file) => {
+        const formData = new FormData();
+        formData.append('image', file);
+
+        const response = await axios.post(`${API_URL}/upload`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+
+        return response.data.url;
+      });
+
+      const imageUrls = await Promise.all(uploadPromises);
+      setUploadedImages(prev => [...prev, ...imageUrls]);
+      toast.success('Images uploaded successfully!');
+    } catch (error) {
+      console.error('Error uploading images:', error);
+      toast.error('Failed to upload images. Please try again.');
+    } finally {
+      setUploadingImages(false);
+    }
+  };
+
+  const removeImage = (index) => {
+    setUploadedImages(prev => prev.filter((_, i) => i !== index));
   };
 
   const handleSubmit = async (e) => {
@@ -56,8 +112,11 @@ export default function CustomRing() {
     setLoading(true);
 
     try {
-      // Send to backend API
-      await axios.post(`${API_URL}/custom-ring-request`, formData);
+      // Send to backend API with images
+      await axios.post(`${API_URL}/custom-ring-request`, {
+        ...formData,
+        images: uploadedImages
+      });
       
       toast.success('Your custom ring request has been submitted! We will contact you soon.');
       
@@ -77,6 +136,7 @@ export default function CustomRing() {
         designPreference: '',
         additionalDetails: ''
       });
+      setUploadedImages([]);
     } catch (error) {
       console.error('Error submitting custom ring request:', error);
       toast.error('Failed to submit request. Please try again or contact us directly.');
@@ -359,6 +419,50 @@ export default function CustomRing() {
                       rows="4"
                       placeholder="Any other information or special requests you'd like to share"
                     />
+                  </div>
+
+                  {/* Image Upload */}
+                  <div className="form-group">
+                    <label htmlFor="images">Upload Reference Images (Optional)</label>
+                    <p className="form-helper-text">Upload up to 5 images to show design inspiration or specific requirements (max 5MB each)</p>
+                    <div className="image-upload-container">
+                      <input
+                        type="file"
+                        id="images"
+                        accept="image/*"
+                        multiple
+                        onChange={handleImageUpload}
+                        className="file-input"
+                        disabled={uploadingImages || uploadedImages.length >= 5}
+                      />
+                      <label htmlFor="images" className={`file-input-label ${uploadingImages || uploadedImages.length >= 5 ? 'disabled' : ''}`}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                          <polyline points="17 8 12 3 7 8"></polyline>
+                          <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        {uploadingImages ? 'Uploading...' : uploadedImages.length >= 5 ? 'Maximum images reached' : 'Choose Images'}
+                      </label>
+                    </div>
+
+                    {/* Image Preview */}
+                    {uploadedImages.length > 0 && (
+                      <div className="uploaded-images-preview">
+                        {uploadedImages.map((imageUrl, index) => (
+                          <div key={index} className="image-preview-item">
+                            <img src={imageUrl} alt={`Upload ${index + 1}`} />
+                            <button
+                              type="button"
+                              className="remove-image-btn"
+                              onClick={() => removeImage(index)}
+                              title="Remove image"
+                            >
+                              ×
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
 

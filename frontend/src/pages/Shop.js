@@ -7,7 +7,7 @@ import './Shop.css';
 
 export default function Shop() {
   const navigate = useNavigate();
-  const { user } = useStore();
+  const { user, wishlist, setWishlist } = useStore();
   const [searchParams, setSearchParams] = useSearchParams();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -16,6 +16,7 @@ export default function Shop() {
   const [wishlistLoading, setWishlistLoading] = useState({});
   
   const [filters, setFilters] = useState({
+    search: searchParams.get('search') || '',
     category: searchParams.get('category') || '',
     material: searchParams.get('material') || '',
     purity: searchParams.get('purity') || '',
@@ -43,6 +44,7 @@ export default function Shop() {
 
   useEffect(() => {
     loadCategories();
+    loadWishlist();
   }, []);
 
   useEffect(() => {
@@ -99,6 +101,23 @@ export default function Shop() {
     setFilters(newFilters);
   };
 
+  const loadWishlist = async () => {
+    if (!user) return;
+    try {
+      const response = await wishlistService.getWishlist();
+      setWishlist(response.data || []);
+    } catch (error) {
+      console.error('Failed to load wishlist:', error);
+    }
+  };
+
+  const isInWishlist = (productId) => {
+    return wishlist.some(item => {
+      const itemId = typeof item === 'string' ? item : item._id;
+      return itemId === productId;
+    });
+  };
+
   const handleAddToWishlist = async (productId, e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -109,12 +128,26 @@ export default function Shop() {
       return;
     }
 
+    const inWishlist = isInWishlist(productId);
+
     setWishlistLoading(prev => ({ ...prev, [productId]: true }));
     try {
-      await wishlistService.addToWishlist(productId);
-      toast.success('Added to wishlist!');
+      if (inWishlist) {
+        // Remove from wishlist
+        await wishlistService.removeFromWishlist(productId);
+        setWishlist(wishlist.filter(item => {
+          const itemId = typeof item === 'string' ? item : item._id;
+          return itemId !== productId;
+        }));
+        toast.success('Removed from wishlist!');
+      } else {
+        // Add to wishlist
+        await wishlistService.addToWishlist(productId);
+        await loadWishlist(); // Reload to get the full product data
+        toast.success('Added to wishlist!');
+      }
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Failed to add to wishlist');
+      toast.error(error.response?.data?.message || 'Failed to update wishlist');
     } finally {
       setWishlistLoading(prev => ({ ...prev, [productId]: false }));
     }
@@ -183,6 +216,29 @@ export default function Shop() {
                   Clear All Filters
                 </button>
               )}
+
+              {/* Search Filter */}
+              <div className="filter-group">
+                <h4>Search Products</h4>
+                <div className="search-filter-box">
+                  <input
+                    type="text"
+                    placeholder="Search by name..."
+                    value={filters.search}
+                    onChange={(e) => handleFilterChange('search', e.target.value)}
+                    className="search-filter-input"
+                  />
+                  {filters.search && (
+                    <button 
+                      className="clear-search-btn"
+                      onClick={() => handleFilterChange('search', '')}
+                      title="Clear search"
+                    >
+                      ×
+                    </button>
+                  )}
+                </div>
+              </div>
 
               {/* Category Filter */}
               <div className="filter-group">
@@ -366,12 +422,12 @@ export default function Shop() {
                               <span className="badge badge-inactive">Unavailable</span>
                             )}
                             <button
-                              className="wishlist-btn"
+                              className={`wishlist-btn ${isInWishlist(product._id) ? 'in-wishlist' : ''}`}
                               onClick={(e) => handleAddToWishlist(product._id, e)}
                               disabled={wishlistLoading[product._id]}
-                              title="Add to Wishlist"
+                              title={isInWishlist(product._id) ? 'Remove from Wishlist' : 'Add to Wishlist'}
                             >
-                              {wishlistLoading[product._id] ? '...' : '♡'}
+                              {wishlistLoading[product._id] ? '...' : (isInWishlist(product._id) ? '♥' : '♡')}
                             </button>
                           </div>
                           <div className="product-info">

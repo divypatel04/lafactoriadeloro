@@ -108,15 +108,7 @@ const Wishlist = () => {
                   <p className="product-category">{product.category?.name}</p>
                   
                   <div className="product-price">
-                    {product.weight ? (
-                      <>
-                        <span className="from-price">From</span> $
-                        {((product.weight || 1) * 50).toFixed(2)}
-                        <span className="price-note">*</span>
-                      </>
-                    ) : (
-                      <span>Price varies by options</span>
-                    )}
+                    <span className="customize-price-note">Customize ring to see price</span>
                   </div>
                   
                   <div className="product-details">

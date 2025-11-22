@@ -7,7 +7,7 @@ const emailService = require('../services/emailService');
 // @desc    Create new order
 exports.createOrder = async (req, res) => {
   try {
-    const { items, shippingAddress, billingAddress, couponCode } = req.body;
+    const { items, shippingAddress, billingAddress, couponCode, paymentMethod } = req.body;
 
     // Validate items and calculate pricing
     let subtotal = 0;
@@ -107,7 +107,7 @@ exports.createOrder = async (req, res) => {
       },
       couponCode: appliedCouponCode,
       paymentInfo: {
-        method: 'cod' // Default to COD for now
+        method: paymentMethod || 'cod' // Use provided payment method or default to COD
       }
     });
 

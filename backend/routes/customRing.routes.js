@@ -45,7 +45,8 @@ router.post('/', async (req, res) => {
       engraving,
       budget,
       designPreference,
-      additionalDetails
+      additionalDetails,
+      images
     } = req.body;
 
     // Validation
@@ -90,6 +91,14 @@ router.post('/', async (req, res) => {
       <p>${additionalDetails}</p>
       ` : ''}
 
+      ${images && images.length > 0 ? `
+      <h3>Reference Images</h3>
+      <p>Customer uploaded ${images.length} reference image(s):</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+        ${images.map((img, idx) => `<img src="${img}" alt="Reference ${idx + 1}" style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px;" />`).join('')}
+      </div>
+      ` : ''}
+
       <hr>
       <p><em>This request was submitted on ${new Date().toLocaleString()}</em></p>
     `;
@@ -113,13 +122,12 @@ ${ringSize ? `- Ring Size: ${ringSize}` : ''}
 ${engraving ? `- Engraving: ${engraving}` : ''}
 ${budget ? `- Budget: ${budget}` : ''}
 
-${designPreference ? `Design Preference:\n${designPreference}\n` : ''}
+      ${designPreference ? `Design Preference:\n${designPreference}\n` : ''}
 ${additionalDetails ? `Additional Details:\n${additionalDetails}\n` : ''}
+${images && images.length > 0 ? `\nReference Images: ${images.length} image(s) attached\nImage URLs:\n${images.map((img, idx) => `${idx + 1}. ${img}`).join('\n')}\n` : ''}
 
 Submitted on: ${new Date().toLocaleString()}
-    `.trim();
-
-    // Send email
+    `.trim();    // Send email
     const transporter = createTransporter();
     
     const mailOptions = {
