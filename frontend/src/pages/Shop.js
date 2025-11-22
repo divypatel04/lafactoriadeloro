@@ -66,6 +66,7 @@ export default function Shop() {
     try {
       const queryParams = {};
       
+      if (filters.search) queryParams.search = filters.search;
       if (filters.category) queryParams.category = filters.category;
       if (filters.material) queryParams.material = filters.material;
       if (filters.purity) queryParams.purity = filters.purity;
@@ -80,7 +81,15 @@ export default function Shop() {
 
       const response = await productService.getAllProducts(queryParams);
       setProducts(response.data);
-      setPagination(response.pagination || {});
+      
+      // Map backend pagination fields to frontend expected fields
+      const paginationData = response.pagination || {};
+      setPagination({
+        page: paginationData.currentPage || 1,
+        pages: paginationData.totalPages || 1,
+        total: paginationData.totalProducts || 0,
+        limit: paginationData.limit || 12
+      });
       
       // Update URL with filters
       setSearchParams(queryParams);
