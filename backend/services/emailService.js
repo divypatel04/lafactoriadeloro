@@ -216,6 +216,11 @@ exports.sendPasswordReset = async (user, resetToken) => {
 };
 
 /**
+ * Send generic email (exported for newsletter and other uses)
+ */
+exports.sendEmail = sendEmail;
+
+/**
  * Verify email connection (for testing)
  */
 exports.verifyConnection = async () => {
