@@ -3,7 +3,10 @@ const Category = require('../models/Category.model');
 // @desc    Get all categories
 exports.getAllCategories = async (req, res) => {
   try {
-    const categories = await Category.find({ isActive: true })
+    // If admin requests all categories (including inactive)
+    const filter = req.query.includeInactive === 'true' ? {} : { isActive: true };
+    
+    const categories = await Category.find(filter)
       .populate('parent', 'name slug')
       .sort('order');
 

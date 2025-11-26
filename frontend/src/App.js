@@ -36,6 +36,7 @@ import Addresses from './pages/customer/Addresses';
 import Wishlist from './pages/customer/Wishlist';
 import AdminDashboard from './pages/admin/Dashboard';
 import AdminProducts from './pages/admin/Products';
+import AdminCategories from './pages/admin/Categories';
 import ProductForm from './pages/admin/ProductFormNew';
 import AdminOrders from './pages/admin/Orders';
 import AdminSliders from './pages/admin/AdminSliders';
@@ -127,6 +128,11 @@ function AppContent() {
             <Route path="/admin/products" element={
               <AdminRoute>
                 <AdminProducts />
+              </AdminRoute>
+            } />
+            <Route path="/admin/categories" element={
+              <AdminRoute>
+                <AdminCategories />
               </AdminRoute>
             } />
             <Route path="/admin/products/new" element={

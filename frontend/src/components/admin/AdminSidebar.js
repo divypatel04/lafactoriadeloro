@@ -27,6 +27,12 @@ const AdminSidebar = () => {
       exact: false
     },
     {
+      path: '/admin/categories',
+      icon: '📁',
+      label: 'Categories',
+      exact: false
+    },
+    {
       path: '/admin/pricing',
       icon: '💰',
       label: 'Pricing Config',
