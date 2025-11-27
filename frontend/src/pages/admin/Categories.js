@@ -116,8 +116,10 @@ export default function AdminCategories() {
       
       // Get token from localStorage
       const token = localStorage.getItem('token');
-      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-      const uploadUrl = `${apiUrl}/api/upload/single`;
+      const apiBaseUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+      // Remove trailing /api if it exists, then add the full path
+      const baseUrl = apiBaseUrl.replace(/\/api\/?$/, '');
+      const uploadUrl = `${baseUrl}/api/upload/single`;
       
       console.log('Uploading to:', uploadUrl);
       console.log('Token exists:', !!token);
