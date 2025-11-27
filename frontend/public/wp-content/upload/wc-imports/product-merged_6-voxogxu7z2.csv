@@ -1,0 +1,761 @@
+Type,SKU,Name,Published,Visibility in catalog,Description,Sale price,Regular price,Categories,Images,Parent,Attribute 1 name,Attribute 1 value(s),Attribute 1 visible,Attribute 1 global,Attribute 1 default,Attribute 2 name,Attribute 2 value(s),Attribute 2 visible,Attribute 2 global,Attribute 2 default,Attribute 3 name,Attribute 3 value(s),Attribute 3 visible,Attribute 3 global,Attribute 3 default,Attribute 4 name,Attribute 4 value(s),Attribute 4 visible,Attribute 4 global,Attribute 4 default
+variable,RING-00051,Sydney Perfect Fit Diamond 2mm Engagement Ring,1,visible,"
+            <p>An integrated head allows this ring to sit perfectly flush with other bands for a seamless look while a surprise hidden halo of diamonds elevates a classic solitaire design.</p>
+            <table>
+                <tr>
+                    <th colspan=2>Ring Details</th>
+                </tr>
+                <tr>
+                    <th>Product Name:</th>
+                    <td>Sydney Perfect Fit Diamond 2mm Engagement Ring</td>
+                </tr>
+                <tr>
+                    <th>SKU:</th>
+                    <td>RING-00051</td>
+                </tr>
+                <tr>
+                    <th>Width:</th>
+                    <td>2 mm mm</td>
+                </tr>
+                <tr>
+                    <th>Available sizes:</th>
+                    <td>4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5</td>
+                </tr>
+                <tr>
+                    <th>Gold Weight:</th>
+                    <td>&asymp; 4.2 gm.</td>
+                </tr>
+                <tr>
+                    <th>Available Gold Type:</th>
+                    <td>Yellow Gold, Rose Gold, White Gold</td>
+                </tr>
+                <tr>
+                    <th>Available Gold Composition:</th>
+                    <td>10K, 14K, 18K</td>
+                </tr>
+                <tr>
+                    <th>Diamond Type:</th>
+                    <td>Natural, Lab Grown</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Shape:</th>
+                    <td>Oval</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Setting:</th>
+                    <td>Four-Prong</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Carat Weight:</th>
+                    <td>2.0 Ct.</td>
+                </tr>
+                <tr>
+                    <th>Accent Gemstones (Side Diamond):</th>
+                    <td>
+                        <pre>Type : Natural or lab diamond, depending on selected center diamond<br />Shape : Round<br />Number : 18<br />Min .carat total weight .: 0.06<br />Setting : Scalloped Pavé<br />Average color : F/G<br />Average clarity : SI</pre>
+                    </td>
+                </tr>
+            </table>
+            ",,,Rings,"https://image.brilliantearth.com/media/diamond_ring_vto/PF/BE1D887_yellow_Oval_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/5A/BE1D887_OV_200ct_yellow_side1.jpg,https://image.brilliantearth.com/media/carat_image/7A/BE1D887_OV_200ct_yellow_side2.jpg,https://image.brilliantearth.com/media/diamond_ring_vto/9I/BE1D887_white_Oval_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/96/BE1D887_OV_200ct_white_side1.jpg,https://image.brilliantearth.com/media/carat_image/56/BE1D887_OV_200ct_white_side2.jpg,https://image.brilliantearth.com/media/diamond_ring_vto/LA/BE1D887_rose_Oval_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/28/BE1D887_OV_200ct_rose_side1.jpg,https://image.brilliantearth.com/media/carat_image/45/BE1D887_OV_200ct_rose_side2.jpg",,Composition,"10 Kt, 14 Kt, 18 Kt",1,1,10 Kt,Ring Size,"4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5",1,1,4.0,Diamond Type,"Lab Grown, Natural",1,1,Lab Grown,Color,"Rose Gold, White Gold, Yellow Gold",1,1,Yellow Gold
+variation,RING-00051-Yellow Gold-Lab Grown-10 Kt,Sydney Perfect Fit Diamond 2mm Engagement Ring,1,visible,,708.4,799.3434908943441,,https://image.brilliantearth.com/media/diamond_ring_vto/PF/BE1D887_yellow_Oval_top_2_carat.png,RING-00051,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00051-Yellow Gold-Natural-10 Kt,Sydney Perfect Fit Diamond 2mm Engagement Ring,1,visible,,16340.8,21668.669015288127,,https://image.brilliantearth.com/media/diamond_ring_vto/PF/BE1D887_yellow_Oval_top_2_carat.png,RING-00051,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00051-White Gold-Lab Grown-10 Kt,Sydney Perfect Fit Diamond 2mm Engagement Ring,1,visible,,708.4,865.4181486016487,,https://image.brilliantearth.com/media/diamond_ring_vto/9I/BE1D887_white_Oval_top_2_carat.png,RING-00051,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00051-White Gold-Natural-10 Kt,Sydney Perfect Fit Diamond 2mm Engagement Ring,1,visible,,16340.8,19354.87117511668,,https://image.brilliantearth.com/media/diamond_ring_vto/9I/BE1D887_white_Oval_top_2_carat.png,RING-00051,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00051-Rose Gold-Lab Grown-10 Kt,Sydney Perfect Fit Diamond 2mm Engagement Ring,1,visible,,708.4,825.341092827325,,https://image.brilliantearth.com/media/diamond_ring_vto/LA/BE1D887_rose_Oval_top_2_carat.png,RING-00051,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00051-Rose Gold-Natural-10 Kt,Sydney Perfect Fit Diamond 2mm Engagement Ring,1,visible,,16340.8,18553.796777698743,,https://image.brilliantearth.com/media/diamond_ring_vto/LA/BE1D887_rose_Oval_top_2_carat.png,RING-00051,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variation,RING-00051-Yellow Gold-Lab Grown-14 Kt,Sydney Perfect Fit Diamond 2mm Engagement Ring,1,visible,,788.2,890.0962637731261,,https://image.brilliantearth.com/media/diamond_ring_vto/PF/BE1D887_yellow_Oval_top_2_carat.png,RING-00051,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00051-Yellow Gold-Natural-14 Kt,Sydney Perfect Fit Diamond 2mm Engagement Ring,1,visible,,16420.6,20240.18682550329,,https://image.brilliantearth.com/media/diamond_ring_vto/PF/BE1D887_yellow_Oval_top_2_carat.png,RING-00051,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00051-White Gold-Lab Grown-14 Kt,Sydney Perfect Fit Diamond 2mm Engagement Ring,1,visible,,788.2,1042.954571431343,,https://image.brilliantearth.com/media/diamond_ring_vto/9I/BE1D887_white_Oval_top_2_carat.png,RING-00051,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00051-White Gold-Natural-14 Kt,Sydney Perfect Fit Diamond 2mm Engagement Ring,1,visible,,16420.6,21340.19069495086,,https://image.brilliantearth.com/media/diamond_ring_vto/9I/BE1D887_white_Oval_top_2_carat.png,RING-00051,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00051-Rose Gold-Lab Grown-14 Kt,Sydney Perfect Fit Diamond 2mm Engagement Ring,1,visible,,788.2,933.5963764653518,,https://image.brilliantearth.com/media/diamond_ring_vto/LA/BE1D887_rose_Oval_top_2_carat.png,RING-00051,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00051-Rose Gold-Natural-14 Kt,Sydney Perfect Fit Diamond 2mm Engagement Ring,1,visible,,16420.6,21126.633541016687,,https://image.brilliantearth.com/media/diamond_ring_vto/LA/BE1D887_rose_Oval_top_2_carat.png,RING-00051,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variation,RING-00051-Yellow Gold-Lab Grown-18 Kt,Sydney Perfect Fit Diamond 2mm Engagement Ring,1,visible,,855.4,1122.807905731548,,https://image.brilliantearth.com/media/diamond_ring_vto/PF/BE1D887_yellow_Oval_top_2_carat.png,RING-00051,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00051-Yellow Gold-Natural-18 Kt,Sydney Perfect Fit Diamond 2mm Engagement Ring,1,visible,,16487.8,20819.10869559439,,https://image.brilliantearth.com/media/diamond_ring_vto/PF/BE1D887_yellow_Oval_top_2_carat.png,RING-00051,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00051-White Gold-Lab Grown-18 Kt,Sydney Perfect Fit Diamond 2mm Engagement Ring,1,visible,,855.4,1132.170889834479,,https://image.brilliantearth.com/media/diamond_ring_vto/9I/BE1D887_white_Oval_top_2_carat.png,RING-00051,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00051-White Gold-Natural-18 Kt,Sydney Perfect Fit Diamond 2mm Engagement Ring,1,visible,,16487.8,20004.83677548844,,https://image.brilliantearth.com/media/diamond_ring_vto/9I/BE1D887_white_Oval_top_2_carat.png,RING-00051,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00051-Rose Gold-Lab Grown-18 Kt,Sydney Perfect Fit Diamond 2mm Engagement Ring,1,visible,,855.4,1148.6187813138204,,https://image.brilliantearth.com/media/diamond_ring_vto/LA/BE1D887_rose_Oval_top_2_carat.png,RING-00051,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00051-Rose Gold-Natural-18 Kt,Sydney Perfect Fit Diamond 2mm Engagement Ring,1,visible,,16487.8,20625.7972175032,,https://image.brilliantearth.com/media/diamond_ring_vto/LA/BE1D887_rose_Oval_top_2_carat.png,RING-00051,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variable,RING-00052,Perfect Fit Half-Coverage Hidden Halo Diamond Engagement Ring,1,visible,"
+            <p>An elegant shank is adorned with diamonds while an integrated head allows other bands to sit perfectly flush.</p>
+            <table>
+                <tr>
+                    <th colspan=2>Ring Details</th>
+                </tr>
+                <tr>
+                    <th>Product Name:</th>
+                    <td>Perfect Fit Half-Coverage Hidden Halo Diamond Engagement Ring</td>
+                </tr>
+                <tr>
+                    <th>SKU:</th>
+                    <td>RING-00052</td>
+                </tr>
+                <tr>
+                    <th>Width:</th>
+                    <td>1.4 mm mm</td>
+                </tr>
+                <tr>
+                    <th>Available sizes:</th>
+                    <td>4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5</td>
+                </tr>
+                <tr>
+                    <th>Gold Weight:</th>
+                    <td>&asymp; 3.7 gm.</td>
+                </tr>
+                <tr>
+                    <th>Available Gold Type:</th>
+                    <td>Yellow Gold, Rose Gold, White Gold</td>
+                </tr>
+                <tr>
+                    <th>Available Gold Composition:</th>
+                    <td>10K, 14K, 18K</td>
+                </tr>
+                <tr>
+                    <th>Diamond Type:</th>
+                    <td>Natural, Lab Grown</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Shape:</th>
+                    <td>Oval</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Setting:</th>
+                    <td>Claw Prong</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Carat Weight:</th>
+                    <td>2.0 Ct.</td>
+                </tr>
+                <tr>
+                    <th>Accent Gemstones (Side Diamond):</th>
+                    <td>
+                        <pre>Type : Natural or lab diamond, depending on selected center diamond<br />Shape : Round<br />Number : 36<br />Min .carat total weight .: 0.19<br />Setting : Scalloped Pavé<br />Average color : F/G<br />Average clarity : SI1</pre>
+                    </td>
+                </tr>
+            </table>
+            ",,,Rings,"https://image.brilliantearth.com/media/diamond_ring_vto/WV/BE1D1620_rose_Oval_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/0B/BE1D1620_OV_200ct_rose_side1.jpg,https://image.brilliantearth.com/media/carat_image/95/BE1D1620_OV_200ct_rose_side2.jpg,https://image.brilliantearth.com/media/diamond_ring_vto/5U/BE1D1620_white_Oval_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/8C/BE1D1620_OV_200ct_white_side1.jpg,https://image.brilliantearth.com/media/carat_image/91/BE1D1620_OV_200ct_white_side2.jpg,https://image.brilliantearth.com/media/diamond_ring_vto/QG/BE1D1620_yellow_Oval_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/5A/BE1D1620_OV_200ct_yellow_side1.jpg,https://image.brilliantearth.com/media/carat_image/01/BE1D1620_OV_200ct_yellow_side2.jpg",,Composition,"10 Kt, 14 Kt, 18 Kt",1,1,10 Kt,Ring Size,"4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5",1,1,4.0,Diamond Type,"Lab Grown, Natural",1,1,Lab Grown,Color,"Rose Gold, White Gold, Yellow Gold",1,1,Rose Gold
+variation,RING-00052-Yellow Gold-Lab Grown-10 Kt,Perfect Fit Half-Coverage Hidden Halo Diamond Engagement Ring,1,visible,,704.6,798.8219472927348,,https://image.brilliantearth.com/media/diamond_ring_vto/QG/BE1D1620_yellow_Oval_top_2_carat.png,RING-00052,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00052-Yellow Gold-Natural-10 Kt,Perfect Fit Half-Coverage Hidden Halo Diamond Engagement Ring,1,visible,,16407.2,19103.165956727957,,https://image.brilliantearth.com/media/diamond_ring_vto/QG/BE1D1620_yellow_Oval_top_2_carat.png,RING-00052,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00052-White Gold-Lab Grown-10 Kt,Perfect Fit Half-Coverage Hidden Halo Diamond Engagement Ring,1,visible,,704.6,839.8513674815932,,https://image.brilliantearth.com/media/diamond_ring_vto/5U/BE1D1620_white_Oval_top_2_carat.png,RING-00052,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00052-White Gold-Natural-10 Kt,Perfect Fit Half-Coverage Hidden Halo Diamond Engagement Ring,1,visible,,16407.2,21948.89635670748,,https://image.brilliantearth.com/media/diamond_ring_vto/5U/BE1D1620_white_Oval_top_2_carat.png,RING-00052,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00052-Rose Gold-Lab Grown-10 Kt,Perfect Fit Half-Coverage Hidden Halo Diamond Engagement Ring,1,visible,,704.6,848.7413748436275,,https://image.brilliantearth.com/media/diamond_ring_vto/WV/BE1D1620_rose_Oval_top_2_carat.png,RING-00052,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00052-Rose Gold-Natural-10 Kt,Perfect Fit Half-Coverage Hidden Halo Diamond Engagement Ring,1,visible,,16407.2,20477.65697057841,,https://image.brilliantearth.com/media/diamond_ring_vto/WV/BE1D1620_rose_Oval_top_2_carat.png,RING-00052,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variation,RING-00052-Yellow Gold-Lab Grown-14 Kt,Perfect Fit Half-Coverage Hidden Halo Diamond Engagement Ring,1,visible,,774.9000000000001,944.3448205553684,,https://image.brilliantearth.com/media/diamond_ring_vto/QG/BE1D1620_yellow_Oval_top_2_carat.png,RING-00052,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00052-Yellow Gold-Natural-14 Kt,Perfect Fit Half-Coverage Hidden Halo Diamond Engagement Ring,1,visible,,16477.5,21356.562314702904,,https://image.brilliantearth.com/media/diamond_ring_vto/QG/BE1D1620_yellow_Oval_top_2_carat.png,RING-00052,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00052-White Gold-Lab Grown-14 Kt,Perfect Fit Half-Coverage Hidden Halo Diamond Engagement Ring,1,visible,,774.9000000000001,953.6919462800377,,https://image.brilliantearth.com/media/diamond_ring_vto/5U/BE1D1620_white_Oval_top_2_carat.png,RING-00052,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00052-White Gold-Natural-14 Kt,Perfect Fit Half-Coverage Hidden Halo Diamond Engagement Ring,1,visible,,16477.5,19133.494986584297,,https://image.brilliantearth.com/media/diamond_ring_vto/5U/BE1D1620_white_Oval_top_2_carat.png,RING-00052,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00052-Rose Gold-Lab Grown-14 Kt,Perfect Fit Half-Coverage Hidden Halo Diamond Engagement Ring,1,visible,,774.9000000000001,1013.005929843516,,https://image.brilliantearth.com/media/diamond_ring_vto/WV/BE1D1620_rose_Oval_top_2_carat.png,RING-00052,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00052-Rose Gold-Natural-14 Kt,Perfect Fit Half-Coverage Hidden Halo Diamond Engagement Ring,1,visible,,16477.5,19480.50703036347,,https://image.brilliantearth.com/media/diamond_ring_vto/WV/BE1D1620_rose_Oval_top_2_carat.png,RING-00052,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variation,RING-00052-Yellow Gold-Lab Grown-18 Kt,Perfect Fit Half-Coverage Hidden Halo Diamond Engagement Ring,1,visible,,834.1,1121.1176954302584,,https://image.brilliantearth.com/media/diamond_ring_vto/QG/BE1D1620_yellow_Oval_top_2_carat.png,RING-00052,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00052-Yellow Gold-Natural-18 Kt,Perfect Fit Half-Coverage Hidden Halo Diamond Engagement Ring,1,visible,,16536.7,21123.230742732547,,https://image.brilliantearth.com/media/diamond_ring_vto/QG/BE1D1620_yellow_Oval_top_2_carat.png,RING-00052,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00052-White Gold-Lab Grown-18 Kt,Perfect Fit Half-Coverage Hidden Halo Diamond Engagement Ring,1,visible,,834.1,1103.7523935659226,,https://image.brilliantearth.com/media/diamond_ring_vto/5U/BE1D1620_white_Oval_top_2_carat.png,RING-00052,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00052-White Gold-Natural-18 Kt,Perfect Fit Half-Coverage Hidden Halo Diamond Engagement Ring,1,visible,,16536.7,18584.43700670744,,https://image.brilliantearth.com/media/diamond_ring_vto/5U/BE1D1620_white_Oval_top_2_carat.png,RING-00052,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00052-Rose Gold-Lab Grown-18 Kt,Perfect Fit Half-Coverage Hidden Halo Diamond Engagement Ring,1,visible,,834.1,1080.3962119083892,,https://image.brilliantearth.com/media/diamond_ring_vto/WV/BE1D1620_rose_Oval_top_2_carat.png,RING-00052,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00052-Rose Gold-Natural-18 Kt,Perfect Fit Half-Coverage Hidden Halo Diamond Engagement Ring,1,visible,,16536.7,21857.926708518327,,https://image.brilliantearth.com/media/diamond_ring_vto/WV/BE1D1620_rose_Oval_top_2_carat.png,RING-00052,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variable,RING-00053,Adorned Opera Three Stone Diamond Engagement Ring,1,visible,"
+            <p>Captivating pear-shaped diamonds brilliantly frame the center gem in this classic three stone ring with surprise hidden accents along the gallery wire.</p>
+            <table>
+                <tr>
+                    <th colspan=2>Ring Details</th>
+                </tr>
+                <tr>
+                    <th>Product Name:</th>
+                    <td>Adorned Opera Three Stone Diamond Engagement Ring</td>
+                </tr>
+                <tr>
+                    <th>SKU:</th>
+                    <td>RING-00053</td>
+                </tr>
+                <tr>
+                    <th>Width:</th>
+                    <td>1.8 mm mm</td>
+                </tr>
+                <tr>
+                    <th>Available sizes:</th>
+                    <td>4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5</td>
+                </tr>
+                <tr>
+                    <th>Gold Weight:</th>
+                    <td>&asymp; 4.5 gm.</td>
+                </tr>
+                <tr>
+                    <th>Available Gold Type:</th>
+                    <td>Yellow Gold, Rose Gold, White Gold</td>
+                </tr>
+                <tr>
+                    <th>Available Gold Composition:</th>
+                    <td>10K, 14K, 18K</td>
+                </tr>
+                <tr>
+                    <th>Diamond Type:</th>
+                    <td>Natural, Lab Grown</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Shape:</th>
+                    <td>Oval</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Setting:</th>
+                    <td>Claw Prong Basket</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Carat Weight:</th>
+                    <td>2.0 Ct.</td>
+                </tr>
+                <tr>
+                    <th>Accent Gemstones (Side Diamond):</th>
+                    <td>
+                        <pre>Type : Natural or lab diamond, depending on selected center diamond<br />Shape : Pear<br />Number : 2<br />Min .carat total weight .: 0.37<br />Setting : 3 Prong Basket<br />Average color : F/G<br />Average clarity : SI<br />Type : Natural or lab diamond, depending on selected center diamond<br />Shape : Round<br />Number : 32<br />Min .carat total weight .: 0.10<br />Setting : Scalloped Pavé<br />Average color : F/G<br />Average clarity : SI</pre>
+                    </td>
+                </tr>
+            </table>
+            ",,,Rings,"https://image.brilliantearth.com/media/diamond_ring_vto/VQ/BE1D322_rose_Oval_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/3F/BE1D322_OV_200ct_rose_side1.jpg,https://image.brilliantearth.com/media/carat_image/B5/BE1D322_OV_200ct_rose_side2.jpg,https://image.brilliantearth.com/media/diamond_ring_vto/YX/BE1D322_yellow_Oval_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/07/BE1D322_OV_200ct_yellow_side1.jpg,https://image.brilliantearth.com/media/carat_image/30/BE1D322_OV_200ct_yellow_side2.jpg,https://image.brilliantearth.com/media/diamond_ring_vto/HF/BE1D322_white_Oval_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/D2/BE1D322_OV_200ct_white_side1.jpg,https://image.brilliantearth.com/media/carat_image/EF/BE1D322_OV_200ct_white_side2.jpg",,Composition,"10 Kt, 14 Kt, 18 Kt",1,1,10 Kt,Ring Size,"4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5",1,1,4.0,Diamond Type,"Lab Grown, Natural",1,1,Lab Grown,Color,"Rose Gold, White Gold, Yellow Gold",1,1,Rose Gold
+variation,RING-00053-Yellow Gold-Lab Grown-10 Kt,Adorned Opera Three Stone Diamond Engagement Ring,1,visible,,916.6,1161.6979413340914,,https://image.brilliantearth.com/media/diamond_ring_vto/YX/BE1D322_yellow_Oval_top_2_carat.png,RING-00053,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00053-Yellow Gold-Natural-10 Kt,Adorned Opera Three Stone Diamond Engagement Ring,1,visible,,16925.8,20773.822953236075,,https://image.brilliantearth.com/media/diamond_ring_vto/YX/BE1D322_yellow_Oval_top_2_carat.png,RING-00053,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00053-White Gold-Lab Grown-10 Kt,Adorned Opera Three Stone Diamond Engagement Ring,1,visible,,916.6,1206.884225838515,,https://image.brilliantearth.com/media/diamond_ring_vto/HF/BE1D322_white_Oval_top_2_carat.png,RING-00053,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00053-White Gold-Natural-10 Kt,Adorned Opera Three Stone Diamond Engagement Ring,1,visible,,16925.8,22363.480482870465,,https://image.brilliantearth.com/media/diamond_ring_vto/HF/BE1D322_white_Oval_top_2_carat.png,RING-00053,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00053-Rose Gold-Lab Grown-10 Kt,Adorned Opera Three Stone Diamond Engagement Ring,1,visible,,916.6,1152.4321518729323,,https://image.brilliantearth.com/media/diamond_ring_vto/VQ/BE1D322_rose_Oval_top_2_carat.png,RING-00053,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00053-Rose Gold-Natural-10 Kt,Adorned Opera Three Stone Diamond Engagement Ring,1,visible,,16925.8,19158.596341275337,,https://image.brilliantearth.com/media/diamond_ring_vto/VQ/BE1D322_rose_Oval_top_2_carat.png,RING-00053,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variation,RING-00053-Yellow Gold-Lab Grown-14 Kt,Adorned Opera Three Stone Diamond Engagement Ring,1,visible,,1002.1,1144.2525780445892,,https://image.brilliantearth.com/media/diamond_ring_vto/YX/BE1D322_yellow_Oval_top_2_carat.png,RING-00053,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00053-Yellow Gold-Natural-14 Kt,Adorned Opera Three Stone Diamond Engagement Ring,1,visible,,17011.3,21083.66599496493,,https://image.brilliantearth.com/media/diamond_ring_vto/YX/BE1D322_yellow_Oval_top_2_carat.png,RING-00053,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00053-White Gold-Lab Grown-14 Kt,Adorned Opera Three Stone Diamond Engagement Ring,1,visible,,1002.1,1251.6922383289211,,https://image.brilliantearth.com/media/diamond_ring_vto/HF/BE1D322_white_Oval_top_2_carat.png,RING-00053,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00053-White Gold-Natural-14 Kt,Adorned Opera Three Stone Diamond Engagement Ring,1,visible,,17011.3,20402.192007905363,,https://image.brilliantearth.com/media/diamond_ring_vto/HF/BE1D322_white_Oval_top_2_carat.png,RING-00053,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00053-Rose Gold-Lab Grown-14 Kt,Adorned Opera Three Stone Diamond Engagement Ring,1,visible,,1002.1,1123.7892888295917,,https://image.brilliantearth.com/media/diamond_ring_vto/VQ/BE1D322_rose_Oval_top_2_carat.png,RING-00053,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00053-Rose Gold-Natural-14 Kt,Adorned Opera Three Stone Diamond Engagement Ring,1,visible,,17011.3,22413.86137035965,,https://image.brilliantearth.com/media/diamond_ring_vto/VQ/BE1D322_rose_Oval_top_2_carat.png,RING-00053,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variation,RING-00053-Yellow Gold-Lab Grown-18 Kt,Adorned Opera Three Stone Diamond Engagement Ring,1,visible,,1074.1,1355.3895834773468,,https://image.brilliantearth.com/media/diamond_ring_vto/YX/BE1D322_yellow_Oval_top_2_carat.png,RING-00053,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00053-Yellow Gold-Natural-18 Kt,Adorned Opera Three Stone Diamond Engagement Ring,1,visible,,17083.3,19866.286964461535,,https://image.brilliantearth.com/media/diamond_ring_vto/YX/BE1D322_yellow_Oval_top_2_carat.png,RING-00053,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00053-White Gold-Lab Grown-18 Kt,Adorned Opera Three Stone Diamond Engagement Ring,1,visible,,1074.1,1235.4369157032197,,https://image.brilliantearth.com/media/diamond_ring_vto/HF/BE1D322_white_Oval_top_2_carat.png,RING-00053,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00053-White Gold-Natural-18 Kt,Adorned Opera Three Stone Diamond Engagement Ring,1,visible,,17083.3,22841.839619126476,,https://image.brilliantearth.com/media/diamond_ring_vto/HF/BE1D322_white_Oval_top_2_carat.png,RING-00053,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00053-Rose Gold-Lab Grown-18 Kt,Adorned Opera Three Stone Diamond Engagement Ring,1,visible,,1074.1,1289.8886720777978,,https://image.brilliantearth.com/media/diamond_ring_vto/VQ/BE1D322_rose_Oval_top_2_carat.png,RING-00053,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00053-Rose Gold-Natural-18 Kt,Adorned Opera Three Stone Diamond Engagement Ring,1,visible,,17083.3,21160.334338030774,,https://image.brilliantearth.com/media/diamond_ring_vto/VQ/BE1D322_rose_Oval_top_2_carat.png,RING-00053,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variable,RING-00054,Versailles Three-Quarter Coverage Diamond Engagement Ring,1,visible,"
+            <p>Alternating round and marquise diamonds wrap three-fourths of the way around the band creating an alluring pattern in this chic and distinctive ring.</p>
+            <table>
+                <tr>
+                    <th colspan=2>Ring Details</th>
+                </tr>
+                <tr>
+                    <th>Product Name:</th>
+                    <td>Versailles Three-Quarter Coverage Diamond Engagement Ring</td>
+                </tr>
+                <tr>
+                    <th>SKU:</th>
+                    <td>RING-00054</td>
+                </tr>
+                <tr>
+                    <th>Width:</th>
+                    <td>1.8 mm mm</td>
+                </tr>
+                <tr>
+                    <th>Available sizes:</th>
+                    <td>4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5</td>
+                </tr>
+                <tr>
+                    <th>Gold Weight:</th>
+                    <td>&asymp; 3.9 gm.</td>
+                </tr>
+                <tr>
+                    <th>Available Gold Type:</th>
+                    <td>Yellow Gold, Rose Gold, White Gold</td>
+                </tr>
+                <tr>
+                    <th>Available Gold Composition:</th>
+                    <td>10K, 14K, 18K</td>
+                </tr>
+                <tr>
+                    <th>Diamond Type:</th>
+                    <td>Natural, Lab Grown</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Shape:</th>
+                    <td>Oval</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Setting:</th>
+                    <td>Four-Prong</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Carat Weight:</th>
+                    <td>2.0 Ct.</td>
+                </tr>
+                <tr>
+                    <th>Accent Gemstones (Side Diamond):</th>
+                    <td>
+                        <pre>Type : Natural or lab diamond, depending on selected center diamond<br />Shape : Round<br />Number : 6<br />Min .carat total weight .: 0.16<br />Setting : Prong Set<br />Average color : F/G<br />Average clarity : SI<br />Type : Natural or lab diamond, depending on selected center diamond<br />Shape : Marquise<br />Number : 6<br />Min .carat total weight .: 0.36<br />Setting : Prong Set<br />Average color : F/G<br />Average clarity : SI</pre>
+                    </td>
+                </tr>
+            </table>
+            ",,,Rings,"https://image.brilliantearth.com/media/diamond_ring_vto/NM/BE1D626_yellow_Oval_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/24/BE1D626_OV_200ct_yellow_side1.jpg,https://image.brilliantearth.com/media/carat_image/33/BE1D626_OV_200ct_yellow_side2.jpg,https://image.brilliantearth.com/media/diamond_ring_vto/42/BE1D626_white_Oval_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/94/BE1D626_OV_200ct_white_side1.jpg,https://image.brilliantearth.com/media/carat_image/D5/BE1D626_OV_200ct_white_side2.jpg,https://image.brilliantearth.com/media/diamond_ring_vto/EG/BE1D626_rose_Oval_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/C8/BE1D626_OV_200ct_rose_side1.jpg,https://image.brilliantearth.com/media/carat_image/26/BE1D626_OV_200ct_rose_side2.jpg",,Composition,"10 Kt, 14 Kt, 18 Kt",1,1,10 Kt,Ring Size,"4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5",1,1,4.0,Diamond Type,"Lab Grown, Natural",1,1,Lab Grown,Color,"Rose Gold, White Gold, Yellow Gold",1,1,Yellow Gold
+variation,RING-00054-Yellow Gold-Lab Grown-10 Kt,Versailles Three-Quarter Coverage Diamond Engagement Ring,1,visible,,884.2,1127.930749158794,,https://image.brilliantearth.com/media/diamond_ring_vto/NM/BE1D626_yellow_Oval_top_2_carat.png,RING-00054,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00054-Yellow Gold-Natural-10 Kt,Versailles Three-Quarter Coverage Diamond Engagement Ring,1,visible,,16916.2,19336.69564956656,,https://image.brilliantearth.com/media/diamond_ring_vto/NM/BE1D626_yellow_Oval_top_2_carat.png,RING-00054,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00054-White Gold-Lab Grown-10 Kt,Versailles Three-Quarter Coverage Diamond Engagement Ring,1,visible,,884.2,1002.814943692901,,https://image.brilliantearth.com/media/diamond_ring_vto/42/BE1D626_white_Oval_top_2_carat.png,RING-00054,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00054-White Gold-Natural-10 Kt,Versailles Three-Quarter Coverage Diamond Engagement Ring,1,visible,,16916.2,20635.62899644016,,https://image.brilliantearth.com/media/diamond_ring_vto/42/BE1D626_white_Oval_top_2_carat.png,RING-00054,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00054-Rose Gold-Lab Grown-10 Kt,Versailles Three-Quarter Coverage Diamond Engagement Ring,1,visible,,884.2,1126.7393684033573,,https://image.brilliantearth.com/media/diamond_ring_vto/EG/BE1D626_rose_Oval_top_2_carat.png,RING-00054,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00054-Rose Gold-Natural-10 Kt,Versailles Three-Quarter Coverage Diamond Engagement Ring,1,visible,,16916.2,19803.575863537066,,https://image.brilliantearth.com/media/diamond_ring_vto/EG/BE1D626_rose_Oval_top_2_carat.png,RING-00054,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variation,RING-00054-Yellow Gold-Lab Grown-14 Kt,Versailles Three-Quarter Coverage Diamond Engagement Ring,1,visible,,958.3,1244.7373572863617,,https://image.brilliantearth.com/media/diamond_ring_vto/NM/BE1D626_yellow_Oval_top_2_carat.png,RING-00054,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00054-Yellow Gold-Natural-14 Kt,Versailles Three-Quarter Coverage Diamond Engagement Ring,1,visible,,16990.3,20413.298813241057,,https://image.brilliantearth.com/media/diamond_ring_vto/NM/BE1D626_yellow_Oval_top_2_carat.png,RING-00054,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00054-White Gold-Lab Grown-14 Kt,Versailles Three-Quarter Coverage Diamond Engagement Ring,1,visible,,958.3,1286.3308038883529,,https://image.brilliantearth.com/media/diamond_ring_vto/42/BE1D626_white_Oval_top_2_carat.png,RING-00054,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00054-White Gold-Natural-14 Kt,Versailles Three-Quarter Coverage Diamond Engagement Ring,1,visible,,16990.3,22335.233381837657,,https://image.brilliantearth.com/media/diamond_ring_vto/42/BE1D626_white_Oval_top_2_carat.png,RING-00054,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00054-Rose Gold-Lab Grown-14 Kt,Versailles Three-Quarter Coverage Diamond Engagement Ring,1,visible,,958.3,1162.3725084115715,,https://image.brilliantearth.com/media/diamond_ring_vto/EG/BE1D626_rose_Oval_top_2_carat.png,RING-00054,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00054-Rose Gold-Natural-14 Kt,Versailles Three-Quarter Coverage Diamond Engagement Ring,1,visible,,16990.3,22043.327598876313,,https://image.brilliantearth.com/media/diamond_ring_vto/EG/BE1D626_rose_Oval_top_2_carat.png,RING-00054,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variation,RING-00054-Yellow Gold-Lab Grown-18 Kt,Versailles Three-Quarter Coverage Diamond Engagement Ring,1,visible,,1020.7,1149.578078739596,,https://image.brilliantearth.com/media/diamond_ring_vto/NM/BE1D626_yellow_Oval_top_2_carat.png,RING-00054,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00054-Yellow Gold-Natural-18 Kt,Versailles Three-Quarter Coverage Diamond Engagement Ring,1,visible,,17052.7,19476.691449037135,,https://image.brilliantearth.com/media/diamond_ring_vto/NM/BE1D626_yellow_Oval_top_2_carat.png,RING-00054,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00054-White Gold-Lab Grown-18 Kt,Versailles Three-Quarter Coverage Diamond Engagement Ring,1,visible,,1020.7,1167.6685699566583,,https://image.brilliantearth.com/media/diamond_ring_vto/42/BE1D626_white_Oval_top_2_carat.png,RING-00054,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00054-White Gold-Natural-18 Kt,Versailles Three-Quarter Coverage Diamond Engagement Ring,1,visible,,17052.7,19975.104979203552,,https://image.brilliantearth.com/media/diamond_ring_vto/42/BE1D626_white_Oval_top_2_carat.png,RING-00054,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00054-Rose Gold-Lab Grown-18 Kt,Versailles Three-Quarter Coverage Diamond Engagement Ring,1,visible,,1020.7,1307.603208438259,,https://image.brilliantearth.com/media/diamond_ring_vto/EG/BE1D626_rose_Oval_top_2_carat.png,RING-00054,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00054-Rose Gold-Natural-18 Kt,Versailles Three-Quarter Coverage Diamond Engagement Ring,1,visible,,17052.7,21266.18027613811,,https://image.brilliantearth.com/media/diamond_ring_vto/EG/BE1D626_rose_Oval_top_2_carat.png,RING-00054,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variable,RING-00055,Vertical Baguette Three Stone Diamond Engagement Ring,1,visible,"
+            <p>Classic yet captivating, this three stone design features shimmering baguette diamonds set vertically next to the center gem.</p>
+            <table>
+                <tr>
+                    <th colspan=2>Ring Details</th>
+                </tr>
+                <tr>
+                    <th>Product Name:</th>
+                    <td>Vertical Baguette Three Stone Diamond Engagement Ring</td>
+                </tr>
+                <tr>
+                    <th>SKU:</th>
+                    <td>RING-00055</td>
+                </tr>
+                <tr>
+                    <th>Width:</th>
+                    <td>1.5 mm mm</td>
+                </tr>
+                <tr>
+                    <th>Available sizes:</th>
+                    <td>4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5</td>
+                </tr>
+                <tr>
+                    <th>Gold Weight:</th>
+                    <td>&asymp; 3.6 gm.</td>
+                </tr>
+                <tr>
+                    <th>Available Gold Type:</th>
+                    <td>Yellow Gold, Rose Gold, White Gold</td>
+                </tr>
+                <tr>
+                    <th>Available Gold Composition:</th>
+                    <td>10K, 14K, 18K</td>
+                </tr>
+                <tr>
+                    <th>Diamond Type:</th>
+                    <td>Natural, Lab Grown</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Shape:</th>
+                    <td>Emerald</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Setting:</th>
+                    <td>Claw Prong</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Carat Weight:</th>
+                    <td>2.0 Ct.</td>
+                </tr>
+                <tr>
+                    <th>Accent Gemstones (Side Diamond):</th>
+                    <td>
+                        <pre>Type : Natural or lab diamond, depending on selected center diamond<br />Shape : Baguette<br />Number : 2<br />Min .carat total weight .: 0.29<br />Setting : Bead Prong<br />Average color : F/G<br />Average clarity : SI</pre>
+                    </td>
+                </tr>
+            </table>
+            ",,,Rings,"https://image.brilliantearth.com/media/diamond_ring_vto/FI/BE1D1972_rose_Emerald_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/C9/BE1D1972_EM_200ct_rose_side1.jpg,https://image.brilliantearth.com/media/carat_image/E6/BE1D1972_EM_200ct_rose_side2.jpg,https://image.brilliantearth.com/media/diamond_ring_vto/25/BE1D1972_white_Emerald_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/E3/BE1D1972_EM_200ct_white_side1.jpg,https://image.brilliantearth.com/media/carat_image/5F/BE1D1972_EM_200ct_white_side2.jpg,https://image.brilliantearth.com/media/diamond_ring_vto/F0/BE1D1972_yellow_Emerald_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/E0/BE1D1972_EM_200ct_yellow_side1.jpg,https://image.brilliantearth.com/media/carat_image/CB/BE1D1972_EM_200ct_yellow_side2.jpg",,Composition,"10 Kt, 14 Kt, 18 Kt",1,1,10 Kt,Ring Size,"4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5",1,1,4.0,Diamond Type,"Lab Grown, Natural",1,1,Lab Grown,Color,"Rose Gold, White Gold, Yellow Gold",1,1,Rose Gold
+variation,RING-00055-Yellow Gold-Lab Grown-10 Kt,Vertical Baguette Three Stone Diamond Engagement Ring,1,visible,,791.2,913.9084894806203,,https://image.brilliantearth.com/media/diamond_ring_vto/F0/BE1D1972_yellow_Emerald_top_2_carat.png,RING-00055,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00055-Yellow Gold-Natural-10 Kt,Vertical Baguette Three Stone Diamond Engagement Ring,1,visible,,16669.6,22258.31628896645,,https://image.brilliantearth.com/media/diamond_ring_vto/F0/BE1D1972_yellow_Emerald_top_2_carat.png,RING-00055,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00055-White Gold-Lab Grown-10 Kt,Vertical Baguette Three Stone Diamond Engagement Ring,1,visible,,791.2,960.8457151871344,,https://image.brilliantearth.com/media/diamond_ring_vto/25/BE1D1972_white_Emerald_top_2_carat.png,RING-00055,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00055-White Gold-Natural-10 Kt,Vertical Baguette Three Stone Diamond Engagement Ring,1,visible,,16669.6,21668.151871169728,,https://image.brilliantearth.com/media/diamond_ring_vto/25/BE1D1972_white_Emerald_top_2_carat.png,RING-00055,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00055-Rose Gold-Lab Grown-10 Kt,Vertical Baguette Three Stone Diamond Engagement Ring,1,visible,,791.2,1007.8284937019132,,https://image.brilliantearth.com/media/diamond_ring_vto/FI/BE1D1972_rose_Emerald_top_2_carat.png,RING-00055,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00055-Rose Gold-Natural-10 Kt,Vertical Baguette Three Stone Diamond Engagement Ring,1,visible,,16669.6,18686.826243941417,,https://image.brilliantearth.com/media/diamond_ring_vto/FI/BE1D1972_rose_Emerald_top_2_carat.png,RING-00055,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variation,RING-00055-Yellow Gold-Lab Grown-14 Kt,Vertical Baguette Three Stone Diamond Engagement Ring,1,visible,,859.6000000000001,1072.2539030781563,,https://image.brilliantearth.com/media/diamond_ring_vto/F0/BE1D1972_yellow_Emerald_top_2_carat.png,RING-00055,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00055-Yellow Gold-Natural-14 Kt,Vertical Baguette Three Stone Diamond Engagement Ring,1,visible,,16738.0,19883.68247021059,,https://image.brilliantearth.com/media/diamond_ring_vto/F0/BE1D1972_yellow_Emerald_top_2_carat.png,RING-00055,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00055-White Gold-Lab Grown-14 Kt,Vertical Baguette Three Stone Diamond Engagement Ring,1,visible,,859.6000000000001,1114.1306600781284,,https://image.brilliantearth.com/media/diamond_ring_vto/25/BE1D1972_white_Emerald_top_2_carat.png,RING-00055,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00055-White Gold-Natural-14 Kt,Vertical Baguette Three Stone Diamond Engagement Ring,1,visible,,16738.0,20678.02926348782,,https://image.brilliantearth.com/media/diamond_ring_vto/25/BE1D1972_white_Emerald_top_2_carat.png,RING-00055,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00055-Rose Gold-Lab Grown-14 Kt,Vertical Baguette Three Stone Diamond Engagement Ring,1,visible,,859.6000000000001,1040.0907940106,,https://image.brilliantearth.com/media/diamond_ring_vto/FI/BE1D1972_rose_Emerald_top_2_carat.png,RING-00055,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00055-Rose Gold-Natural-14 Kt,Vertical Baguette Three Stone Diamond Engagement Ring,1,visible,,16738.0,22299.241691656927,,https://image.brilliantearth.com/media/diamond_ring_vto/FI/BE1D1972_rose_Emerald_top_2_carat.png,RING-00055,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variation,RING-00055-Yellow Gold-Lab Grown-18 Kt,Vertical Baguette Three Stone Diamond Engagement Ring,1,visible,,917.2,1037.2299096007418,,https://image.brilliantearth.com/media/diamond_ring_vto/F0/BE1D1972_yellow_Emerald_top_2_carat.png,RING-00055,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00055-Yellow Gold-Natural-18 Kt,Vertical Baguette Three Stone Diamond Engagement Ring,1,visible,,16795.6,18971.113165648138,,https://image.brilliantearth.com/media/diamond_ring_vto/F0/BE1D1972_yellow_Emerald_top_2_carat.png,RING-00055,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00055-White Gold-Lab Grown-18 Kt,Vertical Baguette Three Stone Diamond Engagement Ring,1,visible,,917.2,1027.5222674687036,,https://image.brilliantearth.com/media/diamond_ring_vto/25/BE1D1972_white_Emerald_top_2_carat.png,RING-00055,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00055-White Gold-Natural-18 Kt,Vertical Baguette Three Stone Diamond Engagement Ring,1,visible,,16795.6,20319.904874323605,,https://image.brilliantearth.com/media/diamond_ring_vto/25/BE1D1972_white_Emerald_top_2_carat.png,RING-00055,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00055-Rose Gold-Lab Grown-18 Kt,Vertical Baguette Three Stone Diamond Engagement Ring,1,visible,,917.2,1137.953262183201,,https://image.brilliantearth.com/media/diamond_ring_vto/FI/BE1D1972_rose_Emerald_top_2_carat.png,RING-00055,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00055-Rose Gold-Natural-18 Kt,Vertical Baguette Three Stone Diamond Engagement Ring,1,visible,,16795.6,19430.970049245818,,https://image.brilliantearth.com/media/diamond_ring_vto/FI/BE1D1972_rose_Emerald_top_2_carat.png,RING-00055,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variable,RING-00056,Luxe Nadia Pavé Diamond Engagement Ring,1,visible,"
+            <p>This elegant ring features a dazzling cluster of round and marquise-shaped diamonds that rest upon the shoulders of the diamond-accented band.</p>
+            <table>
+                <tr>
+                    <th colspan=2>Ring Details</th>
+                </tr>
+                <tr>
+                    <th>Product Name:</th>
+                    <td>Luxe Nadia Pavé Diamond Engagement Ring</td>
+                </tr>
+                <tr>
+                    <th>SKU:</th>
+                    <td>RING-00056</td>
+                </tr>
+                <tr>
+                    <th>Width:</th>
+                    <td>1.5 mm mm</td>
+                </tr>
+                <tr>
+                    <th>Available sizes:</th>
+                    <td>4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5</td>
+                </tr>
+                <tr>
+                    <th>Gold Weight:</th>
+                    <td>&asymp; 3.5 gm.</td>
+                </tr>
+                <tr>
+                    <th>Available Gold Type:</th>
+                    <td>Yellow Gold, Rose Gold, White Gold</td>
+                </tr>
+                <tr>
+                    <th>Available Gold Composition:</th>
+                    <td>10K, 14K, 18K</td>
+                </tr>
+                <tr>
+                    <th>Diamond Type:</th>
+                    <td>Natural, Lab Grown</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Shape:</th>
+                    <td>Round</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Setting:</th>
+                    <td>Claw Prong</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Carat Weight:</th>
+                    <td>2.0 Ct.</td>
+                </tr>
+                <tr>
+                    <th>Accent Gemstones (Side Diamond):</th>
+                    <td>
+                        <pre>Type : Natural or lab diamond, depending on selected center diamond<br />Shape : Round<br />Number : 4<br />Min .carat total weight .: 0.22<br />Setting : Prong Set<br />Average color : F/G<br />Average clarity : SI1<br />Type : Natural or lab diamond, depending on selected center diamond<br />Shape : Round<br />Number : 14<br />Min .carat total weight .: 0.09<br />Setting : Scalloped Pavé<br />Average color : F/G<br />Average clarity : SI<br />Type : Natural or lab diamond, depending on selected center diamond<br />Shape : Marquise<br />Number : 2<br />Min .carat total weight .: 0.25<br />Setting : Prong Set<br />Average color : F/G<br />Average clarity : SI</pre>
+                    </td>
+                </tr>
+            </table>
+            ",,,Rings,"https://image.brilliantearth.com/media/diamond_ring_vto/JE/BE1D4222_rose_Round_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/23/BE1D4222_RD_200ct_rose_side1.jpg,https://image.brilliantearth.com/media/carat_image/2E/BE1D4222_RD_200ct_rose_side2.jpg,https://image.brilliantearth.com/media/diamond_ring_vto/0W/BE1D4222_white_Round_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/E2/BE1D4222_RD_200ct_white_side1.jpg,https://image.brilliantearth.com/media/carat_image/4D/BE1D4222_RD_200ct_white_side2.jpg,https://image.brilliantearth.com/media/diamond_ring_vto/AL/BE1D4222_yellow_Round_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/33/BE1D4222_RD_200ct_yellow_side1.jpg,https://image.brilliantearth.com/media/carat_image/13/BE1D4222_RD_200ct_yellow_side2.jpg",,Composition,"10 Kt, 14 Kt, 18 Kt",1,1,10 Kt,Ring Size,"4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5",1,1,4.0,Diamond Type,"Lab Grown, Natural",1,1,Lab Grown,Color,"Rose Gold, White Gold, Yellow Gold",1,1,Rose Gold
+variation,RING-00056-Yellow Gold-Lab Grown-10 Kt,Luxe Nadia Pavé Diamond Engagement Ring,1,visible,,865.8,1076.4213504826714,,https://image.brilliantearth.com/media/diamond_ring_vto/AL/BE1D4222_yellow_Round_top_2_carat.png,RING-00056,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00056-Yellow Gold-Natural-10 Kt,Luxe Nadia Pavé Diamond Engagement Ring,1,visible,,16886.4,20123.09719174124,,https://image.brilliantearth.com/media/diamond_ring_vto/AL/BE1D4222_yellow_Round_top_2_carat.png,RING-00056,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00056-White Gold-Lab Grown-10 Kt,Luxe Nadia Pavé Diamond Engagement Ring,1,visible,,865.8,1076.2422878290442,,https://image.brilliantearth.com/media/diamond_ring_vto/0W/BE1D4222_white_Round_top_2_carat.png,RING-00056,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00056-White Gold-Natural-10 Kt,Luxe Nadia Pavé Diamond Engagement Ring,1,visible,,16886.4,20280.14807257904,,https://image.brilliantearth.com/media/diamond_ring_vto/0W/BE1D4222_white_Round_top_2_carat.png,RING-00056,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00056-Rose Gold-Lab Grown-10 Kt,Luxe Nadia Pavé Diamond Engagement Ring,1,visible,,865.8,1113.2549097146714,,https://image.brilliantearth.com/media/diamond_ring_vto/JE/BE1D4222_rose_Round_top_2_carat.png,RING-00056,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00056-Rose Gold-Natural-10 Kt,Luxe Nadia Pavé Diamond Engagement Ring,1,visible,,16886.4,21379.95219451145,,https://image.brilliantearth.com/media/diamond_ring_vto/JE/BE1D4222_rose_Round_top_2_carat.png,RING-00056,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variation,RING-00056-Yellow Gold-Lab Grown-14 Kt,Luxe Nadia Pavé Diamond Engagement Ring,1,visible,,932.3,1052.158905576935,,https://image.brilliantearth.com/media/diamond_ring_vto/AL/BE1D4222_yellow_Round_top_2_carat.png,RING-00056,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00056-Yellow Gold-Natural-14 Kt,Luxe Nadia Pavé Diamond Engagement Ring,1,visible,,16952.9,21713.85165764447,,https://image.brilliantearth.com/media/diamond_ring_vto/AL/BE1D4222_yellow_Round_top_2_carat.png,RING-00056,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00056-White Gold-Lab Grown-14 Kt,Luxe Nadia Pavé Diamond Engagement Ring,1,visible,,932.3,1237.9387237133,,https://image.brilliantearth.com/media/diamond_ring_vto/0W/BE1D4222_white_Round_top_2_carat.png,RING-00056,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00056-White Gold-Natural-14 Kt,Luxe Nadia Pavé Diamond Engagement Ring,1,visible,,16952.9,20967.182121035738,,https://image.brilliantearth.com/media/diamond_ring_vto/0W/BE1D4222_white_Round_top_2_carat.png,RING-00056,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00056-Rose Gold-Lab Grown-14 Kt,Luxe Nadia Pavé Diamond Engagement Ring,1,visible,,932.3,1061.4071830736984,,https://image.brilliantearth.com/media/diamond_ring_vto/JE/BE1D4222_rose_Round_top_2_carat.png,RING-00056,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00056-Rose Gold-Natural-14 Kt,Luxe Nadia Pavé Diamond Engagement Ring,1,visible,,16952.9,22836.4288981478,,https://image.brilliantearth.com/media/diamond_ring_vto/JE/BE1D4222_rose_Round_top_2_carat.png,RING-00056,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variation,RING-00056-Yellow Gold-Lab Grown-18 Kt,Luxe Nadia Pavé Diamond Engagement Ring,1,visible,,988.3,1136.3491153545292,,https://image.brilliantearth.com/media/diamond_ring_vto/AL/BE1D4222_yellow_Round_top_2_carat.png,RING-00056,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00056-Yellow Gold-Natural-18 Kt,Luxe Nadia Pavé Diamond Engagement Ring,1,visible,,17008.9,22419.253525335665,,https://image.brilliantearth.com/media/diamond_ring_vto/AL/BE1D4222_yellow_Round_top_2_carat.png,RING-00056,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00056-White Gold-Lab Grown-18 Kt,Luxe Nadia Pavé Diamond Engagement Ring,1,visible,,988.3,1254.8990889630538,,https://image.brilliantearth.com/media/diamond_ring_vto/0W/BE1D4222_white_Round_top_2_carat.png,RING-00056,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00056-White Gold-Natural-18 Kt,Luxe Nadia Pavé Diamond Engagement Ring,1,visible,,17008.9,19766.350411037543,,https://image.brilliantearth.com/media/diamond_ring_vto/0W/BE1D4222_white_Round_top_2_carat.png,RING-00056,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00056-Rose Gold-Lab Grown-18 Kt,Luxe Nadia Pavé Diamond Engagement Ring,1,visible,,988.3,1161.2599936546517,,https://image.brilliantearth.com/media/diamond_ring_vto/JE/BE1D4222_rose_Round_top_2_carat.png,RING-00056,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00056-Rose Gold-Natural-18 Kt,Luxe Nadia Pavé Diamond Engagement Ring,1,visible,,17008.9,22294.163860576475,,https://image.brilliantearth.com/media/diamond_ring_vto/JE/BE1D4222_rose_Round_top_2_carat.png,RING-00056,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variable,RING-00057,Celtic Love Knot Engagement Ring,1,visible,"
+            <p>The entwined lovers knot is a Celtic symbol of everlasting devotion with weaving strands of lustrous precious metal that wrap seemingly endlessly across the band.</p>
+            <table>
+                <tr>
+                    <th colspan=2>Ring Details</th>
+                </tr>
+                <tr>
+                    <th>Product Name:</th>
+                    <td>Celtic Love Knot Engagement Ring</td>
+                </tr>
+                <tr>
+                    <th>SKU:</th>
+                    <td>RING-00057</td>
+                </tr>
+                <tr>
+                    <th>Width:</th>
+                    <td>2.5 mm mm</td>
+                </tr>
+                <tr>
+                    <th>Available sizes:</th>
+                    <td>4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5</td>
+                </tr>
+                <tr>
+                    <th>Gold Weight:</th>
+                    <td>&asymp; 3.9 gm.</td>
+                </tr>
+                <tr>
+                    <th>Available Gold Type:</th>
+                    <td>Yellow Gold, Rose Gold, White Gold</td>
+                </tr>
+                <tr>
+                    <th>Available Gold Composition:</th>
+                    <td>10K, 14K, 18K</td>
+                </tr>
+                <tr>
+                    <th>Diamond Type:</th>
+                    <td>Natural, Lab Grown</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Shape:</th>
+                    <td>Round</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Setting:</th>
+                    <td>Four-Prong</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Carat Weight:</th>
+                    <td>2.0 Ct.</td>
+                </tr>
+                <tr>
+                    <th>Accent Gemstones (Side Diamond):</th>
+                    <td>
+                        <pre></pre>
+                    </td>
+                </tr>
+            </table>
+            ",,,Rings,"https://image.brilliantearth.com/media/diamond_ring_vto/KW/BE1131_yellow_Round_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/92/BE1131_RD_200ct_yellow_side1.jpg,https://image.brilliantearth.com/media/carat_image/91/BE1131_RD_200ct_yellow_side2.jpg,https://image.brilliantearth.com/media/diamond_ring_vto/LX/BE1131_white_Round_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/F8/BE1131_RD_200ct_white_side1.jpg,https://image.brilliantearth.com/media/carat_image/A4/BE1131_RD_200ct_white_side2.jpg,https://image.brilliantearth.com/media/diamond_ring_vto/YM/BE1131_rose_Round_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/4B/BE1131_RD_200ct_rose_side1.jpg,https://image.brilliantearth.com/media/carat_image/84/BE1131_RD_200ct_rose_side2.jpg",,Composition,"10 Kt, 14 Kt, 18 Kt",1,1,10 Kt,Ring Size,"4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5",1,1,4.0,Diamond Type,"Lab Grown, Natural",1,1,Lab Grown,Color,"Rose Gold, White Gold, Yellow Gold",1,1,Yellow Gold
+variation,RING-00057-Yellow Gold-Lab Grown-10 Kt,Celtic Love Knot Engagement Ring,1,visible,,673.0,795.3164928229326,,https://image.brilliantearth.com/media/diamond_ring_vto/KW/BE1131_yellow_Round_top_2_carat.png,RING-00057,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00057-Yellow Gold-Natural-10 Kt,Celtic Love Knot Engagement Ring,1,visible,,16273.0,21919.741219333635,,https://image.brilliantearth.com/media/diamond_ring_vto/KW/BE1131_yellow_Round_top_2_carat.png,RING-00057,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00057-White Gold-Lab Grown-10 Kt,Celtic Love Knot Engagement Ring,1,visible,,673.0,894.7992670539365,,https://image.brilliantearth.com/media/diamond_ring_vto/LX/BE1131_white_Round_top_2_carat.png,RING-00057,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00057-White Gold-Natural-10 Kt,Celtic Love Knot Engagement Ring,1,visible,,16273.0,21676.81766819554,,https://image.brilliantearth.com/media/diamond_ring_vto/LX/BE1131_white_Round_top_2_carat.png,RING-00057,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00057-Rose Gold-Lab Grown-10 Kt,Celtic Love Knot Engagement Ring,1,visible,,673.0,896.9111273721654,,https://image.brilliantearth.com/media/diamond_ring_vto/YM/BE1131_rose_Round_top_2_carat.png,RING-00057,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00057-Rose Gold-Natural-10 Kt,Celtic Love Knot Engagement Ring,1,visible,,16273.0,20550.900811637053,,https://image.brilliantearth.com/media/diamond_ring_vto/YM/BE1131_rose_Round_top_2_carat.png,RING-00057,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variation,RING-00057-Yellow Gold-Lab Grown-14 Kt,Celtic Love Knot Engagement Ring,1,visible,,747.0999999999999,954.3718308573516,,https://image.brilliantearth.com/media/diamond_ring_vto/KW/BE1131_yellow_Round_top_2_carat.png,RING-00057,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00057-Yellow Gold-Natural-14 Kt,Celtic Love Knot Engagement Ring,1,visible,,16347.1,19142.061031347697,,https://image.brilliantearth.com/media/diamond_ring_vto/KW/BE1131_yellow_Round_top_2_carat.png,RING-00057,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00057-White Gold-Lab Grown-14 Kt,Celtic Love Knot Engagement Ring,1,visible,,747.0999999999999,992.9242234759332,,https://image.brilliantearth.com/media/diamond_ring_vto/LX/BE1131_white_Round_top_2_carat.png,RING-00057,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00057-White Gold-Natural-14 Kt,Celtic Love Knot Engagement Ring,1,visible,,16347.1,19193.774013440605,,https://image.brilliantearth.com/media/diamond_ring_vto/LX/BE1131_white_Round_top_2_carat.png,RING-00057,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00057-Rose Gold-Lab Grown-14 Kt,Celtic Love Knot Engagement Ring,1,visible,,747.0999999999999,888.071376487476,,https://image.brilliantearth.com/media/diamond_ring_vto/YM/BE1131_rose_Round_top_2_carat.png,RING-00057,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00057-Rose Gold-Natural-14 Kt,Celtic Love Knot Engagement Ring,1,visible,,16347.1,19137.539846008185,,https://image.brilliantearth.com/media/diamond_ring_vto/YM/BE1131_rose_Round_top_2_carat.png,RING-00057,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variation,RING-00057-Yellow Gold-Lab Grown-18 Kt,Celtic Love Knot Engagement Ring,1,visible,,809.5,983.9958326852916,,https://image.brilliantearth.com/media/diamond_ring_vto/KW/BE1131_yellow_Round_top_2_carat.png,RING-00057,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00057-Yellow Gold-Natural-18 Kt,Celtic Love Knot Engagement Ring,1,visible,,16409.5,19640.197018113708,,https://image.brilliantearth.com/media/diamond_ring_vto/KW/BE1131_yellow_Round_top_2_carat.png,RING-00057,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00057-White Gold-Lab Grown-18 Kt,Celtic Love Knot Engagement Ring,1,visible,,809.5,1008.9770492357948,,https://image.brilliantearth.com/media/diamond_ring_vto/LX/BE1131_white_Round_top_2_carat.png,RING-00057,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00057-White Gold-Natural-18 Kt,Celtic Love Knot Engagement Ring,1,visible,,16409.5,19252.27917098252,,https://image.brilliantearth.com/media/diamond_ring_vto/LX/BE1131_white_Round_top_2_carat.png,RING-00057,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00057-Rose Gold-Lab Grown-18 Kt,Celtic Love Knot Engagement Ring,1,visible,,809.5,931.6957604533033,,https://image.brilliantearth.com/media/diamond_ring_vto/YM/BE1131_rose_Round_top_2_carat.png,RING-00057,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00057-Rose Gold-Natural-18 Kt,Celtic Love Knot Engagement Ring,1,visible,,16409.5,22122.708507485215,,https://image.brilliantearth.com/media/diamond_ring_vto/YM/BE1131_rose_Round_top_2_carat.png,RING-00057,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variable,RING-00058,Hidden Heart Solitaire Engagement Ring,1,visible,"
+            <p>Lustrous precious metal creates a hidden heart shape along the profile of this design-forward yet subtle ring.</p>
+            <table>
+                <tr>
+                    <th colspan=2>Ring Details</th>
+                </tr>
+                <tr>
+                    <th>Product Name:</th>
+                    <td>Hidden Heart Solitaire Engagement Ring</td>
+                </tr>
+                <tr>
+                    <th>SKU:</th>
+                    <td>RING-00058</td>
+                </tr>
+                <tr>
+                    <th>Width:</th>
+                    <td>1.8 mm mm</td>
+                </tr>
+                <tr>
+                    <th>Available sizes:</th>
+                    <td>4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5</td>
+                </tr>
+                <tr>
+                    <th>Gold Weight:</th>
+                    <td>&asymp; 3.5 gm.</td>
+                </tr>
+                <tr>
+                    <th>Available Gold Type:</th>
+                    <td>Yellow Gold, Rose Gold, White Gold</td>
+                </tr>
+                <tr>
+                    <th>Available Gold Composition:</th>
+                    <td>10K, 14K, 18K</td>
+                </tr>
+                <tr>
+                    <th>Diamond Type:</th>
+                    <td>Natural, Lab Grown</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Shape:</th>
+                    <td>Round</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Setting:</th>
+                    <td>Claw Prong</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Carat Weight:</th>
+                    <td>2.0 Ct.</td>
+                </tr>
+                <tr>
+                    <th>Accent Gemstones (Side Diamond):</th>
+                    <td>
+                        <pre></pre>
+                    </td>
+                </tr>
+            </table>
+            ",,,Rings,"https://image.brilliantearth.com/media/diamond_ring_vto/V5/BE1326_rose_Round_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/63/BE1326_RD_200ct_rose_side1.jpg,https://image.brilliantearth.com/media/carat_image/14/BE1326_RD_200ct_rose_side2.jpg,https://image.brilliantearth.com/media/diamond_ring_vto/Z8/BE1326_yellow_Round_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/71/BE1326_RD_200ct_yellow_side1.jpg,https://image.brilliantearth.com/media/carat_image/CF/BE1326_RD_200ct_yellow_side2.jpg,https://image.brilliantearth.com/media/diamond_ring_vto/G9/BE1326_white_Round_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/84/BE1326_RD_200ct_white_side1.jpg,https://image.brilliantearth.com/media/carat_image/19/BE1326_RD_200ct_white_side2.jpg",,Composition,"10 Kt, 14 Kt, 18 Kt",1,1,10 Kt,Ring Size,"4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5",1,1,4.0,Diamond Type,"Lab Grown, Natural",1,1,Lab Grown,Color,"Rose Gold, White Gold, Yellow Gold",1,1,Rose Gold
+variation,RING-00058-Yellow Gold-Lab Grown-10 Kt,Hidden Heart Solitaire Engagement Ring,1,visible,,645.0,758.2468675171086,,https://image.brilliantearth.com/media/diamond_ring_vto/Z8/BE1326_yellow_Round_top_2_carat.png,RING-00058,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00058-Yellow Gold-Natural-10 Kt,Hidden Heart Solitaire Engagement Ring,1,visible,,16245.0,21685.831270834304,,https://image.brilliantearth.com/media/diamond_ring_vto/Z8/BE1326_yellow_Round_top_2_carat.png,RING-00058,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00058-White Gold-Lab Grown-10 Kt,Hidden Heart Solitaire Engagement Ring,1,visible,,645.0,791.393223044927,,https://image.brilliantearth.com/media/diamond_ring_vto/G9/BE1326_white_Round_top_2_carat.png,RING-00058,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00058-White Gold-Natural-10 Kt,Hidden Heart Solitaire Engagement Ring,1,visible,,16245.0,21260.105472714014,,https://image.brilliantearth.com/media/diamond_ring_vto/G9/BE1326_white_Round_top_2_carat.png,RING-00058,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00058-Rose Gold-Lab Grown-10 Kt,Hidden Heart Solitaire Engagement Ring,1,visible,,645.0,840.5997258455396,,https://image.brilliantearth.com/media/diamond_ring_vto/V5/BE1326_rose_Round_top_2_carat.png,RING-00058,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00058-Rose Gold-Natural-10 Kt,Hidden Heart Solitaire Engagement Ring,1,visible,,16245.0,20359.38229468534,,https://image.brilliantearth.com/media/diamond_ring_vto/V5/BE1326_rose_Round_top_2_carat.png,RING-00058,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variation,RING-00058-Yellow Gold-Lab Grown-14 Kt,Hidden Heart Solitaire Engagement Ring,1,visible,,711.5,949.625659752414,,https://image.brilliantearth.com/media/diamond_ring_vto/Z8/BE1326_yellow_Round_top_2_carat.png,RING-00058,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00058-Yellow Gold-Natural-14 Kt,Hidden Heart Solitaire Engagement Ring,1,visible,,16311.5,21305.906471604205,,https://image.brilliantearth.com/media/diamond_ring_vto/Z8/BE1326_yellow_Round_top_2_carat.png,RING-00058,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00058-White Gold-Lab Grown-14 Kt,Hidden Heart Solitaire Engagement Ring,1,visible,,711.5,844.5367542875412,,https://image.brilliantearth.com/media/diamond_ring_vto/G9/BE1326_white_Round_top_2_carat.png,RING-00058,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00058-White Gold-Natural-14 Kt,Hidden Heart Solitaire Engagement Ring,1,visible,,16311.5,19777.115824977747,,https://image.brilliantearth.com/media/diamond_ring_vto/G9/BE1326_white_Round_top_2_carat.png,RING-00058,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00058-Rose Gold-Lab Grown-14 Kt,Hidden Heart Solitaire Engagement Ring,1,visible,,711.5,919.5236168268206,,https://image.brilliantearth.com/media/diamond_ring_vto/V5/BE1326_rose_Round_top_2_carat.png,RING-00058,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00058-Rose Gold-Natural-14 Kt,Hidden Heart Solitaire Engagement Ring,1,visible,,16311.5,21028.77717376752,,https://image.brilliantearth.com/media/diamond_ring_vto/V5/BE1326_rose_Round_top_2_carat.png,RING-00058,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variation,RING-00058-Yellow Gold-Lab Grown-18 Kt,Hidden Heart Solitaire Engagement Ring,1,visible,,767.5,941.6953719367532,,https://image.brilliantearth.com/media/diamond_ring_vto/Z8/BE1326_yellow_Round_top_2_carat.png,RING-00058,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00058-Yellow Gold-Natural-18 Kt,Hidden Heart Solitaire Engagement Ring,1,visible,,16367.5,21188.406149538983,,https://image.brilliantearth.com/media/diamond_ring_vto/Z8/BE1326_yellow_Round_top_2_carat.png,RING-00058,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00058-White Gold-Lab Grown-18 Kt,Hidden Heart Solitaire Engagement Ring,1,visible,,767.5,976.1486780226973,,https://image.brilliantearth.com/media/diamond_ring_vto/G9/BE1326_white_Round_top_2_carat.png,RING-00058,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00058-White Gold-Natural-18 Kt,Hidden Heart Solitaire Engagement Ring,1,visible,,16367.5,19590.653264417233,,https://image.brilliantearth.com/media/diamond_ring_vto/G9/BE1326_white_Round_top_2_carat.png,RING-00058,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00058-Rose Gold-Lab Grown-18 Kt,Hidden Heart Solitaire Engagement Ring,1,visible,,767.5,889.234195651998,,https://image.brilliantearth.com/media/diamond_ring_vto/V5/BE1326_rose_Round_top_2_carat.png,RING-00058,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00058-Rose Gold-Natural-18 Kt,Hidden Heart Solitaire Engagement Ring,1,visible,,16367.5,20628.88484916589,,https://image.brilliantearth.com/media/diamond_ring_vto/V5/BE1326_rose_Round_top_2_carat.png,RING-00058,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variable,RING-00059,Luxe Willow Three Stone Diamond Engagement Ring,1,visible,"
+            <p>This luxe three stone ring features entwined vines adorned with sparkling round diamonds and marquise diamond buds.</p>
+            <table>
+                <tr>
+                    <th colspan=2>Ring Details</th>
+                </tr>
+                <tr>
+                    <th>Product Name:</th>
+                    <td>Luxe Willow Three Stone Diamond Engagement Ring</td>
+                </tr>
+                <tr>
+                    <th>SKU:</th>
+                    <td>RING-00059</td>
+                </tr>
+                <tr>
+                    <th>Width:</th>
+                    <td>2.5 mm mm</td>
+                </tr>
+                <tr>
+                    <th>Available sizes:</th>
+                    <td>4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5</td>
+                </tr>
+                <tr>
+                    <th>Gold Weight:</th>
+                    <td>&asymp; 3.8 gm.</td>
+                </tr>
+                <tr>
+                    <th>Available Gold Type:</th>
+                    <td>Yellow Gold, Rose Gold, White Gold</td>
+                </tr>
+                <tr>
+                    <th>Available Gold Composition:</th>
+                    <td>10K, 14K, 18K</td>
+                </tr>
+                <tr>
+                    <th>Diamond Type:</th>
+                    <td>Natural, Lab Grown</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Shape:</th>
+                    <td>Round</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Setting:</th>
+                    <td>Four-Prong</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Carat Weight:</th>
+                    <td>2.0 Ct.</td>
+                </tr>
+                <tr>
+                    <th>Accent Gemstones (Side Diamond):</th>
+                    <td>
+                        <pre>Type : Natural or lab diamond, depending on selected center diamond<br />Shape : Round<br />Number : 34<br />Min .carat total weight .: 0.33<br />Setting : Shared Prong/Prong Set<br />Average color : F/G<br />Average clarity : SI<br />Type : Natural or lab diamond, depending on selected center diamond<br />Shape : Marquise<br />Number : 4<br />Min .carat total weight .: 0.13<br />Setting : Prong Set<br />Average color : F/G<br />Average clarity : SI</pre>
+                    </td>
+                </tr>
+            </table>
+            ",,,Rings,"https://image.brilliantearth.com/media/diamond_ring_vto/FC/BE1D590_rose_Round_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/1B/BE1D590_RD_200ct_rose_side1.jpg,https://image.brilliantearth.com/media/carat_image/73/BE1D590_RD_200ct_rose_side2.jpg,https://image.brilliantearth.com/media/diamond_ring_vto/I5/BE1D590_white_Round_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/87/BE1D590_RD_200ct_white_side1.jpg,https://image.brilliantearth.com/media/carat_image/9D/BE1D590_RD_200ct_white_side2.jpg,https://image.brilliantearth.com/media/diamond_ring_vto/C3/BE1D590_yellow_Round_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/D8/BE1D590_RD_200ct_yellow_side1.jpg,https://image.brilliantearth.com/media/carat_image/35/BE1D590_RD_200ct_yellow_side2.jpg",,Composition,"10 Kt, 14 Kt, 18 Kt",1,1,10 Kt,Ring Size,"4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5",1,1,4.0,Diamond Type,"Lab Grown, Natural",1,1,Lab Grown,Color,"Rose Gold, White Gold, Yellow Gold",1,1,Rose Gold
+variation,RING-00059-Yellow Gold-Lab Grown-10 Kt,Luxe Willow Three Stone Diamond Engagement Ring,1,visible,,807.6,907.866378531028,,https://image.brilliantearth.com/media/diamond_ring_vto/C3/BE1D590_yellow_Round_top_2_carat.png,RING-00059,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00059-Yellow Gold-Natural-10 Kt,Luxe Willow Three Stone Diamond Engagement Ring,1,visible,,16710.6,22059.482148679024,,https://image.brilliantearth.com/media/diamond_ring_vto/C3/BE1D590_yellow_Round_top_2_carat.png,RING-00059,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00059-White Gold-Lab Grown-10 Kt,Luxe Willow Three Stone Diamond Engagement Ring,1,visible,,807.6,1011.4155890852702,,https://image.brilliantearth.com/media/diamond_ring_vto/I5/BE1D590_white_Round_top_2_carat.png,RING-00059,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00059-White Gold-Natural-10 Kt,Luxe Willow Three Stone Diamond Engagement Ring,1,visible,,16710.6,21550.499922476592,,https://image.brilliantearth.com/media/diamond_ring_vto/I5/BE1D590_white_Round_top_2_carat.png,RING-00059,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00059-Rose Gold-Lab Grown-10 Kt,Luxe Willow Three Stone Diamond Engagement Ring,1,visible,,807.6,928.2166802333128,,https://image.brilliantearth.com/media/diamond_ring_vto/FC/BE1D590_rose_Round_top_2_carat.png,RING-00059,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00059-Rose Gold-Natural-10 Kt,Luxe Willow Three Stone Diamond Engagement Ring,1,visible,,16710.6,20630.90708804487,,https://image.brilliantearth.com/media/diamond_ring_vto/FC/BE1D590_rose_Round_top_2_carat.png,RING-00059,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variation,RING-00059-Yellow Gold-Lab Grown-14 Kt,Luxe Willow Three Stone Diamond Engagement Ring,1,visible,,879.8,1141.4329483032907,,https://image.brilliantearth.com/media/diamond_ring_vto/C3/BE1D590_yellow_Round_top_2_carat.png,RING-00059,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00059-Yellow Gold-Natural-14 Kt,Luxe Willow Three Stone Diamond Engagement Ring,1,visible,,16782.8,19505.943089852208,,https://image.brilliantearth.com/media/diamond_ring_vto/C3/BE1D590_yellow_Round_top_2_carat.png,RING-00059,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00059-White Gold-Lab Grown-14 Kt,Luxe Willow Three Stone Diamond Engagement Ring,1,visible,,879.8,1033.7820937721417,,https://image.brilliantearth.com/media/diamond_ring_vto/I5/BE1D590_white_Round_top_2_carat.png,RING-00059,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00059-White Gold-Natural-14 Kt,Luxe Willow Three Stone Diamond Engagement Ring,1,visible,,16782.8,20410.739889995624,,https://image.brilliantearth.com/media/diamond_ring_vto/I5/BE1D590_white_Round_top_2_carat.png,RING-00059,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00059-Rose Gold-Lab Grown-14 Kt,Luxe Willow Three Stone Diamond Engagement Ring,1,visible,,879.8,1118.8513974081122,,https://image.brilliantearth.com/media/diamond_ring_vto/FC/BE1D590_rose_Round_top_2_carat.png,RING-00059,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00059-Rose Gold-Natural-14 Kt,Luxe Willow Three Stone Diamond Engagement Ring,1,visible,,16782.8,20342.361437870863,,https://image.brilliantearth.com/media/diamond_ring_vto/FC/BE1D590_rose_Round_top_2_carat.png,RING-00059,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variation,RING-00059-Yellow Gold-Lab Grown-18 Kt,Luxe Willow Three Stone Diamond Engagement Ring,1,visible,,940.6,1158.499169680755,,https://image.brilliantearth.com/media/diamond_ring_vto/C3/BE1D590_yellow_Round_top_2_carat.png,RING-00059,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00059-Yellow Gold-Natural-18 Kt,Luxe Willow Three Stone Diamond Engagement Ring,1,visible,,16843.6,21308.03281649857,,https://image.brilliantearth.com/media/diamond_ring_vto/C3/BE1D590_yellow_Round_top_2_carat.png,RING-00059,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00059-White Gold-Lab Grown-18 Kt,Luxe Willow Three Stone Diamond Engagement Ring,1,visible,,940.6,1054.0619509276987,,https://image.brilliantearth.com/media/diamond_ring_vto/I5/BE1D590_white_Round_top_2_carat.png,RING-00059,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00059-White Gold-Natural-18 Kt,Luxe Willow Three Stone Diamond Engagement Ring,1,visible,,16843.6,19479.23067830353,,https://image.brilliantearth.com/media/diamond_ring_vto/I5/BE1D590_white_Round_top_2_carat.png,RING-00059,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00059-Rose Gold-Lab Grown-18 Kt,Luxe Willow Three Stone Diamond Engagement Ring,1,visible,,940.6,1101.0183385146588,,https://image.brilliantearth.com/media/diamond_ring_vto/FC/BE1D590_rose_Round_top_2_carat.png,RING-00059,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00059-Rose Gold-Natural-18 Kt,Luxe Willow Three Stone Diamond Engagement Ring,1,visible,,16843.6,20163.327015370025,,https://image.brilliantearth.com/media/diamond_ring_vto/FC/BE1D590_rose_Round_top_2_carat.png,RING-00059,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variable,RING-00060,Chamise Diamond Engagement Ring,1,visible,"
+            <p>Ribbons of precious metal entwine around the center gem in this elegant setting.</p>
+            <table>
+                <tr>
+                    <th colspan=2>Ring Details</th>
+                </tr>
+                <tr>
+                    <th>Product Name:</th>
+                    <td>Chamise Diamond Engagement Ring</td>
+                </tr>
+                <tr>
+                    <th>SKU:</th>
+                    <td>RING-00060</td>
+                </tr>
+                <tr>
+                    <th>Width:</th>
+                    <td>2.5 mm mm</td>
+                </tr>
+                <tr>
+                    <th>Available sizes:</th>
+                    <td>4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5</td>
+                </tr>
+                <tr>
+                    <th>Gold Weight:</th>
+                    <td>&asymp; 3.8 gm.</td>
+                </tr>
+                <tr>
+                    <th>Available Gold Type:</th>
+                    <td>Yellow Gold, Rose Gold, White Gold</td>
+                </tr>
+                <tr>
+                    <th>Available Gold Composition:</th>
+                    <td>10K, 14K, 18K</td>
+                </tr>
+                <tr>
+                    <th>Diamond Type:</th>
+                    <td>Natural, Lab Grown</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Shape:</th>
+                    <td>Round</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Setting:</th>
+                    <td>Four-Prong Basket</td>
+                </tr>
+                <tr>
+                    <th>Gemstone Carat Weight:</th>
+                    <td>2.0 Ct.</td>
+                </tr>
+                <tr>
+                    <th>Accent Gemstones (Side Diamond):</th>
+                    <td>
+                        <pre>Type : Natural or lab diamond, depending on selected center diamond<br />Shape : Round<br />Number : 8<br />Min .carat total weight .: 0.08<br />Setting : Shared prong<br />Average color : F/G<br />Average clarity : SI1</pre>
+                    </td>
+                </tr>
+            </table>
+            ",,,Rings,"https://image.brilliantearth.com/media/diamond_ring_vto/MT/BE1AS8PD08_yellow_Round_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/2B/BE1AS8PD08_RD_200ct_yellow_side1.jpg,https://image.brilliantearth.com/media/carat_image/B9/BE1AS8PD08_RD_200ct_yellow_side2.jpg,https://image.brilliantearth.com/media/diamond_ring_vto/PY/BE1AS8PD08_rose_Round_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/A7/BE1AS8PD08_RD_200ct_rose_side1.jpg,https://image.brilliantearth.com/media/carat_image/B2/BE1AS8PD08_RD_200ct_rose_side2.jpg,https://image.brilliantearth.com/media/diamond_ring_vto/V1/BE1AS8PD08_white_Round_top_2_carat.png,https://image.brilliantearth.com/media/carat_image/77/BE1AS8PD08_RD_200ct_white_side1.jpg,https://image.brilliantearth.com/media/carat_image/7C/BE1AS8PD08_RD_200ct_white_side2.jpg",,Composition,"10 Kt, 14 Kt, 18 Kt",1,1,10 Kt,Ring Size,"4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5",1,1,4.0,Diamond Type,"Lab Grown, Natural",1,1,Lab Grown,Color,"Rose Gold, White Gold, Yellow Gold",1,1,Yellow Gold
+variation,RING-00060-Yellow Gold-Lab Grown-10 Kt,Chamise Diamond Engagement Ring,1,visible,,685.2,825.6918622887998,,https://image.brilliantearth.com/media/diamond_ring_vto/MT/BE1AS8PD08_yellow_Round_top_2_carat.png,RING-00060,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00060-Yellow Gold-Natural-10 Kt,Chamise Diamond Engagement Ring,1,visible,,16328.4,20897.153781679175,,https://image.brilliantearth.com/media/diamond_ring_vto/MT/BE1AS8PD08_yellow_Round_top_2_carat.png,RING-00060,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00060-White Gold-Lab Grown-10 Kt,Chamise Diamond Engagement Ring,1,visible,,685.2,824.6315879225797,,https://image.brilliantearth.com/media/diamond_ring_vto/V1/BE1AS8PD08_white_Round_top_2_carat.png,RING-00060,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00060-White Gold-Natural-10 Kt,Chamise Diamond Engagement Ring,1,visible,,16328.4,19506.557266284944,,https://image.brilliantearth.com/media/diamond_ring_vto/V1/BE1AS8PD08_white_Round_top_2_carat.png,RING-00060,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00060-Rose Gold-Lab Grown-10 Kt,Chamise Diamond Engagement Ring,1,visible,,685.2,795.5212651536252,,https://image.brilliantearth.com/media/diamond_ring_vto/PY/BE1AS8PD08_rose_Round_top_2_carat.png,RING-00060,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00060-Rose Gold-Natural-10 Kt,Chamise Diamond Engagement Ring,1,visible,,16328.4,21286.02123569208,,https://image.brilliantearth.com/media/diamond_ring_vto/PY/BE1AS8PD08_rose_Round_top_2_carat.png,RING-00060,Composition,10 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variation,RING-00060-Yellow Gold-Lab Grown-14 Kt,Chamise Diamond Engagement Ring,1,visible,,757.4,950.9330913387392,,https://image.brilliantearth.com/media/diamond_ring_vto/MT/BE1AS8PD08_yellow_Round_top_2_carat.png,RING-00060,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00060-Yellow Gold-Natural-14 Kt,Chamise Diamond Engagement Ring,1,visible,,16400.6,19002.19647113713,,https://image.brilliantearth.com/media/diamond_ring_vto/MT/BE1AS8PD08_yellow_Round_top_2_carat.png,RING-00060,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00060-White Gold-Lab Grown-14 Kt,Chamise Diamond Engagement Ring,1,visible,,757.4,896.0507676664602,,https://image.brilliantearth.com/media/diamond_ring_vto/V1/BE1AS8PD08_white_Round_top_2_carat.png,RING-00060,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00060-White Gold-Natural-14 Kt,Chamise Diamond Engagement Ring,1,visible,,16400.6,21628.67693055524,,https://image.brilliantearth.com/media/diamond_ring_vto/V1/BE1AS8PD08_white_Round_top_2_carat.png,RING-00060,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00060-Rose Gold-Lab Grown-14 Kt,Chamise Diamond Engagement Ring,1,visible,,757.4,872.211943156146,,https://image.brilliantearth.com/media/diamond_ring_vto/PY/BE1AS8PD08_rose_Round_top_2_carat.png,RING-00060,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00060-Rose Gold-Natural-14 Kt,Chamise Diamond Engagement Ring,1,visible,,16400.6,19005.585285792135,,https://image.brilliantearth.com/media/diamond_ring_vto/PY/BE1AS8PD08_rose_Round_top_2_carat.png,RING-00060,Composition,14 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
+variation,RING-00060-Yellow Gold-Lab Grown-18 Kt,Chamise Diamond Engagement Ring,1,visible,,818.2,1071.6723488910336,,https://image.brilliantearth.com/media/diamond_ring_vto/MT/BE1AS8PD08_yellow_Round_top_2_carat.png,RING-00060,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00060-Yellow Gold-Natural-18 Kt,Chamise Diamond Engagement Ring,1,visible,,16461.4,20779.437692692307,,https://image.brilliantearth.com/media/diamond_ring_vto/MT/BE1AS8PD08_yellow_Round_top_2_carat.png,RING-00060,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Yellow Gold,1,1,
+variation,RING-00060-White Gold-Lab Grown-18 Kt,Chamise Diamond Engagement Ring,1,visible,,818.2,1016.0221285290086,,https://image.brilliantearth.com/media/diamond_ring_vto/V1/BE1AS8PD08_white_Round_top_2_carat.png,RING-00060,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,White Gold,1,1,
+variation,RING-00060-White Gold-Natural-18 Kt,Chamise Diamond Engagement Ring,1,visible,,16461.4,20624.498781148148,,https://image.brilliantearth.com/media/diamond_ring_vto/V1/BE1AS8PD08_white_Round_top_2_carat.png,RING-00060,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,White Gold,1,1,
+variation,RING-00060-Rose Gold-Lab Grown-18 Kt,Chamise Diamond Engagement Ring,1,visible,,818.2,1079.9936840363305,,https://image.brilliantearth.com/media/diamond_ring_vto/PY/BE1AS8PD08_rose_Round_top_2_carat.png,RING-00060,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Lab Grown,1,1,,Color,Rose Gold,1,1,
+variation,RING-00060-Rose Gold-Natural-18 Kt,Chamise Diamond Engagement Ring,1,visible,,16461.4,19699.516796691143,,https://image.brilliantearth.com/media/diamond_ring_vto/PY/BE1AS8PD08_rose_Round_top_2_carat.png,RING-00060,Composition,18 Kt,1,1,,Ring Size,,1,1,,Diamond Type,Natural,1,1,,Color,Rose Gold,1,1,
