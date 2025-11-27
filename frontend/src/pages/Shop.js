@@ -53,6 +53,7 @@ export default function Shop() {
   useEffect(() => {
     const category = searchParams.get('category');
     const hasOnlyCategory = category && 
+      !searchParams.get('gender') &&
       !searchParams.get('material') && 
       !searchParams.get('purity') && 
       !searchParams.get('minPrice') &&
