@@ -44,7 +44,7 @@ export default function OrderSuccess() {
       await clearCartAfterPayment();
       
       setPaymentVerified(true);
-      toast.success('✅ Payment successful! Your order has been confirmed.');
+      toast.success('Payment successful! Your order has been confirmed.');
       
       // Load updated order
       await loadOrder();

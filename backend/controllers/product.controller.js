@@ -61,6 +61,11 @@ exports.getAllProducts = async (req, res) => {
       if (req.query.maxPrice) filter.basePrice.$lte = parseFloat(req.query.maxPrice);
     }
 
+    // Gender filter
+    if (req.query.gender) {
+      filter.gender = req.query.gender;
+    }
+
     // Featured, New, On Sale filters
     if (req.query.featured === 'true') filter.isFeatured = true;
     if (req.query.new === 'true') filter.isNew = true;

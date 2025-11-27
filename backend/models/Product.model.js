@@ -26,6 +26,11 @@ const productSchema = new mongoose.Schema({
     ref: 'Category',
     required: [true, 'Product category is required']
   },
+  gender: {
+    type: String,
+    enum: ['male', 'female', 'unisex'],
+    default: 'unisex'
+  },
   images: [{
     url: {
       type: String,

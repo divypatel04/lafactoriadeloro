@@ -26,6 +26,7 @@ const ProductForm = () => {
     description: '',
     shortDescription: '',
     category: '',
+    gender: 'unisex',
     weight: 5, // Default 5 grams
     stock: 100,
     sku: '',
@@ -73,6 +74,7 @@ const ProductForm = () => {
         description: product.description || '',
         shortDescription: product.shortDescription || '',
         category: product.category?._id || '',
+        gender: product.gender || 'unisex',
         weight: product.weight || 5,
         stock: product.stock || 100,
         sku: product.sku || '',
@@ -214,6 +216,7 @@ const ProductForm = () => {
         description: formData.description,
         shortDescription: formData.shortDescription,
         category: formData.category,
+        gender: formData.gender || 'unisex',
         weight: parseFloat(formData.weight),
         stock: parseInt(formData.stock) || 0,
         sku: productSku,
@@ -309,6 +312,20 @@ const ProductForm = () => {
                   <option key={cat._id} value={cat._id}>{cat.name}</option>
                 ))}
               </select>
+            </div>
+
+            <div className="form-group">
+              <label>Gender</label>
+              <select
+                name="gender"
+                value={formData.gender}
+                onChange={handleChange}
+              >
+                <option value="unisex">Unisex</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+              <small>Select the target gender for this product</small>
             </div>
 
             <div className="form-group">

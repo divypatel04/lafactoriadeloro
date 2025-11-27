@@ -18,6 +18,7 @@ export default function Shop() {
   const [filters, setFilters] = useState({
     search: searchParams.get('search') || '',
     category: searchParams.get('category') || '',
+    gender: searchParams.get('gender') || '',
     material: searchParams.get('material') || '',
     purity: searchParams.get('purity') || '',
     minPrice: searchParams.get('minPrice') || '',
@@ -31,6 +32,7 @@ export default function Shop() {
 
   const [showFilters, setShowFilters] = useState(false);
 
+  const genderOptions = ['male', 'female', 'unisex'];
   const materials = ['Gold', 'Silver', 'Platinum', 'Diamond', 'Rose Gold', 'White Gold'];
   const purities = ['10K', '12K', '14K', '18K', '22K', '24K', '925', '950'];
   const sortOptions = [
@@ -62,6 +64,7 @@ export default function Shop() {
       setFilters({
         search: '',
         category: category,
+        gender: '',
         material: '',
         purity: '',
         minPrice: '',
@@ -77,6 +80,7 @@ export default function Shop() {
       setFilters({
         search: searchParams.get('search') || '',
         category: searchParams.get('category') || '',
+        gender: searchParams.get('gender') || '',
         material: searchParams.get('material') || '',
         purity: searchParams.get('purity') || '',
         minPrice: searchParams.get('minPrice') || '',
@@ -111,6 +115,7 @@ export default function Shop() {
       
       if (filters.search) queryParams.search = filters.search;
       if (filters.category) queryParams.category = filters.category;
+      if (filters.gender) queryParams.gender = filters.gender;
       if (filters.material) queryParams.material = filters.material;
       if (filters.purity) queryParams.purity = filters.purity;
       if (filters.minPrice) queryParams.minPrice = filters.minPrice;
@@ -138,6 +143,7 @@ export default function Shop() {
       const urlParams = {};
       if (filters.search) urlParams.search = filters.search;
       if (filters.category) urlParams.category = filters.category;
+      if (filters.gender) urlParams.gender = filters.gender;
       if (filters.material) urlParams.material = filters.material;
       if (filters.purity) urlParams.purity = filters.purity;
       if (filters.minPrice) urlParams.minPrice = filters.minPrice;
@@ -223,6 +229,7 @@ export default function Shop() {
   const clearFilters = () => {
     setFilters({
       category: '',
+      gender: '',
       material: '',
       purity: '',
       minPrice: '',
@@ -320,6 +327,24 @@ export default function Shop() {
                         onChange={() => handleFilterChange('category', cat._id)}
                       />
                       <span>{cat.name}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* Gender Filter */}
+              <div className="filter-group">
+                <h4>Gender</h4>
+                <div className="filter-options">
+                  {genderOptions.map(gender => (
+                    <label key={gender} className="filter-checkbox">
+                      <input
+                        type="radio"
+                        name="gender"
+                        checked={filters.gender === gender}
+                        onChange={() => handleFilterChange('gender', gender)}
+                      />
+                      <span style={{ textTransform: 'capitalize' }}>{gender}</span>
                     </label>
                   ))}
                 </div>
