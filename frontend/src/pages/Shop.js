@@ -47,6 +47,23 @@ export default function Shop() {
     loadWishlist();
   }, []);
 
+  // Update filters when URL parameters change
+  useEffect(() => {
+    setFilters({
+      search: searchParams.get('search') || '',
+      category: searchParams.get('category') || '',
+      material: searchParams.get('material') || '',
+      purity: searchParams.get('purity') || '',
+      minPrice: searchParams.get('minPrice') || '',
+      maxPrice: searchParams.get('maxPrice') || '',
+      minWeight: searchParams.get('minWeight') || '',
+      maxWeight: searchParams.get('maxWeight') || '',
+      inStock: searchParams.get('inStock') || '',
+      sort: searchParams.get('sort') || 'createdAt',
+      page: searchParams.get('page') || 1
+    });
+  }, [searchParams]);
+
   useEffect(() => {
     loadProducts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
