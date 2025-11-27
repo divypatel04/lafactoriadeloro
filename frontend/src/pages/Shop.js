@@ -30,7 +30,8 @@ export default function Shop() {
     page: searchParams.get('page') || 1
   });
 
-  const [showFilters, setShowFilters] = useState(false);
+  const [showFilterModal, setShowFilterModal] = useState(false);
+  const [tempFilters, setTempFilters] = useState(filters);
 
   const genderOptions = ['male', 'female', 'unisex'];
   const materials = ['Gold', 'Silver', 'Platinum', 'Diamond', 'Rose Gold', 'White Gold'];
@@ -175,6 +176,31 @@ export default function Shop() {
     setFilters(newFilters);
   };
 
+  const handleTempFilterChange = (key, value) => {
+    setTempFilters(prev => ({
+      ...prev,
+      [key]: value
+    }));
+  };
+
+  const openFilterModal = () => {
+    setTempFilters(filters);
+    setShowFilterModal(true);
+  };
+
+  const applyFilters = () => {
+    setFilters({
+      ...tempFilters,
+      page: 1
+    });
+    setShowFilterModal(false);
+  };
+
+  const cancelFilters = () => {
+    setTempFilters(filters);
+    setShowFilterModal(false);
+  };
+
   const loadWishlist = async () => {
     if (!user) return;
     try {
@@ -228,7 +254,8 @@ export default function Shop() {
   };
 
   const clearFilters = () => {
-    setFilters({
+    const clearedFilters = {
+      search: '',
       category: '',
       gender: '',
       material: '',
@@ -239,6 +266,25 @@ export default function Shop() {
       maxWeight: '',
       inStock: '',
       sort: 'createdAt',
+      page: 1
+    };
+    setFilters(clearedFilters);
+    setTempFilters(clearedFilters);
+  };
+
+  const clearTempFilters = () => {
+    setTempFilters({
+      search: '',
+      category: '',
+      gender: '',
+      material: '',
+      purity: '',
+      minPrice: '',
+      maxPrice: '',
+      minWeight: '',
+      maxWeight: '',
+      inStock: '',
+      sort: tempFilters.sort,
       page: 1
     });
   };
@@ -252,7 +298,11 @@ export default function Shop() {
   };
 
   const activeFiltersCount = Object.entries(filters).filter(
-    ([key, value]) => value && key !== 'sort' && key !== 'page'
+    ([key, value]) => value && key !== 'sort' && key !== 'page' && key !== 'search'
+  ).length;
+
+  const tempActiveFiltersCount = Object.entries(tempFilters).filter(
+    ([key, value]) => value && key !== 'sort' && key !== 'page' && key !== 'search'
   ).length;
 
   return (
@@ -268,218 +318,169 @@ export default function Shop() {
 
       <div className="shop-content pt-60 pb-80">
         <div className="container">
-          <div className="shop-layout">
-            {/* Sidebar Filters */}
-            <aside className={`shop-sidebar ${showFilters ? 'show' : ''}`}>
-              <div className="sidebar-header">
-                <h3>
-                  Filters
-                  {activeFiltersCount > 0 && (
-                    <span className="filter-count">({activeFiltersCount})</span>
-                  )}
-                </h3>
+          <div className="shop-layout-full">
+
+            {/* Toolbar */}
+            <div className="shop-toolbar">
+              <div className="toolbar-left">
                 <button 
-                  className="btn-close-sidebar"
-                  onClick={() => setShowFilters(false)}
+                  className="btn-filters"
+                  onClick={openFilterModal}
                 >
-                  ×
-                </button>
-              </div>
-
-              {activeFiltersCount > 0 && (
-                <button className="btn-clear-filters" onClick={clearFilters}>
-                  Clear All Filters
-                </button>
-              )}
-
-              {/* Search Filter */}
-              <div className="filter-group">
-                <h4>Search Products</h4>
-                <div className="search-filter-box">
-                  <input
-                    type="text"
-                    placeholder="Search by name..."
-                    value={filters.search}
-                    onChange={(e) => handleFilterChange('search', e.target.value)}
-                    className="search-filter-input"
-                  />
-                  {filters.search && (
-                    <button 
-                      className="clear-search-btn"
-                      onClick={() => handleFilterChange('search', '')}
-                      title="Clear search"
-                    >
-                      ×
-                    </button>
-                  )}
-                </div>
-              </div>
-
-              {/* Category Filter */}
-              <div className="filter-group">
-                <h4>Category</h4>
-                <div className="filter-options">
-                  {categories.map(cat => (
-                    <label key={cat._id} className="filter-checkbox">
-                      <input
-                        type="radio"
-                        name="category"
-                        checked={filters.category === cat._id}
-                        onChange={() => handleFilterChange('category', cat._id)}
-                      />
-                      <span>{cat.name}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Gender Filter */}
-              <div className="filter-group">
-                <h4>Gender</h4>
-                <div className="filter-options">
-                  {genderOptions.map(gender => (
-                    <label key={gender} className="filter-checkbox">
-                      <input
-                        type="radio"
-                        name="gender"
-                        checked={filters.gender === gender}
-                        onChange={() => handleFilterChange('gender', gender)}
-                      />
-                      <span style={{ textTransform: 'capitalize' }}>{gender}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Material Filter */}
-              <div className="filter-group">
-                <h4>Material</h4>
-                <div className="filter-options">
-                  {materials.map(material => (
-                    <label key={material} className="filter-checkbox">
-                      <input
-                        type="radio"
-                        name="material"
-                        checked={filters.material === material}
-                        onChange={() => handleFilterChange('material', material)}
-                      />
-                      <span>{material}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Purity Filter */}
-              <div className="filter-group">
-                <h4>Purity</h4>
-                <div className="filter-options">
-                  {purities.map(purity => (
-                    <label key={purity} className="filter-checkbox">
-                      <input
-                        type="radio"
-                        name="purity"
-                        checked={filters.purity === purity}
-                        onChange={() => handleFilterChange('purity', purity)}
-                      />
-                      <span>{purity}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Price Range */}
-              <div className="filter-group">
-                <h4>Price Range</h4>
-                <div className="filter-range">
-                  <input
-                    type="number"
-                    placeholder="Min"
-                    value={filters.minPrice}
-                    onChange={(e) => setFilters(prev => ({ ...prev, minPrice: e.target.value }))}
-                    onBlur={() => setFilters(prev => ({ ...prev, page: 1 }))}
-                    className="form-control"
-                  />
-                  <span>-</span>
-                  <input
-                    type="number"
-                    placeholder="Max"
-                    value={filters.maxPrice}
-                    onChange={(e) => setFilters(prev => ({ ...prev, maxPrice: e.target.value }))}
-                    onBlur={() => setFilters(prev => ({ ...prev, page: 1 }))}
-                    className="form-control"
-                  />
-                </div>
-              </div>
-
-              {/* Weight Range */}
-              <div className="filter-group">
-                <h4>Weight (grams)</h4>
-                <div className="filter-range">
-                  <input
-                    type="number"
-                    placeholder="Min"
-                    value={filters.minWeight}
-                    onChange={(e) => setFilters(prev => ({ ...prev, minWeight: e.target.value }))}
-                    onBlur={() => setFilters(prev => ({ ...prev, page: 1 }))}
-                    className="form-control"
-                  />
-                  <span>-</span>
-                  <input
-                    type="number"
-                    placeholder="Max"
-                    value={filters.maxWeight}
-                    onChange={(e) => setFilters(prev => ({ ...prev, maxWeight: e.target.value }))}
-                    onBlur={() => setFilters(prev => ({ ...prev, page: 1 }))}
-                    className="form-control"
-                  />
-                </div>
-              </div>
-
-              {/* Availability */}
-              <div className="filter-group">
-                <h4>Availability</h4>
-                <label className="filter-checkbox">
-                  <input
-                    type="checkbox"
-                    checked={filters.inStock === 'true'}
-                    onChange={(e) => handleFilterChange('inStock', e.target.checked ? 'true' : '')}
-                  />
-                  <span>In Stock Only</span>
-                </label>
-              </div>
-            </aside>
-
-            {/* Main Content */}
-            <div className="shop-main">
-              {/* Toolbar */}
-              <div className="shop-toolbar">
-                <button 
-                  className="btn-toggle-filters"
-                  onClick={() => setShowFilters(!showFilters)}
-                >
-                  <span>🔍</span>
-                  Filters
+                  <span className="filter-icon">⚙</span>
+                  <span>Filters & Sort</span>
                   {activeFiltersCount > 0 && (
                     <span className="badge">{activeFiltersCount}</span>
                   )}
                 </button>
+                {activeFiltersCount > 0 && (
+                  <button className="btn-clear-all" onClick={clearFilters}>
+                    Clear All ({activeFiltersCount})
+                  </button>
+                )}
+              </div>
 
-                <div className="products-count">
-                  {products.length > 0 ? (
-                    <span>
-                      {pagination.total ? 
-                        `Showing ${((pagination.page - 1) * pagination.limit) + 1} - ${Math.min(pagination.page * pagination.limit, pagination.total)} of ${pagination.total} products` 
-                        : `Showing ${products.length} products`
-                      }
-                    </span>
-                  ) : null}
+              <div className="products-count">
+                {products.length > 0 ? (
+                  <span>
+                    {pagination.total ? 
+                      `Showing ${((pagination.page - 1) * pagination.limit) + 1} - ${Math.min(pagination.page * pagination.limit, pagination.total)} of ${pagination.total} products` 
+                      : `Showing ${products.length} products`
+                    }
+                  </span>
+                ) : null}
+              </div>
+            </div>
+
+            {/* Products Grid */}
+            {loading ? (
+              <div className="loading-container">
+                <div className="spinner"></div>
+                <p>Loading products...</p>
+              </div>
+            ) : products.length > 0 ? (
+              <>
+                <div className="products-grid">
+                  {products.map(product => (
+                    <div key={product._id} className="product-card">
+                      <Link to={`/product/${product.slug}`}>
+                        <div className="product-image">
+                          <img
+                            src={product.images[0]?.url || '/placeholder.jpg'}
+                            alt={product.name}
+                          />
+                          {product.isFeatured && (
+                            <span className="badge badge-featured">Featured</span>
+                          )}
+                          {!product.isActive && (
+                            <span className="badge badge-inactive">Unavailable</span>
+                          )}
+                          <button
+                            className={`wishlist-btn ${isInWishlist(product._id) ? 'in-wishlist' : ''}`}
+                            onClick={(e) => handleAddToWishlist(product._id, e)}
+                            disabled={wishlistLoading[product._id]}
+                            title={isInWishlist(product._id) ? 'Remove from Wishlist' : 'Add to Wishlist'}
+                          >
+                            {wishlistLoading[product._id] ? '...' : (isInWishlist(product._id) ? '♥' : '♡')}
+                          </button>
+                        </div>
+                        <div className="product-info">
+                          <h3 className="product-name">{product.name}</h3>
+                          <div className="product-price">
+                            <span className="price">${product.basePrice.toFixed(2)}</span>
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
+                  ))}
                 </div>
 
-                <div className="sort-select">
-                  <label>Sort by:</label>
+                {/* Pagination */}
+                {pagination.pages > 1 && (
+                  <div className="pagination">
+                    <button
+                      className="btn btn-outline"
+                      onClick={() => handlePageChange(pagination.page - 1)}
+                      disabled={pagination.page === 1}
+                    >
+                      Previous
+                    </button>
+
+                    <div className="page-numbers">
+                      {[...Array(pagination.pages)].map((_, i) => (
+                        <button
+                          key={i + 1}
+                          className={`page-number ${pagination.page === i + 1 ? 'active' : ''}`}
+                          onClick={() => handlePageChange(i + 1)}
+                        >
+                          {i + 1}
+                        </button>
+                      ))}
+                    </div>
+
+                    <button
+                      className="btn btn-outline"
+                      onClick={() => handlePageChange(pagination.page + 1)}
+                      disabled={pagination.page === pagination.pages}
+                    >
+                      Next
+                    </button>
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="no-products">
+                <h3>No products found</h3>
+                <p>Try adjusting your filters or search criteria</p>
+                <button className="btn" onClick={clearFilters}>
+                  Clear Filters
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Filter Modal */}
+      {showFilterModal && (
+        <div className="filter-modal-overlay" onClick={cancelFilters}>
+          <div className="filter-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2>Filters & Sort</h2>
+              <button className="btn-close-modal" onClick={cancelFilters}>×</button>
+            </div>
+
+            <div className="modal-body">
+              <div className="modal-filters-grid">
+                {/* Search Filter */}
+                <div className="filter-group">
+                  <h4>Search Products</h4>
+                  <div className="search-filter-box">
+                    <input
+                      type="text"
+                      placeholder="Search by name..."
+                      value={tempFilters.search}
+                      onChange={(e) => handleTempFilterChange('search', e.target.value)}
+                      className="search-filter-input"
+                    />
+                    {tempFilters.search && (
+                      <button 
+                        className="clear-search-btn"
+                        onClick={() => handleTempFilterChange('search', '')}
+                        title="Clear search"
+                      >
+                        ×
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {/* Sort By */}
+                <div className="filter-group">
+                  <h4>Sort By</h4>
                   <select
-                    value={filters.sort}
-                    onChange={(e) => handleFilterChange('sort', e.target.value)}
+                    value={tempFilters.sort}
+                    onChange={(e) => handleTempFilterChange('sort', e.target.value)}
                     className="form-control"
                   >
                     {sortOptions.map(option => (
@@ -489,104 +490,189 @@ export default function Shop() {
                     ))}
                   </select>
                 </div>
-              </div>
 
-              {/* Products Grid */}
-              {loading ? (
-                <div className="loading-container">
-                  <div className="spinner"></div>
-                  <p>Loading products...</p>
-                </div>
-              ) : products.length > 0 ? (
-                <>
-                  <div className="products-grid">
-                    {products.map(product => (
-                      <div key={product._id} className="product-card">
-                        <Link to={`/product/${product.slug}`}>
-                          <div className="product-image">
-                            <img
-                              src={product.images[0]?.url || '/placeholder.jpg'}
-                              alt={product.name}
-                            />
-                            {product.isFeatured && (
-                              <span className="badge badge-featured">Featured</span>
-                            )}
-                            {!product.isActive && (
-                              <span className="badge badge-inactive">Unavailable</span>
-                            )}
-                            <button
-                              className={`wishlist-btn ${isInWishlist(product._id) ? 'in-wishlist' : ''}`}
-                              onClick={(e) => handleAddToWishlist(product._id, e)}
-                              disabled={wishlistLoading[product._id]}
-                              title={isInWishlist(product._id) ? 'Remove from Wishlist' : 'Add to Wishlist'}
-                            >
-                              {wishlistLoading[product._id] ? '...' : (isInWishlist(product._id) ? '♥' : '♡')}
-                            </button>
-                          </div>
-                          <div className="product-info">
-                            <h3 className="product-name">{product.name}</h3>
-                            <div className="product-price">
-                              <span className="price">${product.basePrice.toFixed(2)}</span>
-                            </div>
-                          </div>
-                        </Link>
-                      </div>
+                {/* Category Filter */}
+                <div className="filter-group">
+                  <h4>Category</h4>
+                  <div className="filter-options">
+                    <label className="filter-checkbox">
+                      <input
+                        type="radio"
+                        name="category"
+                        checked={!tempFilters.category}
+                        onChange={() => handleTempFilterChange('category', '')}
+                      />
+                      <span>All Categories</span>
+                    </label>
+                    {categories.map(cat => (
+                      <label key={cat._id} className="filter-checkbox">
+                        <input
+                          type="radio"
+                          name="category"
+                          checked={tempFilters.category === cat._id}
+                          onChange={() => handleTempFilterChange('category', cat._id)}
+                        />
+                        <span>{cat.name}</span>
+                      </label>
                     ))}
                   </div>
-
-                  {/* Pagination */}
-                  {pagination.pages > 1 && (
-                    <div className="pagination">
-                      <button
-                        className="btn btn-outline"
-                        onClick={() => handlePageChange(pagination.page - 1)}
-                        disabled={pagination.page === 1}
-                      >
-                        Previous
-                      </button>
-
-                      <div className="page-numbers">
-                        {[...Array(pagination.pages)].map((_, i) => (
-                          <button
-                            key={i + 1}
-                            className={`page-number ${pagination.page === i + 1 ? 'active' : ''}`}
-                            onClick={() => handlePageChange(i + 1)}
-                          >
-                            {i + 1}
-                          </button>
-                        ))}
-                      </div>
-
-                      <button
-                        className="btn btn-outline"
-                        onClick={() => handlePageChange(pagination.page + 1)}
-                        disabled={pagination.page === pagination.pages}
-                      >
-                        Next
-                      </button>
-                    </div>
-                  )}
-                </>
-              ) : (
-                <div className="no-products">
-                  <h3>No products found</h3>
-                  <p>Try adjusting your filters or search criteria</p>
-                  <button className="btn" onClick={clearFilters}>
-                    Clear Filters
-                  </button>
                 </div>
-              )}
+
+                {/* Gender Filter */}
+                <div className="filter-group">
+                  <h4>Gender</h4>
+                  <div className="filter-options">
+                    <label className="filter-checkbox">
+                      <input
+                        type="radio"
+                        name="gender"
+                        checked={!tempFilters.gender}
+                        onChange={() => handleTempFilterChange('gender', '')}
+                      />
+                      <span>All</span>
+                    </label>
+                    {genderOptions.map(gender => (
+                      <label key={gender} className="filter-checkbox">
+                        <input
+                          type="radio"
+                          name="gender"
+                          checked={tempFilters.gender === gender}
+                          onChange={() => handleTempFilterChange('gender', gender)}
+                        />
+                        <span style={{ textTransform: 'capitalize' }}>{gender}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Material Filter */}
+                <div className="filter-group">
+                  <h4>Material</h4>
+                  <div className="filter-options">
+                    <label className="filter-checkbox">
+                      <input
+                        type="radio"
+                        name="material"
+                        checked={!tempFilters.material}
+                        onChange={() => handleTempFilterChange('material', '')}
+                      />
+                      <span>All Materials</span>
+                    </label>
+                    {materials.map(material => (
+                      <label key={material} className="filter-checkbox">
+                        <input
+                          type="radio"
+                          name="material"
+                          checked={tempFilters.material === material}
+                          onChange={() => handleTempFilterChange('material', material)}
+                        />
+                        <span>{material}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Purity Filter */}
+                <div className="filter-group">
+                  <h4>Purity</h4>
+                  <div className="filter-options">
+                    <label className="filter-checkbox">
+                      <input
+                        type="radio"
+                        name="purity"
+                        checked={!tempFilters.purity}
+                        onChange={() => handleTempFilterChange('purity', '')}
+                      />
+                      <span>All Purities</span>
+                    </label>
+                    {purities.map(purity => (
+                      <label key={purity} className="filter-checkbox">
+                        <input
+                          type="radio"
+                          name="purity"
+                          checked={tempFilters.purity === purity}
+                          onChange={() => handleTempFilterChange('purity', purity)}
+                        />
+                        <span>{purity}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Price Range */}
+                <div className="filter-group">
+                  <h4>Price Range</h4>
+                  <div className="filter-range">
+                    <input
+                      type="number"
+                      placeholder="Min"
+                      value={tempFilters.minPrice}
+                      onChange={(e) => handleTempFilterChange('minPrice', e.target.value)}
+                      className="form-control"
+                    />
+                    <span>-</span>
+                    <input
+                      type="number"
+                      placeholder="Max"
+                      value={tempFilters.maxPrice}
+                      onChange={(e) => handleTempFilterChange('maxPrice', e.target.value)}
+                      className="form-control"
+                    />
+                  </div>
+                </div>
+
+                {/* Weight Range */}
+                <div className="filter-group">
+                  <h4>Weight (grams)</h4>
+                  <div className="filter-range">
+                    <input
+                      type="number"
+                      placeholder="Min"
+                      value={tempFilters.minWeight}
+                      onChange={(e) => handleTempFilterChange('minWeight', e.target.value)}
+                      className="form-control"
+                    />
+                    <span>-</span>
+                    <input
+                      type="number"
+                      placeholder="Max"
+                      value={tempFilters.maxWeight}
+                      onChange={(e) => handleTempFilterChange('maxWeight', e.target.value)}
+                      className="form-control"
+                    />
+                  </div>
+                </div>
+
+                {/* Availability */}
+                <div className="filter-group">
+                  <h4>Availability</h4>
+                  <label className="filter-checkbox">
+                    <input
+                      type="checkbox"
+                      checked={tempFilters.inStock === 'true'}
+                      onChange={(e) => handleTempFilterChange('inStock', e.target.checked ? 'true' : '')}
+                    />
+                    <span>In Stock Only</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div className="modal-footer">
+              <button className="btn btn-outline" onClick={clearTempFilters}>
+                Clear Filters {tempActiveFiltersCount > 0 && `(${tempActiveFiltersCount})`}
+              </button>
+              <div className="footer-right">
+                <button className="btn btn-secondary" onClick={cancelFilters}>
+                  Cancel
+                </button>
+                <button className="btn btn-primary" onClick={applyFilters}>
+                  Apply Filters
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Overlay for mobile */}
-      {showFilters && (
-        <div 
-          className="sidebar-overlay"
-          onClick={() => setShowFilters(false)}
-        />
       )}
     </div>
   );
