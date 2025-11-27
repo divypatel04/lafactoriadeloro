@@ -307,6 +307,17 @@
   font-size: 56px;
   margin-bottom: 20px;
   transition: transform 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+}
+
+.category-icon img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .category-card:hover .category-icon {
