@@ -81,7 +81,13 @@ const Home = () => {
                   to={`/shop?category=${category._id}`}
                   className="category-card"
                 >
-                  <div className="category-icon">{category.icon || '💍'}</div>
+                  <div className="category-icon">
+                    {category.image ? (
+                      <img src={category.image} alt={category.name} style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '8px' }} />
+                    ) : (
+                      <span>{category.icon || '💍'}</span>
+                    )}
+                  </div>
                   <h3>{category.name}</h3>
                   <p>{category.description || 'Explore collection'}</p>
                 </Link>

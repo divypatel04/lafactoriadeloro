@@ -12,9 +12,13 @@ export default function AdminCategories() {
     name: '',
     description: '',
     icon: '',
+    image: '',
     isActive: true,
     order: 0
   });
+  const [imageFile, setImageFile] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+  const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
     loadCategories();
@@ -41,19 +45,24 @@ export default function AdminCategories() {
         name: category.name,
         description: category.description || '',
         icon: category.icon || '',
+        image: category.image || '',
         isActive: category.isActive,
         order: category.order || 0
       });
+      setImagePreview(category.image || null);
     } else {
       setEditingCategory(null);
       setFormData({
         name: '',
         description: '',
         icon: '',
+        image: '',
         isActive: true,
         order: 0
       });
+      setImagePreview(null);
     }
+    setImageFile(null);
     setShowModal(true);
   };
 
@@ -63,9 +72,13 @@ export default function AdminCategories() {
     setFormData({
       name: '',
       description: '',
+      icon: '',
+      image: '',
       isActive: true,
       order: 0
     });
+    setImageFile(null);
+    setImagePreview(null);
   };
 
   const handleChange = (e) => {
@@ -74,6 +87,51 @@ export default function AdminCategories() {
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) { // 5MB limit
+        toast.error('Image size should be less than 5MB');
+        return;
+      }
+      setImageFile(file);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const uploadImage = async () => {
+    if (!imageFile) return null;
+
+    const formData = new FormData();
+    formData.append('image', imageFile);
+
+    try {
+      setUploading(true);
+      const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/upload/single`, {
+        method: 'POST',
+        body: formData,
+        credentials: 'include'
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to upload image');
+      }
+
+      const data = await response.json();
+      return data.url;
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      toast.error('Failed to upload image');
+      return null;
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -85,12 +143,27 @@ export default function AdminCategories() {
     }
 
     try {
+      let imageUrl = formData.image;
+
+      // Upload new image if selected
+      if (imageFile) {
+        const uploadedUrl = await uploadImage();
+        if (uploadedUrl) {
+          imageUrl = uploadedUrl;
+        }
+      }
+
+      const categoryData = {
+        ...formData,
+        image: imageUrl
+      };
+
       if (editingCategory) {
-        await categoryService.updateCategory(editingCategory._id, formData);
-        toast.success('Category updated successfully!');
+        await categoryService.updateCategory(editingCategory._id, categoryData);
+        toast.success('Category updated successfully');
       } else {
-        await categoryService.createCategory(formData);
-        toast.success('Category created successfully!');
+        await categoryService.createCategory(categoryData);
+        toast.success('Category created successfully');
       }
       handleCloseModal();
       loadCategories();
@@ -154,7 +227,9 @@ export default function AdminCategories() {
                 <tr key={category._id}>
                   <td className="category-name">{category.name}</td>
                   <td className="category-icon">
-                    {category.icon ? (
+                    {category.image ? (
+                      <img src={category.image} alt={category.name} style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '4px' }} />
+                    ) : category.icon ? (
                       <span style={{ fontSize: '24px' }}>{category.icon}</span>
                     ) : (
                       <span className="text-muted">No icon</span>
@@ -226,7 +301,34 @@ export default function AdminCategories() {
               </div>
 
               <div className="form-group">
-                <label htmlFor="icon">Icon (Emoji)</label>
+                <label htmlFor="image">Category Image</label>
+                <input
+                  type="file"
+                  id="image"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  style={{ display: 'block', marginBottom: '10px' }}
+                />
+                {imagePreview && (
+                  <div style={{ marginTop: '10px' }}>
+                    <img 
+                      src={imagePreview} 
+                      alt="Preview" 
+                      style={{ 
+                        width: '100px', 
+                        height: '100px', 
+                        objectFit: 'cover', 
+                        borderRadius: '8px',
+                        border: '2px solid #ddd'
+                      }} 
+                    />
+                  </div>
+                )}
+                <small className="form-hint">Upload an image for this category (recommended: square image, min 200x200px)</small>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="icon">Icon (Emoji - Optional Fallback)</label>
                 <input
                   type="text"
                   id="icon"
@@ -236,7 +338,7 @@ export default function AdminCategories() {
                   placeholder="e.g., 💍 or 📁"
                   maxLength="10"
                 />
-                <small className="form-hint">Use an emoji to represent this category (e.g., 💍 for rings, 💎 for diamonds)</small>
+                <small className="form-hint">Optional: Use an emoji as fallback if no image is provided</small>
               </div>
 
               <div className="form-group">
@@ -281,8 +383,8 @@ export default function AdminCategories() {
                 <button type="button" className="btn-cancel" onClick={handleCloseModal}>
                   Cancel
                 </button>
-                <button type="submit" className="btn-save">
-                  {editingCategory ? 'Update Category' : 'Create Category'}
+                <button type="submit" className="btn-save" disabled={uploading}>
+                  {uploading ? 'Uploading...' : editingCategory ? 'Update Category' : 'Create Category'}
                 </button>
               </div>
             </form>
