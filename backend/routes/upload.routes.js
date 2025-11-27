@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const upload = require('../middleware/upload.middleware');
-const { authorize } = require('../middleware/auth.middleware');
+const { protect, authorize } = require('../middleware/auth.middleware');
 const path = require('path');
 
 // Public upload endpoint for custom ring images (no auth required)
@@ -32,7 +32,7 @@ router.post('/', upload.single('image'), async (req, res) => {
 });
 
 // Upload single image (for categories, etc.)
-router.post('/single', authorize('admin'), upload.single('image'), async (req, res) => {
+router.post('/single', protect, authorize('admin'), upload.single('image'), async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ 
@@ -59,7 +59,7 @@ router.post('/single', authorize('admin'), upload.single('image'), async (req, r
 });
 
 // Upload single product image
-router.post('/product-image', authorize('admin'), upload.single('image'), async (req, res) => {
+router.post('/product-image', protect, authorize('admin'), upload.single('image'), async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ message: 'No file uploaded' });
@@ -86,7 +86,7 @@ router.post('/product-image', authorize('admin'), upload.single('image'), async 
 });
 
 // Upload multiple product images
-router.post('/product-images', authorize('admin'), upload.array('images', 10), async (req, res) => {
+router.post('/product-images', protect, authorize('admin'), upload.array('images', 10), async (req, res) => {
   try {
     if (!req.files || req.files.length === 0) {
       return res.status(400).json({ message: 'No files uploaded' });
@@ -114,7 +114,7 @@ router.post('/product-images', authorize('admin'), upload.array('images', 10), a
 });
 
 // Delete product image
-router.delete('/product-image/:filename', authorize('admin'), async (req, res) => {
+router.delete('/product-image/:filename', protect, authorize('admin'), async (req, res) => {
   try {
     const fs = require('fs');
     const isVercel = process.env.VERCEL || process.env.NOW_REGION;
