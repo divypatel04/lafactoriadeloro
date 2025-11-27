@@ -52,7 +52,31 @@ export default function Register() {
       toast.success('Registration successful!');
       navigate('/');
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Registration failed');
+      console.error('Registration error:', error);
+      
+      // Display appropriate error message
+      let errorMessage = 'Registration failed. Please try again.';
+      
+      if (error.response) {
+        // Server responded with error
+        if (error.response.status === 400) {
+          // Validation or duplicate email error
+          if (error.response.data?.message) {
+            errorMessage = error.response.data.message;
+          } else if (error.response.data?.errors) {
+            errorMessage = error.response.data.errors.map(e => e.msg).join(', ');
+          }
+        } else if (error.response.data?.message) {
+          errorMessage = error.response.data.message;
+        }
+      } else if (error.request) {
+        errorMessage = 'Cannot connect to server. Please check your internet connection.';
+      }
+      
+      toast.error(errorMessage, {
+        autoClose: 5000,
+        position: 'top-center'
+      });
     } finally {
       setLoading(false);
     }

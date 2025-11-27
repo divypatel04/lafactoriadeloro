@@ -55,7 +55,29 @@ const Login = () => {
       }
     } catch (error) {
       console.error('Login error:', error);
-      toast.error(error.response?.data?.message || 'Login failed');
+      
+      // Display appropriate error message
+      let errorMessage = 'Login failed. Please try again.';
+      
+      if (error.response) {
+        // Server responded with error
+        if (error.response.status === 401) {
+          errorMessage = error.response.data?.message || 'Invalid email or password';
+        } else if (error.response.data?.message) {
+          errorMessage = error.response.data.message;
+        } else if (error.response.data?.errors) {
+          // Validation errors
+          errorMessage = error.response.data.errors.map(e => e.msg).join(', ');
+        }
+      } else if (error.request) {
+        // Request made but no response
+        errorMessage = 'Cannot connect to server. Please check your internet connection.';
+      }
+      
+      toast.error(errorMessage, {
+        autoClose: 5000,
+        position: 'top-center'
+      });
     } finally {
       setLoading(false);
     }
