@@ -113,21 +113,29 @@ export default function AdminCategories() {
 
     try {
       setUploading(true);
+      
+      // Get token from localStorage
+      const token = localStorage.getItem('token');
+      
       const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/upload/single`, {
         method: 'POST',
         body: formData,
-        credentials: 'include'
+        credentials: 'include',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
       });
 
       if (!response.ok) {
-        throw new Error('Failed to upload image');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to upload image');
       }
 
       const data = await response.json();
       return data.url;
     } catch (error) {
       console.error('Error uploading image:', error);
-      toast.error('Failed to upload image');
+      toast.error(error.message || 'Failed to upload image');
       return null;
     } finally {
       setUploading(false);
