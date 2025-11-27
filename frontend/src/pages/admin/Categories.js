@@ -116,8 +116,13 @@ export default function AdminCategories() {
       
       // Get token from localStorage
       const token = localStorage.getItem('token');
+      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+      const uploadUrl = `${apiUrl}/api/upload/single`;
       
-      const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/upload/single`, {
+      console.log('Uploading to:', uploadUrl);
+      console.log('Token exists:', !!token);
+      
+      const response = await fetch(uploadUrl, {
         method: 'POST',
         body: formData,
         credentials: 'include',
@@ -126,12 +131,16 @@ export default function AdminCategories() {
         }
       });
 
+      console.log('Response status:', response.status);
+
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to upload image');
+        const errorData = await response.json().catch(() => ({ message: 'Upload failed' }));
+        console.error('Upload error response:', errorData);
+        throw new Error(errorData.message || `Upload failed with status ${response.status}`);
       }
 
       const data = await response.json();
+      console.log('Upload success:', data);
       return data.url;
     } catch (error) {
       console.error('Error uploading image:', error);
