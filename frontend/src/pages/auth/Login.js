@@ -13,6 +13,7 @@ const Login = () => {
     password: ''
   });
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   // Redirect if already logged in
   useEffect(() => {
@@ -34,6 +35,9 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
+    
+    setError('');
     setLoading(true);
 
     try {
@@ -53,27 +57,28 @@ const Login = () => {
       } else {
         navigate('/account', { replace: true });
       }
-    } catch (error) {
-      console.error('Login error:', error);
+    } catch (err) {
+      console.error('Login error:', err);
       
       // Display appropriate error message
       let errorMessage = 'Login failed. Please try again.';
       
-      if (error.response) {
+      if (err.response) {
         // Server responded with error
-        if (error.response.status === 401) {
-          errorMessage = error.response.data?.message || 'Invalid email or password';
-        } else if (error.response.data?.message) {
-          errorMessage = error.response.data.message;
-        } else if (error.response.data?.errors) {
+        if (err.response.status === 401) {
+          errorMessage = err.response.data?.message || 'Invalid email or password';
+        } else if (err.response.data?.message) {
+          errorMessage = err.response.data.message;
+        } else if (err.response.data?.errors) {
           // Validation errors
-          errorMessage = error.response.data.errors.map(e => e.msg).join(', ');
+          errorMessage = err.response.data.errors.map(e => e.msg).join(', ');
         }
-      } else if (error.request) {
+      } else if (err.request) {
         // Request made but no response
         errorMessage = 'Cannot connect to server. Please check your internet connection.';
       }
       
+      setError(errorMessage);
       toast.error(errorMessage, {
         autoClose: 5000,
         position: 'top-center'
@@ -90,6 +95,20 @@ const Login = () => {
           <div className="auth-box">
             <h1>Login</h1>
             <p className="auth-subtitle">Welcome back! Please login to your account.</p>
+
+            {error && (
+              <div className="alert alert-error" style={{
+                background: '#fee',
+                border: '1px solid #fcc',
+                color: '#c33',
+                padding: '12px 16px',
+                borderRadius: '8px',
+                marginBottom: '20px',
+                fontSize: '14px'
+              }}>
+                {error}
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="auth-form">
               <div className="form-group">

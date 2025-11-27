@@ -9,6 +9,7 @@ export default function Register() {
   const navigate = useNavigate();
   const { setUser } = useStore();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -26,15 +27,22 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
+
+    setError('');
 
     // Validation
     if (formData.password !== formData.confirmPassword) {
-      toast.error('Passwords do not match');
+      const msg = 'Passwords do not match';
+      setError(msg);
+      toast.error(msg);
       return;
     }
 
     if (formData.password.length < 6) {
-      toast.error('Password must be at least 6 characters');
+      const msg = 'Password must be at least 6 characters';
+      setError(msg);
+      toast.error(msg);
       return;
     }
 
@@ -51,28 +59,29 @@ export default function Register() {
       setUser(response.user, response.token);
       toast.success('Registration successful!');
       navigate('/');
-    } catch (error) {
-      console.error('Registration error:', error);
+    } catch (err) {
+      console.error('Registration error:', err);
       
       // Display appropriate error message
       let errorMessage = 'Registration failed. Please try again.';
       
-      if (error.response) {
+      if (err.response) {
         // Server responded with error
-        if (error.response.status === 400) {
+        if (err.response.status === 400) {
           // Validation or duplicate email error
-          if (error.response.data?.message) {
-            errorMessage = error.response.data.message;
-          } else if (error.response.data?.errors) {
-            errorMessage = error.response.data.errors.map(e => e.msg).join(', ');
+          if (err.response.data?.message) {
+            errorMessage = err.response.data.message;
+          } else if (err.response.data?.errors) {
+            errorMessage = err.response.data.errors.map(e => e.msg).join(', ');
           }
-        } else if (error.response.data?.message) {
-          errorMessage = error.response.data.message;
+        } else if (err.response.data?.message) {
+          errorMessage = err.response.data.message;
         }
-      } else if (error.request) {
+      } else if (err.request) {
         errorMessage = 'Cannot connect to server. Please check your internet connection.';
       }
       
+      setError(errorMessage);
       toast.error(errorMessage, {
         autoClose: 5000,
         position: 'top-center'
@@ -89,6 +98,20 @@ export default function Register() {
           <div className="auth-box">
             <h1>Create Account</h1>
             <p className="auth-subtitle">Join us today</p>
+
+            {error && (
+              <div className="alert alert-error" style={{
+                background: '#fee',
+                border: '1px solid #fcc',
+                color: '#c33',
+                padding: '12px 16px',
+                borderRadius: '8px',
+                marginBottom: '20px',
+                fontSize: '14px'
+              }}>
+                {error}
+              </div>
+            )}
 
             <form className="auth-form" onSubmit={handleSubmit}>
               <div className="form-row">

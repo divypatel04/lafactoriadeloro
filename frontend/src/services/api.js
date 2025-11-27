@@ -28,10 +28,15 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
-      // Token expired or invalid
-      localStorage.removeItem('token');
-      window.location.href = '/login';
+    // Only redirect to login if we have a token but it's invalid/expired
+    // Don't redirect during login/register attempts (they naturally have 401)
+    if (error.response?.status === 401 && localStorage.getItem('token')) {
+      const currentPath = window.location.pathname;
+      // Don't redirect if already on login/register page or during authentication
+      if (!currentPath.includes('/login') && !currentPath.includes('/register')) {
+        localStorage.removeItem('token');
+        window.location.href = '/login';
+      }
     }
     return Promise.reject(error);
   }
