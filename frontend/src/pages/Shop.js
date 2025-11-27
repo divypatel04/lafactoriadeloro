@@ -49,19 +49,45 @@ export default function Shop() {
 
   // Update filters when URL parameters change
   useEffect(() => {
-    setFilters({
-      search: searchParams.get('search') || '',
-      category: searchParams.get('category') || '',
-      material: searchParams.get('material') || '',
-      purity: searchParams.get('purity') || '',
-      minPrice: searchParams.get('minPrice') || '',
-      maxPrice: searchParams.get('maxPrice') || '',
-      minWeight: searchParams.get('minWeight') || '',
-      maxWeight: searchParams.get('maxWeight') || '',
-      inStock: searchParams.get('inStock') || '',
-      sort: searchParams.get('sort') || 'createdAt',
-      page: searchParams.get('page') || 1
-    });
+    const category = searchParams.get('category');
+    const hasOnlyCategory = category && 
+      !searchParams.get('material') && 
+      !searchParams.get('purity') && 
+      !searchParams.get('minPrice') &&
+      !searchParams.get('maxPrice') &&
+      !searchParams.get('search');
+    
+    // If navigating with only category (from header), clear other filters
+    if (hasOnlyCategory) {
+      setFilters({
+        search: '',
+        category: category,
+        material: '',
+        purity: '',
+        minPrice: '',
+        maxPrice: '',
+        minWeight: '',
+        maxWeight: '',
+        inStock: '',
+        sort: 'createdAt',
+        page: 1
+      });
+    } else {
+      // Normal sync
+      setFilters({
+        search: searchParams.get('search') || '',
+        category: searchParams.get('category') || '',
+        material: searchParams.get('material') || '',
+        purity: searchParams.get('purity') || '',
+        minPrice: searchParams.get('minPrice') || '',
+        maxPrice: searchParams.get('maxPrice') || '',
+        minWeight: searchParams.get('minWeight') || '',
+        maxWeight: searchParams.get('maxWeight') || '',
+        inStock: searchParams.get('inStock') || '',
+        sort: searchParams.get('sort') || 'createdAt',
+        page: searchParams.get('page') || 1
+      });
+    }
   }, [searchParams]);
 
   useEffect(() => {
@@ -108,8 +134,23 @@ export default function Shop() {
         limit: paginationData.limit || 12
       });
       
-      // Update URL with filters
-      setSearchParams(queryParams);
+      // Update URL with only meaningful filters (exclude defaults)
+      const urlParams = {};
+      if (filters.search) urlParams.search = filters.search;
+      if (filters.category) urlParams.category = filters.category;
+      if (filters.material) urlParams.material = filters.material;
+      if (filters.purity) urlParams.purity = filters.purity;
+      if (filters.minPrice) urlParams.minPrice = filters.minPrice;
+      if (filters.maxPrice) urlParams.maxPrice = filters.maxPrice;
+      if (filters.minWeight) urlParams.minWeight = filters.minWeight;
+      if (filters.maxWeight) urlParams.maxWeight = filters.maxWeight;
+      if (filters.inStock) urlParams.inStock = filters.inStock;
+      // Only add sort if it's not the default
+      if (filters.sort && filters.sort !== 'createdAt') urlParams.sort = filters.sort;
+      // Only add page if it's not the first page
+      if (filters.page && filters.page !== 1) urlParams.page = filters.page;
+      
+      setSearchParams(urlParams);
     } catch (error) {
       toast.error('Failed to load products');
       console.error(error);

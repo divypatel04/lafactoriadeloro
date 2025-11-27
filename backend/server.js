@@ -23,6 +23,7 @@ const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:5000',
   'https://lafactoriadeloro.vercel.app',
+  'https://lafactoriadeloro.com',
   'https://lafactoriadeloro-production.up.railway.app'
 ];
 
