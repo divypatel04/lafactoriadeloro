@@ -11,6 +11,7 @@ export default function AdminCategories() {
   const [formData, setFormData] = useState({
     name: '',
     description: '',
+    icon: '',
     isActive: true,
     order: 0
   });
@@ -39,6 +40,7 @@ export default function AdminCategories() {
       setFormData({
         name: category.name,
         description: category.description || '',
+        icon: category.icon || '',
         isActive: category.isActive,
         order: category.order || 0
       });
@@ -47,6 +49,7 @@ export default function AdminCategories() {
       setFormData({
         name: '',
         description: '',
+        icon: '',
         isActive: true,
         order: 0
       });
@@ -130,6 +133,7 @@ export default function AdminCategories() {
           <thead>
             <tr>
               <th>Name</th>
+              <th>Icon</th>
               <th>Slug</th>
               <th>Description</th>
               <th>Order</th>
@@ -141,7 +145,7 @@ export default function AdminCategories() {
           <tbody>
             {categories.length === 0 ? (
               <tr>
-                <td colSpan="7" className="no-data">
+                <td colSpan="8" className="no-data">
                   No categories found. Create your first category!
                 </td>
               </tr>
@@ -149,6 +153,13 @@ export default function AdminCategories() {
               categories.map(category => (
                 <tr key={category._id}>
                   <td className="category-name">{category.name}</td>
+                  <td className="category-icon">
+                    {category.icon ? (
+                      <span style={{ fontSize: '24px' }}>{category.icon}</span>
+                    ) : (
+                      <span className="text-muted">No icon</span>
+                    )}
+                  </td>
                   <td className="category-slug">{category.slug}</td>
                   <td className="category-description">
                     {category.description ? (
@@ -212,6 +223,20 @@ export default function AdminCategories() {
                   placeholder="e.g., Engagement Rings"
                   required
                 />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="icon">Icon (Emoji)</label>
+                <input
+                  type="text"
+                  id="icon"
+                  name="icon"
+                  value={formData.icon}
+                  onChange={handleChange}
+                  placeholder="e.g., 💍 or 📁"
+                  maxLength="10"
+                />
+                <small className="form-hint">Use an emoji to represent this category (e.g., 💍 for rings, 💎 for diamonds)</small>
               </div>
 
               <div className="form-group">

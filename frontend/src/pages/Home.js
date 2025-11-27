@@ -81,7 +81,7 @@ const Home = () => {
                   to={`/shop?category=${category._id}`}
                   className="category-card"
                 >
-                  <div className="category-icon">💍</div>
+                  <div className="category-icon">{category.icon || '💍'}</div>
                   <h3>{category.name}</h3>
                   <p>{category.description || 'Explore collection'}</p>
                 </Link>

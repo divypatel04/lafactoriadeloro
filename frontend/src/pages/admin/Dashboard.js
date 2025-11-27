@@ -156,10 +156,10 @@ const AdminDashboard = () => {
                     <td>#{order.orderNumber || order._id.slice(-6).toUpperCase()}</td>
                     <td>{order.user?.firstName} {order.user?.lastName}</td>
                     <td>{new Date(order.createdAt).toLocaleDateString()}</td>
-                    <td>${order.totalPrice?.toFixed(2)}</td>
+                    <td>${(order.pricing?.total || order.totalPrice || 0).toFixed(2)}</td>
                     <td>
-                      <span className={`order-status ${getStatusClass(order.status)}`}>
-                        {order.status}
+                      <span className={`order-status ${getStatusClass(order.orderStatus || order.status)}`}>
+                        {order.orderStatus || order.status || 'pending'}
                       </span>
                     </td>
                     <td>

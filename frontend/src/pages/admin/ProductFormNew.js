@@ -584,7 +584,7 @@ const ProductForm = () => {
                 <li>✅ Your labor costs, making charges, and profit margin</li>
               </ul>
               <p>
-                <strong>To change pricing rates, go to:</strong> Admin Dashboard → <a href="/admin/pricing-config">Pricing Configuration</a>
+                <strong>To change pricing rates, go to:</strong> Admin Dashboard → <a href="/admin/pricing">Pricing Configuration</a>
               </p>
             </div>
           </div>

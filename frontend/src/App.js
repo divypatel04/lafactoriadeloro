@@ -24,6 +24,7 @@ import FAQ from './pages/FAQ';
 import Shipping from './pages/Shipping';
 import Returns from './pages/Returns';
 import CustomRing from './pages/CustomRing';
+import NewsletterUnsubscribe from './pages/NewsletterUnsubscribe';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import ForgotPassword from './pages/auth/ForgotPassword';
@@ -43,7 +44,6 @@ import AdminSliders from './pages/admin/AdminSliders';
 import AdminCustomers from './pages/admin/Customers';
 import PricingConfig from './pages/admin/PricingConfigNew';
 import EmailSettings from './pages/admin/EmailSettings';
-import Settings from './pages/admin/Settings';
 import Coupons from './pages/admin/Coupons';
 import AdminNewsletter from './pages/admin/Newsletter';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -70,6 +70,7 @@ function AppContent() {
             <Route path="/shipping" element={<Shipping />} />
             <Route path="/returns" element={<Returns />} />
             <Route path="/custom-ring" element={<CustomRing />} />
+            <Route path="/newsletter/unsubscribe/:id" element={<NewsletterUnsubscribe />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-conditions" element={<TermsConditions />} />
             <Route path="/login" element={<Login />} />
@@ -173,11 +174,6 @@ function AppContent() {
             <Route path="/admin/email-settings" element={
               <AdminRoute>
                 <EmailSettings />
-              </AdminRoute>
-            } />
-            <Route path="/admin/settings" element={
-              <AdminRoute>
-                <Settings />
               </AdminRoute>
             } />
             <Route path="/admin/coupons" element={

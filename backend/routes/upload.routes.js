@@ -4,6 +4,33 @@ const upload = require('../middleware/upload.middleware');
 const { authorize } = require('../middleware/auth.middleware');
 const path = require('path');
 
+// Public upload endpoint for custom ring images (no auth required)
+router.post('/', upload.single('image'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ 
+        success: false,
+        message: 'No file uploaded' 
+      });
+    }
+
+    // Return file URL
+    const imageUrl = `/uploads/products/${req.file.filename}`;
+    res.status(200).json({
+      success: true,
+      message: 'Image uploaded successfully',
+      url: imageUrl,
+      filename: req.file.filename
+    });
+  } catch (error) {
+    console.error('Upload error:', error);
+    res.status(500).json({ 
+      success: false,
+      message: error.message 
+    });
+  }
+});
+
 // Upload single product image
 router.post('/product-image', authorize('admin'), upload.single('image'), async (req, res) => {
   try {

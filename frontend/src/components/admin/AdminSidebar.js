@@ -69,12 +69,6 @@ const AdminSidebar = () => {
       exact: false
     },
     {
-      path: '/admin/settings',
-      icon: '⚙️',
-      label: 'Settings',
-      exact: false
-    },
-    {
       path: '/admin/email-settings',
       icon: '📧',
       label: 'Email Settings',

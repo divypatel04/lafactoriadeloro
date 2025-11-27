@@ -95,7 +95,11 @@ router.post('/', async (req, res) => {
       <h3>Reference Images</h3>
       <p>Customer uploaded ${images.length} reference image(s):</p>
       <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-        ${images.map((img, idx) => `<img src="${img}" alt="Reference ${idx + 1}" style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px;" />`).join('')}
+        ${images.map((img, idx) => {
+          // Convert relative URLs to absolute URLs for email
+          const imageUrl = img.startsWith('http') ? img : `${process.env.BACKEND_URL || 'http://localhost:5000'}${img}`;
+          return `<img src="${imageUrl}" alt="Reference ${idx + 1}" style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px;" />`;
+        }).join('')}
       </div>
       ` : ''}
 
@@ -124,7 +128,10 @@ ${budget ? `- Budget: ${budget}` : ''}
 
       ${designPreference ? `Design Preference:\n${designPreference}\n` : ''}
 ${additionalDetails ? `Additional Details:\n${additionalDetails}\n` : ''}
-${images && images.length > 0 ? `\nReference Images: ${images.length} image(s) attached\nImage URLs:\n${images.map((img, idx) => `${idx + 1}. ${img}`).join('\n')}\n` : ''}
+${images && images.length > 0 ? `\nReference Images: ${images.length} image(s) attached\nImage URLs:\n${images.map((img, idx) => {
+  const imageUrl = img.startsWith('http') ? img : `${process.env.BACKEND_URL || 'http://localhost:5000'}${img}`;
+  return `${idx + 1}. ${imageUrl}`;
+}).join('\n')}\n` : ''}
 
 Submitted on: ${new Date().toLocaleString()}
     `.trim();    // Send email

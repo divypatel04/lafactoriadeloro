@@ -128,7 +128,7 @@ const Header = () => {
             </nav>
 
             <div className="header-actions">
-              <form onSubmit={handleSearch} className="search-form">
+              {/* <form onSubmit={handleSearch} className="search-form">
                 <input
                   type="text"
                   placeholder="Search products..."
@@ -141,7 +141,7 @@ const Header = () => {
                     <path d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16zM18 18l-4.35-4.35" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                   </svg>
                 </button>
-              </form>
+              </form> */}
 
               {isAuthenticated && (
                 <Link to="/account/wishlist" className="icon-btn" title="Wishlist">

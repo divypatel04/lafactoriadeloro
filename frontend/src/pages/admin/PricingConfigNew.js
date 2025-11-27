@@ -134,6 +134,7 @@ const PricingConfig = () => {
           <h1>💰 Pricing Configuration</h1>
           <p className="subtitle">Manage your jewelry pricing rules and calculations</p>
         </div>
+        <div>
         <button 
           onClick={handleSave} 
           disabled={saving}
@@ -141,6 +142,7 @@ const PricingConfig = () => {
         >
           {saving ? '⏳ Saving...' : '💾 Save Changes'}
         </button>
+        </div>
       </div>
 
       {/* Navigation Tabs */}
@@ -866,8 +868,8 @@ const PricingConfig = () => {
                     value={calculator.composition}
                     onChange={(e) => setCalculator({ ...calculator, composition: e.target.value })}
                   >
-                    {config.compositionRates?.filter(c => c.isEnabled).map(comp => (
-                      <option key={comp.name} value={comp.name}>{comp.name}</option>
+                    {config.compositionRates?.filter(c => c.enabled !== false).map(comp => (
+                      <option key={comp.composition} value={comp.composition}>{comp.label || comp.composition}</option>
                     ))}
                   </select>
                 </div>
@@ -891,9 +893,9 @@ const PricingConfig = () => {
                     onChange={(e) => setCalculator({ ...calculator, diamondType: e.target.value })}
                   >
                     <option value="none">No Diamond</option>
-                    {config.diamondPricing?.filter(d => d.isEnabled).map(diamond => (
-                      <option key={diamond.name} value={diamond.name.toLowerCase().replace(/\s+/g, '-')}>
-                        {diamond.name}
+                    {config.diamondPricing?.filter(d => d.enabled !== false).map(diamond => (
+                      <option key={diamond.type} value={diamond.type}>
+                        {diamond.label || diamond.type}
                       </option>
                     ))}
                   </select>

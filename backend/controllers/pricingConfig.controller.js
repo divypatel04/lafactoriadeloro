@@ -197,6 +197,8 @@ exports.calculatePrice = async (req, res) => {
   try {
     const { weight, composition, material, diamondType, diamondCarat, ringSize } = req.body;
     
+    console.log('Calculate request received:', { weight, composition, material, diamondType, diamondCarat, ringSize });
+    
     if (!weight || !composition) {
       return res.status(400).json({
         success: false,
@@ -206,25 +208,126 @@ exports.calculatePrice = async (req, res) => {
     
     const config = await PricingConfig.getConfig();
     
-    const price = config.calculateProductPrice({
-      weight,
-      composition,
-      material,
-      diamondType,
-      diamondCarat,
-      ringSize
-    });
+    console.log('Config loaded, compositions:', config.compositionRates?.length);
+    console.log('All compositions:', JSON.stringify(config.compositionRates?.map(c => ({
+      composition: c.composition,
+      label: c.label,
+      enabled: c.enabled,
+      pricePerGram: c.pricePerGram
+    })), null, 2));
+    
+    // Calculate price with detailed breakdown
+    const weightNum = parseFloat(weight);
+    const diamondCaratNum = parseFloat(diamondCarat) || 0;
+    
+    // 1. Calculate metal cost
+    const compositionConfig = config.compositionRates.find(c => 
+      c.composition === composition && c.enabled !== false
+    );
+    
+    if (!compositionConfig) {
+      const availableComps = config.compositionRates.map(c => c.composition).join(', ');
+      console.error('Composition not found. Looking for:', composition, 'Available:', availableComps);
+      throw new Error(`Composition ${composition} not found or not enabled. Available: ${availableComps}`);
+    }
+    
+    let metalCost = weightNum * compositionConfig.pricePerGram;
+    
+    // Apply material multiplier
+    if (material) {
+      const materialConfig = compositionConfig.materialTypes?.find(m => m.material === material);
+      if (materialConfig) {
+        metalCost *= materialConfig.priceMultiplier;
+      }
+    }
+    
+    // 2. Calculate diamond cost
+    let diamondCost = 0;
+    if (diamondType && diamondType !== 'none') {
+      const diamondConfig = config.diamondPricing?.find(d => 
+        d.type === diamondType && d.enabled !== false
+      );
+      
+      if (diamondConfig) {
+        if (diamondConfig.pricePerCarat > 0 && diamondCaratNum > 0) {
+          diamondCost = diamondConfig.pricePerCarat * diamondCaratNum;
+        } else if (diamondConfig.fixedPrice > 0) {
+          diamondCost = diamondConfig.fixedPrice;
+        }
+      }
+    }
+    
+    // 3. Calculate labor cost
+    let laborCost = 0;
+    if (config.additionalCosts?.laborCost > 0) {
+      laborCost += config.additionalCosts.laborCost;
+    }
+    if (config.additionalCosts?.laborCostPerGram > 0) {
+      laborCost += weightNum * config.additionalCosts.laborCostPerGram;
+    }
+    
+    // 4. Making charges
+    let makingCharges = 0;
+    if (config.additionalCosts?.makingCharges > 0) {
+      makingCharges = config.additionalCosts.makingCharges;
+    }
+    
+    // 5. Ring size adjustment
+    let ringSizeAdjustment = 0;
+    if (ringSize) {
+      const sizeAdjustment = config.ringSizePricing?.sizeAdjustments?.find(s => s.size === ringSize);
+      if (sizeAdjustment && sizeAdjustment.percentageAdjustment) {
+        const baseForSizeCalc = metalCost + diamondCost + laborCost + makingCharges;
+        ringSizeAdjustment = (baseForSizeCalc * sizeAdjustment.percentageAdjustment) / 100;
+      }
+    }
+    
+    // Calculate subtotal
+    const subtotal = metalCost + diamondCost + laborCost + makingCharges + ringSizeAdjustment;
+    
+    // 6. Apply profit margin
+    let profitAmount = 0;
+    if (config.additionalCosts?.profitMarginPercentage > 0) {
+      profitAmount = (subtotal * config.additionalCosts.profitMarginPercentage) / 100;
+    }
+    
+    // Calculate final price
+    let finalPrice = subtotal + profitAmount;
+    
+    // 7. Apply minimum price
+    if (config.additionalCosts?.minimumPrice > 0) {
+      finalPrice = Math.max(finalPrice, config.additionalCosts.minimumPrice);
+    }
+    
+    // 8. Add tax if included in price
+    if (config.tax?.enabled && config.tax?.includedInPrice && config.tax?.percentage > 0) {
+      finalPrice *= (1 + config.tax.percentage / 100);
+    }
+    
+    // Round all values
+    const breakdown = {
+      metalCost: Math.round(metalCost * 100) / 100,
+      diamondCost: Math.round(diamondCost * 100) / 100,
+      laborCost: Math.round(laborCost * 100) / 100,
+      makingCharges: Math.round(makingCharges * 100) / 100,
+      ringSizeAdjustment: Math.round(ringSizeAdjustment * 100) / 100,
+      subtotal: Math.round(subtotal * 100) / 100,
+      profitAmount: Math.round(profitAmount * 100) / 100
+    };
+    
+    const price = Math.round(finalPrice * 100) / 100;
     
     res.status(200).json({
       success: true,
       data: {
         price,
+        breakdown,
         specifications: {
-          weight,
+          weight: weightNum,
           composition,
           material,
           diamondType,
-          diamondCarat,
+          diamondCarat: diamondCaratNum,
           ringSize
         }
       }
