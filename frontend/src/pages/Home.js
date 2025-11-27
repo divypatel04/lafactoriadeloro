@@ -75,7 +75,7 @@ const Home = () => {
               <p>Explore our exquisite jewelry collections</p>
             </div>
             <div className="categories-grid">
-              {categories.slice(0, 3).map(category => (
+              {categories.map(category => (
                 <Link 
                   key={category._id} 
                   to={`/shop?category=${category._id}`}
