@@ -15,8 +15,11 @@ const app = express();
 // Trust proxy - Required for Railway, Heroku, etc.
 app.set('trust proxy', 1);
 
-// Security Middleware
-app.use(helmet());
+// Security Middleware - Configure helmet to allow cross-origin resources
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: "cross-origin" },
+  crossOriginEmbedderPolicy: false
+}));
 
 // CORS Configuration
 const allowedOrigins = [
@@ -92,6 +95,16 @@ app.use(morgan('dev'));
 // Vercel uses /tmp for writable storage, local uses ./uploads
 const isVercel = process.env.VERCEL || process.env.NOW_REGION;
 const uploadsPath = isVercel ? '/tmp/uploads' : 'uploads';
+
+// Add CORS headers for static file serving
+app.use('/uploads', (req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+  next();
+});
+
 app.use('/uploads', express.static(uploadsPath));
 
 // Rate Limiting Configuration
