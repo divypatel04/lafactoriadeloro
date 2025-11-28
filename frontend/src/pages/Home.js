@@ -83,7 +83,7 @@ const Home = () => {
                 >
                   <div className="category-icon">
                     {category.image ? (
-                      <img src={category.image} alt={category.name} />
+                      <img src={uploadService.getImageUrl(category.image)} alt={category.name} />
                     ) : (
                       <span>{category.icon || '💍'}</span>
                     )}

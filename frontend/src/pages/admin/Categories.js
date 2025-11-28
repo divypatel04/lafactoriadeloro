@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { categoryService } from '../../services';
+import { categoryService, uploadService } from '../../services';
 import './Categories.css';
 
 export default function AdminCategories() {
@@ -247,7 +247,7 @@ export default function AdminCategories() {
                   <td className="category-name">{category.name}</td>
                   <td className="category-icon">
                     {category.image ? (
-                      <img src={category.image} alt={category.name} style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '4px' }} />
+                      <img src={uploadService.getImageUrl(category.image)} alt={category.name} style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '4px' }} />
                     ) : category.icon ? (
                       <span style={{ fontSize: '24px' }}>{category.icon}</span>
                     ) : (
