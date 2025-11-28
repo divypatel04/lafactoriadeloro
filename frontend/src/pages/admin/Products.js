@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { adminService, productService } from '../../services';
+import { adminService, productService, uploadService } from '../../services';
 import './Products.css';
 
 const AdminProducts = () => {
@@ -126,7 +126,7 @@ const AdminProducts = () => {
                   <tr key={product._id}>
                     <td>
                       <img 
-                        src={product.images?.[0]?.url || product.images?.[0] || '/placeholder.jpg'} 
+                        src={uploadService.getImageUrl(product.images?.[0]?.url || product.images?.[0])} 
                         alt={product.name}
                         className="product-thumbnail"
                         onError={(e) => {

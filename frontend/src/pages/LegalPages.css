@@ -193,6 +193,7 @@
 
 .btn-accept:hover {
   background: #45a049;
+  color: white !important;
 }
 
 .btn-reject {
@@ -202,6 +203,7 @@
 
 .btn-reject:hover {
   background: #da190b;
+  color: white !important;
 }
 
 .btn-customize {
@@ -212,6 +214,7 @@
 
 .btn-customize:hover {
   background: rgba(255,255,255,0.1);
+  color: white !important;
 }
 
 @media (max-width: 768px) {
@@ -333,6 +336,7 @@
 
 .btn-primary:hover {
   background: linear-gradient(135deg, #C5A028 0%, #B69121 100%);
+  color: white !important;
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
 }
@@ -345,7 +349,7 @@
 
 .btn-secondary:hover {
   background: #222;
-  color: white;
+  color: white !important;
 }
 
 /* FAQ Page Styles */

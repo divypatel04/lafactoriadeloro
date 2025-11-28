@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { adminService } from '../../services';
+import { adminService, uploadService } from '../../services';
 import { generateOrderReceipt } from '../../utils/pdfGenerator';
 import './Orders.css';
 
@@ -392,7 +392,7 @@ const AdminOrders = () => {
                       <div key={index} className="order-item-row">
                         <div className="item-image">
                           <img 
-                            src={item.product?.images?.[0]?.url || '/placeholder.jpg'} 
+                            src={uploadService.getImageUrl(item.product?.images?.[0]?.url)} 
                             alt={item.product?.name || 'Product'} 
                             onError={(e) => {
                               e.target.src = '/placeholder.jpg';

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useStore from '../store/useStore';
-import { cartService } from '../services';
+import { cartService, uploadService } from '../services';
 import './Cart.css';
 
 export default function Cart() {
@@ -137,7 +137,7 @@ export default function Cart() {
                   <div key={item._id} className="cart-item">
                     <Link to={`/product/${item.product.slug}`} className="item-image">
                       <img
-                        src={item.product.images[0]?.url || '/placeholder.jpg'}
+                        src={uploadService.getImageUrl(item.product.images[0]?.url)}
                         alt={item.product.name}
                       />
                     </Link>

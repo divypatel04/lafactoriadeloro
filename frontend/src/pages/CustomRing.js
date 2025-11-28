@@ -11,12 +11,13 @@ export default function CustomRing() {
     name: '',
     email: '',
     phone: '',
-    ringType: '',
+    jewelryType: '',
+    specificType: '',
     metal: '',
     purity: '',
     stoneType: '',
     stoneSize: '',
-    ringSize: '',
+    size: '',
     engraving: '',
     budget: '',
     designPreference: '',
@@ -27,11 +28,25 @@ export default function CustomRing() {
   const [uploadedImages, setUploadedImages] = useState([]);
   const [uploadingImages, setUploadingImages] = useState(false);
 
-  const ringTypes = ['Engagement Ring', 'Wedding Band', 'Fashion Ring', 'Eternity Ring', 'Promise Ring', 'Other'];
-  const metals = ['Gold', 'White Gold', 'Rose Gold', 'Platinum', 'Silver'];
+  const jewelryTypes = ['Ring', 'Necklace', 'Bracelet', 'Earrings', 'Pendant', 'Anklet', 'Brooch', 'Chain', 'Other'];
+  const ringTypes = ['Engagement Ring', 'Wedding Band', 'Fashion Ring', 'Eternity Ring', 'Promise Ring', 'Signet Ring', 'Other'];
+  const necklaceTypes = ['Chain Necklace', 'Pendant Necklace', 'Choker', 'Statement Necklace', 'Locket', 'Other'];
+  const braceletTypes = ['Bangle', 'Chain Bracelet', 'Charm Bracelet', 'Tennis Bracelet', 'Cuff', 'Other'];
+  const earringTypes = ['Studs', 'Hoops', 'Drop Earrings', 'Chandelier', 'Huggies', 'Other'];
+  const metals = ['Gold', 'White Gold', 'Rose Gold', 'Platinum', 'Silver', 'Palladium'];
   const purities = ['10K', '14K', '18K', '22K', '24K', '925 Silver', '950 Platinum'];
-  const stoneTypes = ['Diamond', 'Ruby', 'Sapphire', 'Emerald', 'Moissanite', 'No Stone', 'Other'];
-  const stoneSizes = ['0.5 Carat', '1 Carat', '1.5 Carat', '2 Carat', '2.5+ Carat', 'Not Sure'];
+  const stoneTypes = ['Diamond', 'Ruby', 'Sapphire', 'Emerald', 'Moissanite', 'Pearl', 'Amethyst', 'Topaz', 'No Stone', 'Other'];
+  const stoneSizes = ['Small (< 0.5 Carat)', 'Medium (0.5-1 Carat)', 'Large (1-2 Carat)', 'Very Large (2+ Carat)', 'Not Sure'];
+  
+  const getSpecificTypes = () => {
+    switch(formData.jewelryType) {
+      case 'Ring': return ringTypes;
+      case 'Necklace': return necklaceTypes;
+      case 'Bracelet': return braceletTypes;
+      case 'Earrings': return earringTypes;
+      default: return [];
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -118,19 +133,20 @@ export default function CustomRing() {
         images: uploadedImages
       });
       
-      toast.success('Your custom ring request has been submitted! We will contact you soon.');
+      toast.success('Your custom jewelry request has been submitted! We will contact you soon.');
       
       // Reset form
       setFormData({
         name: '',
         email: '',
         phone: '',
-        ringType: '',
+        jewelryType: '',
+        specificType: '',
         metal: '',
         purity: '',
         stoneType: '',
         stoneSize: '',
-        ringSize: '',
+        size: '',
         engraving: '',
         budget: '',
         designPreference: '',
@@ -149,9 +165,9 @@ export default function CustomRing() {
     <div className="custom-ring-page">
       <div className="page-header">
         <div className="container">
-          <h1>Customize Your Own Ring</h1>
+          <h1>Custom Jewelry Request</h1>
           <div className="breadcrumb">
-            <Link to="/">Home</Link> / <span>Custom Ring</span>
+            <Link to="/">Home</Link> / <span>Custom Request</span>
           </div>
         </div>
       </div>
@@ -162,11 +178,11 @@ export default function CustomRing() {
             {/* Information Section */}
             <aside className="custom-ring-info">
               <div className="info-card">
-                <div className="info-icon">💍</div>
-                <h3>Create Your Dream Ring</h3>
+                <div className="info-icon">✨</div>
+                <h3>Create Your Dream Jewelry</h3>
                 <p>
-                  Our expert artisans will work with you to create a unique, handcrafted ring 
-                  that perfectly captures your vision and style.
+                  Our expert artisans will work with you to create unique, handcrafted jewelry pieces 
+                  including rings, necklaces, bracelets, earrings, and more that perfectly capture your vision and style.
                 </p>
               </div>
 
@@ -177,7 +193,7 @@ export default function CustomRing() {
                   <li>Submit your design preferences</li>
                   <li>Receive a personalized quote</li>
                   <li>Approve the design and specifications</li>
-                  <li>We craft your custom ring</li>
+                  <li>We craft your custom jewelry</li>
                   <li>Receive your unique piece</li>
                 </ol>
               </div>
@@ -200,8 +216,8 @@ export default function CustomRing() {
             {/* Form Section */}
             <div className="custom-ring-form-container">
               <div className="form-intro">
-                <h2>Tell Us About Your Dream Ring</h2>
-                <p>Fill out the form below and our jewelry specialists will contact you within 24 hours.</p>
+                <h2>Tell Us About Your Dream Jewelry</h2>
+                <p>Fill out the form below and our jewelry specialists will contact you within 24 hours to discuss your custom piece.</p>
               </div>
 
               <form onSubmit={handleSubmit} className="custom-ring-form">
@@ -254,37 +270,64 @@ export default function CustomRing() {
                   </div>
                 </div>
 
-                {/* Ring Specifications */}
+                {/* Jewelry Specifications */}
                 <div className="form-section">
-                  <h3>Ring Specifications</h3>
+                  <h3>Jewelry Specifications</h3>
 
                   <div className="form-row">
                     <div className="form-group">
-                      <label htmlFor="ringType">Ring Type</label>
+                      <label htmlFor="jewelryType">Jewelry Type *</label>
                       <select
-                        id="ringType"
-                        name="ringType"
-                        value={formData.ringType}
+                        id="jewelryType"
+                        name="jewelryType"
+                        value={formData.jewelryType}
                         onChange={handleChange}
                         className="form-control"
+                        required
                       >
-                        <option value="">Select ring type</option>
-                        {ringTypes.map(type => (
+                        <option value="">Select jewelry type</option>
+                        {jewelryTypes.map(type => (
                           <option key={type} value={type}>{type}</option>
                         ))}
                       </select>
                     </div>
 
+                    {formData.jewelryType && getSpecificTypes().length > 0 && (
+                      <div className="form-group">
+                        <label htmlFor="specificType">Specific Type</label>
+                        <select
+                          id="specificType"
+                          name="specificType"
+                          value={formData.specificType}
+                          onChange={handleChange}
+                          className="form-control"
+                        >
+                          <option value="">Select type</option>
+                          {getSpecificTypes().map(type => (
+                            <option key={type} value={type}>{type}</option>
+                          ))}
+                        </select>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="form-row">
                     <div className="form-group">
-                      <label htmlFor="ringSize">Ring Size</label>
+                      <label htmlFor="size">
+                        {formData.jewelryType === 'Ring' ? 'Ring Size' : 
+                         formData.jewelryType === 'Bracelet' || formData.jewelryType === 'Anklet' ? 'Length' : 
+                         formData.jewelryType === 'Necklace' || formData.jewelryType === 'Chain' ? 'Chain Length' : 'Size'}
+                      </label>
                       <input
                         type="text"
-                        id="ringSize"
-                        name="ringSize"
-                        value={formData.ringSize}
+                        id="size"
+                        name="size"
+                        value={formData.size}
                         onChange={handleChange}
                         className="form-control"
-                        placeholder="e.g., 6.5"
+                        placeholder={formData.jewelryType === 'Ring' ? 'e.g., 6.5' : 
+                                   formData.jewelryType === 'Necklace' ? 'e.g., 18 inches' : 
+                                   'Enter size/length'}
                       />
                     </div>
                   </div>
@@ -389,7 +432,7 @@ export default function CustomRing() {
                       value={formData.engraving}
                       onChange={handleChange}
                       className="form-control"
-                      placeholder="Text to engrave on the ring"
+                      placeholder="Text to engrave on your jewelry"
                       maxLength="50"
                     />
                     <small className="form-text">Maximum 50 characters</small>
@@ -404,7 +447,7 @@ export default function CustomRing() {
                       onChange={handleChange}
                       className="form-control"
                       rows="3"
-                      placeholder="Describe your ideal ring design (e.g., vintage, modern, minimalist)"
+                      placeholder="Describe your ideal jewelry design (e.g., vintage, modern, minimalist, bold, delicate)"
                     />
                   </div>
 
@@ -424,7 +467,7 @@ export default function CustomRing() {
                   {/* Image Upload */}
                   <div className="form-group">
                     <label htmlFor="images">Upload Reference Images (Optional)</label>
-                    <p className="form-helper-text">Upload up to 5 images to show design inspiration or specific requirements (max 5MB each)</p>
+                    <p className="form-helper-text">Upload up to 5 images to show design inspiration, specific styles, or jewelry pieces you admire (max 5MB each)</p>
                     <div className="image-upload-container">
                       <input
                         type="file"

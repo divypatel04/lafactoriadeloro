@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { wishlistService, cartService } from '../../services';
+import { wishlistService, cartService, uploadService } from '../../services';
 import useStore from '../../store/useStore';
 import './Wishlist.css';
 
@@ -92,7 +92,7 @@ const Wishlist = () => {
                 
                 <Link to={`/product/${product.slug}`} className="product-image">
                   <img
-                    src={product.images?.[0]?.url || '/placeholder.jpg'}
+                    src={uploadService.getImageUrl(product.images?.[0]?.url)}
                     alt={product.name}
                     onError={(e) => {
                       e.target.src = '/placeholder.jpg';

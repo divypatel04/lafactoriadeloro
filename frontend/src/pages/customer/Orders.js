@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { orderService } from '../../services';
+import { orderService, uploadService } from '../../services';
 import { generateOrderReceipt } from '../../utils/pdfGenerator';
 import './Orders.css';
 
@@ -147,7 +147,7 @@ const Orders = () => {
                   {order.items?.slice(0, 3).map((item, index) => (
                     <div key={index} className="order-item-preview">
                       <img
-                        src={item.product?.images?.[0]?.url || item.product?.images?.[0] || '/placeholder.jpg'}
+                        src={uploadService.getImageUrl(item.product?.images?.[0]?.url || item.product?.images?.[0])}
                         alt={item.product?.name || 'Product'}
                         onError={(e) => { e.target.src = '/placeholder.jpg'; }}
                       />

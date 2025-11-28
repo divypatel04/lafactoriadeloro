@@ -141,6 +141,7 @@
 
 .btn-place-order:hover:not(:disabled) {
   background: #229954;
+  color: white !important;
 }
 
 .review-section {
@@ -413,6 +414,7 @@
 
 .btn-apply-coupon:hover {
   background: var(--primary-dark);
+  color: white !important;
   transform: translateY(-2px);
 }
 
@@ -468,7 +470,7 @@
 }
 
 .btn-remove-coupon:hover {
-  color: #d32f2f;
+  color: #d32f2f !important;
 }
 
 .discount-row {

@@ -79,7 +79,7 @@
 
 .btn-clear-cart:hover {
   border-color: #e74c3c;
-  color: #e74c3c;
+  color: #e74c3c !important;
 }
 
 .cart-items-list {
@@ -215,7 +215,7 @@
 
 .quantity-selector button:hover:not(:disabled) {
   background: var(--primary-color);
-  color: white;
+  color: white !important;
 }
 
 .quantity-selector button:disabled {
@@ -278,7 +278,7 @@
 
 .btn-remove:hover {
   background: #e74c3c;
-  color: white;
+  color: white !important;
 }
 
 .cart-actions-bottom {

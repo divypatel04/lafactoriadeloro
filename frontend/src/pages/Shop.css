@@ -277,7 +277,7 @@
 
 .btn-clear-all:hover {
   background: #e74c3c;
-  color: white;
+  color: white !important;
   border-color: #e74c3c;
 }
 
@@ -653,7 +653,7 @@
 .btn-secondary:hover {
   background: #f5f5f5;
   border-color: #999;
-  color: #222;
+  color: #222 !important;
 }
 
 .btn-primary {
@@ -672,6 +672,7 @@
 .btn-primary:hover {
   background: #b8935d;
   border-color: #b8935d;
+  color: white !important;
   box-shadow: 0 4px 8px rgba(197, 151, 100, 0.3);
 }
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useStore from '../store/useStore';
-import { orderService, cartService, couponService, paymentService } from '../services';
+import { orderService, cartService, couponService, paymentService, uploadService } from '../services';
 import './Checkout.css';
 
 export default function Checkout() {
@@ -693,7 +693,7 @@ export default function Checkout() {
                     <div className="order-items">
                       {cart.items.map((item) => (
                         <div key={item._id} className="order-item">
-                          <img src={item.product.images[0]?.url} alt={item.product.name} />
+                          <img src={uploadService.getImageUrl(item.product.images[0]?.url)} alt={item.product.name} />
                           <div className="item-info">
                             <h4>{item.product.name}</h4>
                             <p className="item-variant">

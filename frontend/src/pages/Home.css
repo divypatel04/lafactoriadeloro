@@ -46,7 +46,7 @@
 
 .about-preview-section .btn-primary:hover {
   background: transparent;
-  color: #ffd700;
+  color: #ffd700 !important;
 }
 
 .testimonials-section {
@@ -137,7 +137,7 @@
 
 .wishlist-btn:hover:not(:disabled) {
   background: #e74c3c;
-  color: white;
+  color: white !important;
   transform: scale(1.1);
 }
 

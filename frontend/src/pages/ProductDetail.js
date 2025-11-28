@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { productService, cartService, wishlistService, reviewService } from '../services';
+import { productService, cartService, wishlistService, reviewService, uploadService } from '../services';
 import useStore from '../store/useStore';
 import './ProductDetail.css';
 
@@ -469,7 +469,7 @@ export default function ProductDetail() {
             <div className="product-gallery">
               <div className={`main-image ${isZoomed ? 'zoomed' : ''}`}>
                 <img
-                  src={filteredImages[selectedImage]?.url || '/placeholder.jpg'}
+                  src={uploadService.getImageUrl(filteredImages[selectedImage]?.url)}
                   alt={product.name}
                   onMouseEnter={() => setIsZoomed(true)}
                   onMouseLeave={() => setIsZoomed(false)}
@@ -490,7 +490,7 @@ export default function ProductDetail() {
                       className={`thumbnail ${selectedImage === index ? 'active' : ''}`}
                       onClick={() => setSelectedImage(index)}
                     >
-                      <img src={image.url} alt={`${product.name} ${index + 1}`} />
+                      <img src={uploadService.getImageUrl(image.url)} alt={`${product.name} ${index + 1}`} />
                     </div>
                   ))}
                 </div>
@@ -915,7 +915,7 @@ export default function ProductDetail() {
                           {wishlistLoading[relatedProduct._id] ? '...' : (isInWishlist(relatedProduct._id) ? '♥' : '♡')}
                         </button>
                         <img
-                          src={relatedProduct.images[0]?.url || '/placeholder.jpg'}
+                          src={uploadService.getImageUrl(relatedProduct.images[0]?.url)}
                           alt={relatedProduct.name}
                         />
                       </div>

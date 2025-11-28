@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { orderService, cartService, paymentService } from '../services';
+import { orderService, cartService, paymentService, uploadService } from '../services';
 import { toast } from 'react-toastify';
 import useStore from '../store/useStore';
 import { generateOrderReceipt } from '../utils/pdfGenerator';
@@ -148,7 +148,7 @@ export default function OrderSuccess() {
                 {order.items?.map((item, index) => (
                   <div key={index} className="order-item">
                     <img 
-                      src={item.product?.images?.[0]?.url || '/placeholder.jpg'} 
+                      src={uploadService.getImageUrl(item.product?.images?.[0]?.url)} 
                       alt={item.product?.name || 'Product'}
                     />
                     <div className="item-details">

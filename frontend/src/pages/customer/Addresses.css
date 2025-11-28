@@ -35,6 +35,7 @@
 
 .btn-add-address:hover {
   background: #000000;
+  color: white !important;
 }
 
 /* Address Form */
@@ -127,6 +128,7 @@
 
 .btn-save:hover:not(:disabled) {
   background: #000000;
+  color: white !important;
 }
 
 .btn-save:disabled {
@@ -141,6 +143,7 @@
 
 .btn-cancel:hover {
   background: #e5e5e5;
+  color: #222222 !important;
 }
 
 /* Empty State */
@@ -176,6 +179,7 @@
 
 .btn-add:hover {
   background: #000000;
+  color: white !important;
 }
 
 /* Addresses Grid */
@@ -249,6 +253,7 @@
 
 .btn-edit:hover {
   background: #e5e5e5;
+  color: #222222 !important;
 }
 
 .btn-delete {
@@ -258,6 +263,7 @@
 
 .btn-delete:hover {
   background: #f1b9bd;
+  color: #721c24 !important;
 }
 
 /* Responsive */

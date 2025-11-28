@@ -169,10 +169,9 @@
 }
 
 .product-price-section {
-  margin: 25px 0 20px 0;
-  padding: 20px 0;
+  margin: 15px 0;
+  padding: 15px 0;
   border-top: 1px solid #e0e0e0;
-  border-bottom: 1px solid #e0e0e0;
 }
 
 .product-price {
@@ -190,10 +189,9 @@
 
 /* Variants */
 .product-variants {
-  margin-bottom: 30px;
-  padding: 20px 0;
+  margin-bottom: 20px;
+  padding: 15px 0;
   border-top: 1px solid #e0e0e0;
-  border-bottom: 1px solid #e0e0e0;
 }
 
 .variant-option {
@@ -368,9 +366,11 @@
 
 /* Stock Status */
 .stock-status {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  padding: 12px 0;
   font-size: 14px;
   font-weight: 500;
+  border-top: 1px solid #e0e0e0;
 }
 
 .in-stock {
@@ -383,10 +383,8 @@
 
 /* Product Actions - New Modern Design */
 .product-actions-wrapper {
-  margin: 30px 0;
-  padding: 30px 0;
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
+  margin: 20px 0 0 0;
+  padding: 15px 0 0 0;
 }
 
 /* Quantity Section */
@@ -502,6 +500,7 @@
 
 .btn-primary-action:hover:not(:disabled) {
   background: #c99c33;
+  color: white !important;
   box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
   transform: translateY(-2px);
 }
@@ -534,7 +533,7 @@
 
 .btn-secondary-action:hover:not(:disabled) {
   background: var(--primary-color);
-  color: white;
+  color: white !important;
   transform: scale(1.05);
 }
 

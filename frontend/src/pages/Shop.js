@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams, useNavigate } from 'react-router-dom';
-import { productService, categoryService, wishlistService } from '../services';
+import { productService, categoryService, wishlistService, uploadService } from '../services';
 import { toast } from 'react-toastify';
 import useStore from '../store/useStore';
 import './Shop.css';
@@ -366,7 +366,7 @@ export default function Shop() {
                       <Link to={`/product/${product.slug}`}>
                         <div className="product-image">
                           <img
-                            src={product.images[0]?.url || '/placeholder.jpg'}
+                            src={uploadService.getImageUrl(product.images[0]?.url)}
                             alt={product.name}
                           />
                           {product.isFeatured && (

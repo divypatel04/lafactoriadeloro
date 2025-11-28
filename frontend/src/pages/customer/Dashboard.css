@@ -162,6 +162,7 @@
 
 .btn-primary:hover {
   background: #000000;
+  color: white !important;
 }
 
 /* Orders Table */
@@ -238,6 +239,7 @@
 
 .btn-view:hover {
   background: #e5e5e5;
+  color: #666 !important;
 }
 
 /* Responsive */

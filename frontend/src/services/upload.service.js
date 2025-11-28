@@ -57,11 +57,24 @@ const uploadService = {
     }
   },
 
-  // Get image URL
+  // Get image URL - converts relative paths to absolute URLs
   getImageUrl: (imageUrl) => {
     if (!imageUrl) return '/placeholder-product.jpg';
-    if (imageUrl.startsWith('http')) return imageUrl;
-    return `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}${imageUrl}`;
+    
+    // If already an absolute URL, return as-is
+    if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+      return imageUrl;
+    }
+    
+    // Convert relative path to absolute URL using backend URL
+    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+    // Remove /api from the end if present, since uploads are served from root
+    const baseUrl = apiUrl.replace(/\/api$/, '');
+    
+    // Ensure the path starts with /
+    const path = imageUrl.startsWith('/') ? imageUrl : `/${imageUrl}`;
+    
+    return `${baseUrl}${path}`;
   },
 };
 
