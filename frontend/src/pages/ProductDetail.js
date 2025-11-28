@@ -501,12 +501,11 @@ export default function ProductDetail() {
             <div className="product-info-section">
               <h1 className="product-title">{product.name}</h1>
               
-              <div className="product-price-section">
-                <span className="product-price">${getCurrentPrice()}</span>
-                {product.sku && (
+              {product.sku && (
+                <div className="product-sku-section">
                   <span className="product-sku">SKU: {product.sku}</span>
-                )}
-              </div>
+                </div>
+              )}
 
               {product.shortDescription && (
                 <div className="product-description">
@@ -647,6 +646,11 @@ export default function ProductDetail() {
                 ) : (
                   <span className="out-of-stock">✗ Out of Stock</span>
                 )}
+              </div>
+
+              {/* Price Section */}
+              <div className="product-price-section">
+                <span className="product-price">${getCurrentPrice()}</span>
               </div>
 
               {/* Quantity and Action Buttons */}
