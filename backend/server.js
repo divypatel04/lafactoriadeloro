@@ -152,6 +152,43 @@ app.use('/api/reviews', require('./routes/review.routes'));
 app.use('/api/custom-ring-request', require('./routes/customRing.routes'));
 app.use('/api/newsletter', require('./routes/newsletter.routes'));
 
+// Serve static files from /uploads/products/ (Vercel-compatible)
+app.get('/uploads/products/:filename', async (req, res) => {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const isVercel = process.env.VERCEL || process.env.NOW_REGION;
+    const uploadsDir = isVercel ? '/tmp/uploads/products' : path.join(__dirname, 'uploads/products');
+    const filePath = path.join(uploadsDir, req.params.filename);
+
+    // Check if file exists
+    if (!fs.existsSync(filePath)) {
+      console.error(`❌ File not found: ${filePath}`);
+      return res.status(404).json({ 
+        success: false,
+        message: 'Image not found',
+        filename: req.params.filename,
+        note: isVercel ? 'Uploaded files on Vercel are temporary and may not persist. Consider using cloud storage.' : 'File does not exist.'
+      });
+    }
+
+    // Set CORS and caching headers
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+    res.setHeader('Cache-Control', 'public, max-age=31536000');
+    
+    // Send file
+    console.log(`✅ Serving file: ${req.params.filename}`);
+    res.sendFile(filePath);
+  } catch (error) {
+    console.error('File serve error:', error);
+    res.status(500).json({ 
+      success: false,
+      message: error.message 
+    });
+  }
+});
+
 // Health check
 app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'OK', message: 'Server is running' });

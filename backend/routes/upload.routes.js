@@ -113,6 +113,38 @@ router.post('/product-images', protect, authorize('admin'), upload.array('images
   }
 });
 
+// Serve uploaded file (for Vercel compatibility)
+router.get('/serve/:filename', async (req, res) => {
+  try {
+    const fs = require('fs');
+    const isVercel = process.env.VERCEL || process.env.NOW_REGION;
+    const uploadsDir = isVercel ? '/tmp/uploads/products' : path.join(__dirname, '../uploads/products');
+    const filePath = path.join(uploadsDir, req.params.filename);
+
+    // Check if file exists
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ 
+        success: false,
+        message: 'Image not found',
+        note: 'On Vercel, uploaded files are temporary. Consider using cloud storage like Cloudinary or AWS S3.'
+      });
+    }
+
+    // Set CORS headers
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+    
+    // Send file
+    res.sendFile(filePath);
+  } catch (error) {
+    console.error('Serve error:', error);
+    res.status(500).json({ 
+      success: false,
+      message: error.message 
+    });
+  }
+});
+
 // Delete product image
 router.delete('/product-image/:filename', protect, authorize('admin'), async (req, res) => {
   try {
