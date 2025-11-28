@@ -67,7 +67,25 @@ const uploadService = {
     }
     
     // Convert relative path to absolute URL using backend URL
-    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+    let apiUrl = process.env.REACT_APP_API_URL;
+    
+    // If no API URL is set and we're in production (on Vercel), use the backend Vercel URL
+    if (!apiUrl && typeof window !== 'undefined') {
+      const hostname = window.location.hostname;
+      if (hostname.includes('vercel.app') || hostname === 'www.lafactoriadeloro.com' || hostname === 'lafactoriadeloro.com') {
+        // Production: use backend Vercel URL
+        apiUrl = 'https://lafactoriadeloro-hh6h.vercel.app/api';
+      } else {
+        // Local development
+        apiUrl = 'http://localhost:5000/api';
+      }
+    }
+    
+    // Fallback to localhost if still not set
+    if (!apiUrl) {
+      apiUrl = 'http://localhost:5000/api';
+    }
+    
     // Remove /api from the end if present, since uploads are served from root
     const baseUrl = apiUrl.replace(/\/api$/, '');
     

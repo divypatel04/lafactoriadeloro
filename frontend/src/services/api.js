@@ -1,6 +1,24 @@
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+// Smart API URL detection
+let API_URL = process.env.REACT_APP_API_URL;
+
+// If no API URL is set, detect environment
+if (!API_URL && typeof window !== 'undefined') {
+  const hostname = window.location.hostname;
+  if (hostname.includes('vercel.app') || hostname === 'www.lafactoriadeloro.com' || hostname === 'lafactoriadeloro.com') {
+    // Production: use backend Vercel URL
+    API_URL = 'https://lafactoriadeloro-hh6h.vercel.app/api';
+  } else {
+    // Local development
+    API_URL = 'http://localhost:5000/api';
+  }
+}
+
+// Fallback to localhost if still not set
+if (!API_URL) {
+  API_URL = 'http://localhost:5000/api';
+}
 
 const api = axios.create({
   baseURL: API_URL,
