@@ -616,7 +616,7 @@ export default function Shop() {
 
                 {/* Price Range */}
                 <div className="filter-group">
-                  <h4>💰 Price Range</h4>
+                  <h4>Price Range</h4>
                   <div className="filter-range">
                     <input
                       type="number"
@@ -638,7 +638,7 @@ export default function Shop() {
 
                 {/* Weight Range */}
                 <div className="filter-group">
-                  <h4>⚖️ Weight (grams)</h4>
+                  <h4>Weight (grams)</h4>
                   <div className="filter-range">
                     <input
                       type="number"
