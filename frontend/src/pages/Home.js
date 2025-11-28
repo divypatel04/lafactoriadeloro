@@ -132,7 +132,7 @@ const Home = () => {
                         {wishlistLoading[product._id] ? '...' : '♡'}
                       </button>
                       <img 
-                        src={product.images[0]?.url || '/placeholder.jpg'} 
+                        src={uploadService.getImageUrl(product.images[0]?.url)} 
                         alt={product.name} 
                       />
                       {product.isNew && <span className="badge badge-new">New</span>}

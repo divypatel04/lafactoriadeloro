@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import { uploadService } from '../services';
 import './CustomRing.css';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
@@ -493,7 +494,7 @@ export default function CustomRing() {
                       <div className="uploaded-images-preview">
                         {uploadedImages.map((imageUrl, index) => (
                           <div key={index} className="image-preview-item">
-                            <img src={imageUrl} alt={`Upload ${index + 1}`} />
+                            <img src={uploadService.getImageUrl(imageUrl)} alt={`Upload ${index + 1}`} />
                             <button
                               type="button"
                               className="remove-image-btn"
