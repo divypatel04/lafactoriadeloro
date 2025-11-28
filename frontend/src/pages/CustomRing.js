@@ -192,7 +192,7 @@ export default function CustomRing() {
                 </p>
                 <p>
                   <strong>Phone:</strong><br />
-                  Coming Soon
+                  +1 (646)-884-1771
                 </p>
               </div>
             </aside>

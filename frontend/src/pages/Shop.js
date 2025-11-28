@@ -451,10 +451,10 @@ export default function Shop() {
             </div>
 
             <div className="modal-body">
-              <div className="modal-filters-grid">
-                {/* Search Filter */}
-                <div className="filter-group">
-                  <h4>Search Products</h4>
+              {/* Top Row - Search and Sort */}
+              <div className="filter-top-row">
+                <div className="filter-group-inline">
+                  <label className="filter-label">Search</label>
                   <div className="search-filter-box">
                     <input
                       type="text"
@@ -475,9 +475,8 @@ export default function Shop() {
                   </div>
                 </div>
 
-                {/* Sort By */}
-                <div className="filter-group">
-                  <h4>Sort By</h4>
+                <div className="filter-group-inline">
+                  <label className="filter-label">Sort By</label>
                   <select
                     value={tempFilters.sort}
                     onChange={(e) => handleTempFilterChange('sort', e.target.value)}
@@ -490,6 +489,22 @@ export default function Shop() {
                     ))}
                   </select>
                 </div>
+
+                <div className="filter-group-inline">
+                  <label className="filter-label">Availability</label>
+                  <label className="filter-checkbox-inline">
+                    <input
+                      type="checkbox"
+                      checked={tempFilters.inStock === 'true'}
+                      onChange={(e) => handleTempFilterChange('inStock', e.target.checked ? 'true' : '')}
+                    />
+                    <span>In Stock Only</span>
+                  </label>
+                </div>
+              </div>
+
+              {/* Main Filters Grid */}
+              <div className="modal-filters-grid">
 
                 {/* Category Filter */}
                 <div className="filter-group">
@@ -601,19 +616,19 @@ export default function Shop() {
 
                 {/* Price Range */}
                 <div className="filter-group">
-                  <h4>Price Range</h4>
+                  <h4>💰 Price Range</h4>
                   <div className="filter-range">
                     <input
                       type="number"
-                      placeholder="Min"
+                      placeholder="Min ($)"
                       value={tempFilters.minPrice}
                       onChange={(e) => handleTempFilterChange('minPrice', e.target.value)}
                       className="form-control"
                     />
-                    <span>-</span>
+                    <span className="range-separator">to</span>
                     <input
                       type="number"
-                      placeholder="Max"
+                      placeholder="Max ($)"
                       value={tempFilters.maxPrice}
                       onChange={(e) => handleTempFilterChange('maxPrice', e.target.value)}
                       className="form-control"
@@ -623,37 +638,24 @@ export default function Shop() {
 
                 {/* Weight Range */}
                 <div className="filter-group">
-                  <h4>Weight (grams)</h4>
+                  <h4>⚖️ Weight (grams)</h4>
                   <div className="filter-range">
                     <input
                       type="number"
-                      placeholder="Min"
+                      placeholder="Min (g)"
                       value={tempFilters.minWeight}
                       onChange={(e) => handleTempFilterChange('minWeight', e.target.value)}
                       className="form-control"
                     />
-                    <span>-</span>
+                    <span className="range-separator">to</span>
                     <input
                       type="number"
-                      placeholder="Max"
+                      placeholder="Max (g)"
                       value={tempFilters.maxWeight}
                       onChange={(e) => handleTempFilterChange('maxWeight', e.target.value)}
                       className="form-control"
                     />
                   </div>
-                </div>
-
-                {/* Availability */}
-                <div className="filter-group">
-                  <h4>Availability</h4>
-                  <label className="filter-checkbox">
-                    <input
-                      type="checkbox"
-                      checked={tempFilters.inStock === 'true'}
-                      onChange={(e) => handleTempFilterChange('inStock', e.target.checked ? 'true' : '')}
-                    />
-                    <span>In Stock Only</span>
-                  </label>
                 </div>
               </div>
             </div>
