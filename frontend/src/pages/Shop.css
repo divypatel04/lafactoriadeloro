@@ -141,12 +141,30 @@
   font-size: 13px;
   background: white;
   transition: all 0.3s;
+  line-height: 1.4;
+  height: auto;
 }
 
 .form-control:focus {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(197, 151, 100, 0.1);
+}
+
+select.form-control {
+  cursor: pointer;
+  padding-right: 30px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+select.form-control option {
+  padding: 8px;
+  font-size: 13px;
 }
 
 .shop-toolbar {
