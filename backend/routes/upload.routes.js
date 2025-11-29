@@ -14,13 +14,14 @@ router.post('/', upload.single('image'), async (req, res) => {
       });
     }
 
-    // Return file URL
-    const imageUrl = `/uploads/products/${req.file.filename}`;
+    // Return Cloudinary URL (already optimized and CDN-served)
+    const imageUrl = req.file.path; // Cloudinary URL
     res.status(200).json({
       success: true,
       message: 'Image uploaded successfully',
       url: imageUrl,
-      filename: req.file.filename
+      filename: req.file.filename || req.file.public_id,
+      cloudinary: true
     });
   } catch (error) {
     console.error('Upload error:', error);
@@ -41,13 +42,14 @@ router.post('/single', protect, authorize('admin'), upload.single('image'), asyn
       });
     }
 
-    // Return file URL
-    const imageUrl = `/uploads/products/${req.file.filename}`;
+    // Return Cloudinary URL
+    const imageUrl = req.file.path;
     res.status(200).json({
       success: true,
       message: 'Image uploaded successfully',
       url: imageUrl,
-      filename: req.file.filename
+      filename: req.file.filename || req.file.public_id,
+      cloudinary: true
     });
   } catch (error) {
     console.error('Upload error:', error);
@@ -68,15 +70,16 @@ router.post('/product-image', protect, authorize('admin'), upload.single('image'
     // Get material (color) from request body
     const material = req.body.material || null;
 
-    // Return file info
-    const imageUrl = `/uploads/products/${req.file.filename}`;
+    // Return Cloudinary URL
+    const imageUrl = req.file.path;
     res.status(200).json({
       success: true,
       message: 'Image uploaded successfully',
       image: {
         url: imageUrl,
         material: material,
-        filename: req.file.filename
+        filename: req.file.filename || req.file.public_id,
+        cloudinary: true
       }
     });
   } catch (error) {
@@ -95,11 +98,12 @@ router.post('/product-images', protect, authorize('admin'), upload.array('images
     // Parse materials array from request body
     const materials = req.body.materials ? JSON.parse(req.body.materials) : [];
 
-    // Map uploaded files to image objects
+    // Map uploaded files to image objects with Cloudinary URLs
     const images = req.files.map((file, index) => ({
-      url: `/uploads/products/${file.filename}`,
+      url: file.path, // Cloudinary URL
       material: materials[index] || null,
-      filename: file.filename
+      filename: file.filename || file.public_id,
+      cloudinary: true
     }));
 
     res.status(200).json({
@@ -113,61 +117,34 @@ router.post('/product-images', protect, authorize('admin'), upload.array('images
   }
 });
 
-// Serve uploaded file (for Vercel compatibility)
-router.get('/serve/:filename', async (req, res) => {
+// Delete product image from Cloudinary
+router.delete('/product-image/:publicId', protect, authorize('admin'), async (req, res) => {
   try {
-    const fs = require('fs');
-    const isVercel = process.env.VERCEL || process.env.NOW_REGION;
-    const uploadsDir = isVercel ? '/tmp/uploads/products' : path.join(__dirname, '../uploads/products');
-    const filePath = path.join(uploadsDir, req.params.filename);
+    const cloudinary = require('../config/cloudinary.config');
+    const publicId = req.params.publicId;
 
-    // Check if file exists
-    if (!fs.existsSync(filePath)) {
-      return res.status(404).json({ 
+    // Delete from Cloudinary
+    const result = await cloudinary.uploader.destroy(`lafactoria/products/${publicId}`);
+
+    if (result.result === 'ok' || result.result === 'not found') {
+      res.status(200).json({
+        success: true,
+        message: 'Image deleted successfully',
+        result: result
+      });
+    } else {
+      res.status(500).json({
         success: false,
-        message: 'Image not found',
-        note: 'On Vercel, uploaded files are temporary. Consider using cloud storage like Cloudinary or AWS S3.'
+        message: 'Failed to delete image',
+        result: result
       });
     }
-
-    // Set CORS headers
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
-    
-    // Send file
-    res.sendFile(filePath);
   } catch (error) {
-    console.error('Serve error:', error);
+    console.error('Delete error:', error);
     res.status(500).json({ 
       success: false,
       message: error.message 
     });
-  }
-});
-
-// Delete product image
-router.delete('/product-image/:filename', protect, authorize('admin'), async (req, res) => {
-  try {
-    const fs = require('fs');
-    const isVercel = process.env.VERCEL || process.env.NOW_REGION;
-    const uploadsDir = isVercel ? '/tmp/uploads/products' : path.join(__dirname, '../uploads/products');
-    const filePath = path.join(uploadsDir, req.params.filename);
-
-    // Check if file exists
-    if (!fs.existsSync(filePath)) {
-      return res.status(404).json({ message: 'Image not found' });
-    }
-
-    // Delete file
-    fs.unlinkSync(filePath);
-
-    res.status(200).json({
-      success: true,
-      message: 'Image deleted successfully'
-    });
-  } catch (error) {
-    console.error('Delete error:', error);
-    res.status(500).json({ message: error.message });
   }
 });
 

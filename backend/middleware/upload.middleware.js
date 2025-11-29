@@ -1,62 +1,37 @@
 /**
- * Upload Middleware for File Storage
+ * Upload Middleware - Cloudinary Storage
  * 
- * IMPORTANT NOTES FOR VERCEL:
- * - Vercel serverless functions have read-only filesystem
- * - Only /tmp directory is writable (max 512MB)
- * - Files in /tmp are deleted after function execution
- * - For production, use cloud storage: Cloudinary, AWS S3, or Vercel Blob
+ * Uses Cloudinary for reliable cloud storage across all environments.
+ * Images are automatically optimized and served via CDN.
  * 
- * Current Setup:
- * - Local development: ./uploads/products
- * - Vercel: /tmp/uploads/products (temporary, gets cleared)
- * 
- * Recommended for Production:
- * - Use Cloudinary (free tier: 25GB storage, 25GB bandwidth)
- * - Or AWS S3 / Google Cloud Storage
- * - Or Vercel Blob Storage
+ * Environment Variables Required:
+ * - CLOUDINARY_CLOUD_NAME
+ * - CLOUDINARY_API_KEY
+ * - CLOUDINARY_API_SECRET
  */
 
 const multer = require('multer');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const cloudinary = require('../config/cloudinary.config');
 const path = require('path');
-const fs = require('fs');
 
-// Determine upload directory based on environment
-// Vercel uses read-only filesystem, only /tmp is writable
-const isVercel = process.env.VERCEL || process.env.NOW_REGION;
-const uploadDir = isVercel 
-  ? '/tmp/uploads/products' 
-  : path.join(__dirname, '../uploads/products');
-
-// Create uploads directory if it doesn't exist
-// Only try to create if not in Vercel (Vercel /tmp is always writable)
-try {
-  if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true });
-    console.log(`📁 Upload directory created: ${uploadDir}`);
-  }
-} catch (error) {
-  console.warn('⚠️  Could not create upload directory:', error.message);
-  console.warn('   File uploads may not work on this platform');
-  console.warn('   Consider using cloud storage (Cloudinary, AWS S3, etc.)');
-}
-
-// Configure storage
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    // For Vercel, ensure /tmp/uploads/products exists on each request
-    if (isVercel && !fs.existsSync(uploadDir)) {
-      try {
-        fs.mkdirSync(uploadDir, { recursive: true });
-      } catch (error) {
-        console.error('Failed to create upload directory:', error);
-      }
+// Configure Cloudinary storage
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'lafactoria/products', // Folder in Cloudinary
+    allowed_formats: ['jpg', 'jpeg', 'png', 'webp'],
+    transformation: [
+      { width: 1500, height: 1500, crop: 'limit' }, // Max dimensions
+      { quality: 'auto' }, // Automatic quality optimization
+      { fetch_format: 'auto' } // Automatic format optimization (WebP for modern browsers)
+    ],
+    public_id: (req, file) => {
+      // Generate unique filename
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+      const ext = path.extname(file.originalname).toLowerCase();
+      return `product-${uniqueSuffix}${ext}`;
     }
-    cb(null, uploadDir);
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, uniqueSuffix + path.extname(file.originalname));
   }
 });
 
@@ -73,13 +48,15 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-// Configure multer
+// Configure multer with Cloudinary storage
 const upload = multer({
   storage: storage,
   limits: {
-    fileSize: 5 * 1024 * 1024 // 5MB limit
+    fileSize: 10 * 1024 * 1024 // 10MB limit (Cloudinary can handle larger files)
   },
   fileFilter: fileFilter
 });
+
+console.log('☁️  Upload middleware configured with Cloudinary storage');
 
 module.exports = upload;
