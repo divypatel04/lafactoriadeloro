@@ -218,43 +218,80 @@
 }
 
 /* Responsive */
+@media (max-width: 1200px) {
+  .main-nav {
+    gap: 25px;
+  }
+  
+  .main-nav a {
+    font-size: 14px;
+  }
+  
+  .search-input {
+    width: 180px;
+  }
+}
+
 @media (max-width: 1024px) {
   .main-nav {
     gap: 20px;
   }
   
+  .main-nav a {
+    font-size: 13px;
+  }
+  
   .search-input {
     width: 150px;
+  }
+  
+  .header-actions {
+    gap: 15px;
   }
 }
 
 @media (max-width: 768px) {
   .topbar {
-    font-size: 12px;
+    font-size: 11px;
     padding: 8px 0;
   }
   
-  .topbar-left {
+  .topbar-left span {
+    font-size: 10px;
+  }
+  
+  .topbar-right {
+    gap: 8px;
+    font-size: 11px;
+  }
+  
+  .topbar a {
     font-size: 11px;
   }
   
   .main-header {
-    padding: 15px 0;
+    padding: 12px 0;
+  }
+  
+  .header-content {
+    gap: 15px;
   }
   
   .logo h1 {
-    font-size: 20px;
+    font-size: 18px;
   }
   
   .mobile-menu-toggle {
     display: flex;
+    order: 3;
   }
   
   .main-nav {
     position: fixed;
     top: 0;
-    right: -300px;
-    width: 300px;
+    right: -100%;
+    width: 280px;
+    max-width: 85vw;
     height: 100vh;
     background-color: var(--body-bg);
     flex-direction: column;
@@ -263,6 +300,7 @@
     box-shadow: -5px 0 15px rgba(0,0,0,0.1);
     transition: right 0.3s ease;
     z-index: 999;
+    overflow-y: auto;
   }
   
   .main-nav.active {
@@ -271,8 +309,9 @@
   
   .main-nav a {
     width: 100%;
-    padding: 12px 0;
+    padding: 14px 0;
     border-bottom: 1px solid var(--border-color);
+    font-size: 15px;
   }
   
   .search-form {
@@ -280,6 +319,50 @@
   }
   
   .header-actions {
-    gap: 10px;
+    gap: 12px;
+  }
+  
+  .header-actions .icon-btn {
+    padding: 8px;
+  }
+  
+  .badge {
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+    top: -6px;
+    right: -6px;
+  }
+}
+
+@media (max-width: 576px) {
+  .topbar-left span::before {
+    display: none;
+  }
+  
+  .topbar-left span {
+    font-size: 9px;
+  }
+  
+  .topbar-right {
+    gap: 6px;
+  }
+  
+  .logo h1 {
+    font-size: 16px;
+  }
+  
+  .header-actions {
+    gap: 8px;
+  }
+  
+  .header-actions .icon-btn {
+    padding: 6px;
+    font-size: 18px;
+  }
+  
+  .main-nav {
+    width: 260px;
+    padding: 70px 20px 20px;
   }
 }

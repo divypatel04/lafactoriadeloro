@@ -243,29 +243,99 @@
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .dashboard-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .dashboard-quick-links {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+}
+
 @media (max-width: 768px) {
   .customer-dashboard {
-    padding: 20px 15px;
+    padding: 25px 15px;
   }
 
   .dashboard-header h1 {
     font-size: 24px;
   }
+  
+  .dashboard-header p {
+    font-size: 14px;
+  }
 
   .dashboard-stats {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .stat-card {
+    padding: 18px;
+  }
+  
+  .stat-value {
+    font-size: 26px;
+  }
+  
+  .stat-label {
+    font-size: 13px;
   }
 
   .dashboard-quick-links {
     grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  .quick-link-card {
+    padding: 18px 15px;
+  }
+  
+  .quick-link-icon {
+    font-size: 28px;
+  }
+  
+  .quick-link-card h3 {
+    font-size: 14px;
   }
 
   .orders-table {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .orders-table th,
   .orders-table td {
+    padding: 10px 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .customer-dashboard {
+    padding: 20px 12px;
+  }
+  
+  .dashboard-header h1 {
+    font-size: 20px;
+  }
+  
+  .dashboard-quick-links {
+    grid-template-columns: 1fr;
+  }
+  
+  .orders-table {
+    font-size: 12px;
+  }
+  
+  .orders-table th,
+  .orders-table td {
     padding: 8px 6px;
+  }
+  
+  .btn-view {
+    padding: 6px 12px;
+    font-size: 12px;
   }
 }
