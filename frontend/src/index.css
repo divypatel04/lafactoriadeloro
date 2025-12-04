@@ -502,13 +502,34 @@ select.form-control {
 .pb-80 { padding-bottom: 80px; }
 
 /* Responsive */
+@media (max-width: 1200px) {
+  h1 { font-size: 38px; }
+  h2 { font-size: 32px; }
+  h3 { font-size: 26px; }
+}
+
 @media (max-width: 1024px) {
   .container {
     padding: 0 20px;
   }
   
+  h1 { font-size: 36px; }
+  h2 { font-size: 30px; }
+  h3 { font-size: 24px; }
+  h4 { font-size: 20px; }
+  
   .col-md-6 { flex: 0 0 50%; max-width: 50%; }
   .col-md-12 { flex: 0 0 100%; max-width: 100%; }
+  
+  .btn {
+    padding: 11px 25px;
+    font-size: 13px;
+  }
+  
+  .btn-lg {
+    padding: 14px 35px;
+    font-size: 15px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -516,10 +537,12 @@ select.form-control {
     --font-size-base: 14px;
   }
   
-  h1 { font-size: 32px; }
-  h2 { font-size: 28px; }
-  h3 { font-size: 24px; }
-  h4 { font-size: 20px; }
+  h1 { font-size: 28px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 20px; }
+  h4 { font-size: 18px; }
+  h5 { font-size: 16px; }
+  h6 { font-size: 15px; }
   
   .col,
   .col-2,
@@ -538,5 +561,109 @@ select.form-control {
   
   .col {
     padding: 0 10px;
+  }
+  
+  .btn {
+    padding: 12px 24px;
+    font-size: 13px;
+  }
+  
+  .btn-lg {
+    padding: 14px 30px;
+    font-size: 14px;
+  }
+  
+  .btn-sm {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  h1 { font-size: 24px; }
+  h2 { font-size: 20px; }
+  h3 { font-size: 18px; }
+  h4 { font-size: 16px; }
+  h5 { font-size: 15px; }
+  h6 { font-size: 14px; }
+  
+  .btn {
+    padding: 12px 20px;
+    font-size: 12px;
+  }
+  
+  .btn-block {
+    width: 100%;
+  }
+  
+  .form-control {
+    font-size: 14px;
+  }
+}
+
+/* Mobile-Only Utilities */
+.mobile-only {
+  display: none !important;
+}
+
+.desktop-only {
+  display: block !important;
+}
+
+@media (max-width: 768px) {
+  .mobile-only {
+    display: block !important;
+  }
+  
+  .desktop-only {
+    display: none !important;
+  }
+  
+  /* Hide elements on mobile */
+  .hide-mobile {
+    display: none !important;
+  }
+  
+  /* Full width on mobile */
+  .mobile-full-width {
+    width: 100% !important;
+  }
+  
+  /* Center text on mobile */
+  .mobile-text-center {
+    text-align: center !important;
+  }
+  
+  /* Stack on mobile */
+  .mobile-stack > * {
+    width: 100% !important;
+    margin-bottom: 15px;
+  }
+  
+  .mobile-stack > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  /* Increase touch target sizes */
+  button,
+  .btn,
+  a.btn,
+  input[type="button"],
+  input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better spacing for touch */
+  .form-control {
+    min-height: 44px;
+  }
+  
+  /* Remove hover effects on touch devices */
+  *:hover {
+    -webkit-tap-highlight-color: transparent;
   }
 }
