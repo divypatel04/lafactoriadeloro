@@ -711,29 +711,40 @@
 }
 
 @media (max-width: 768px) {
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+  .page-header {
+    padding: 30px 0;
+  }
+  
+  .page-header h1 {
+    font-size: 26px;
+  }
+  
+  .breadcrumb {
+    font-size: 13px;
   }
 
-  .page-header h1 {
-    font-size: 28px;
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
 
   .shop-toolbar {
     flex-direction: column;
     align-items: stretch;
-    padding: 15px;
+    padding: 14px;
+    margin-bottom: 20px;
   }
 
   .toolbar-left {
     width: 100%;
     flex-direction: column;
+    gap: 10px;
   }
 
   .btn-filters {
     width: 100%;
     justify-content: center;
+    padding: 12px 20px;
   }
 
   .btn-clear-all {
@@ -742,11 +753,26 @@
 
   .products-count {
     text-align: center;
+    font-size: 13px;
   }
 
   .filter-top-row {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+  
+  .filter-group {
+    padding: 15px;
+  }
+  
+  .filter-group h4 {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+  
+  .filter-checkbox span {
+    padding: 7px 14px;
+    font-size: 12px;
   }
 
   .modal-filters-grid {
@@ -768,7 +794,7 @@
   }
 
   .modal-body {
-    padding: 20px;
+    padding: 18px;
   }
 
   .modal-footer {
@@ -790,10 +816,12 @@
   .btn-secondary,
   .btn-primary {
     width: 100%;
+    padding: 12px 24px;
   }
 
   .pagination {
     flex-wrap: wrap;
+    gap: 8px;
   }
 
   .page-numbers {
@@ -802,8 +830,51 @@
   }
 }
 
+@media (max-width: 576px) {
+  .page-header {
+    padding: 24px 0;
+  }
+  
+  .page-header h1 {
+    font-size: 22px;
+  }
+  
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .shop-toolbar {
+    padding: 12px;
+  }
+  
+  .btn-filters {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+  
+  .filter-group {
+    padding: 12px;
+  }
+  
+  .filter-checkbox span {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+  
+  .filter-range input {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}
+
 @media (max-width: 480px) {
+  .page-header h1 {
+    font-size: 20px;
+  }
+  
   .products-grid {
     grid-template-columns: 1fr;
+    gap: 15px;
   }
 }

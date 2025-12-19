@@ -80,4 +80,30 @@
     padding: 10px 14px;
     font-size: 13px;
   }
+  
+  .ring-size-label {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+  
+  .ring-size-options {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 576px) {
+  .ring-size-option {
+    min-width: 44px;
+    padding: 9px 12px;
+    font-size: 12px;
+    border-radius: 6px;
+  }
+  
+  .ring-size-option.selected::after {
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+    top: -5px;
+    right: -5px;
+  }
 }

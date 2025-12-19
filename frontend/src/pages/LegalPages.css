@@ -559,7 +559,56 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .legal-container {
+    padding: 35px 30px;
+  }
+  
+  .legal-container h1 {
+    font-size: 32px;
+  }
+}
+
 @media (max-width: 768px) {
+  .legal-page {
+    padding: 30px 15px;
+  }
+  
+  .legal-container {
+    padding: 25px 20px;
+  }
+  
+  .legal-container h1 {
+    font-size: 26px;
+  }
+  
+  .legal-container h2 {
+    font-size: 20px;
+  }
+  
+  .legal-container h3 {
+    font-size: 16px;
+  }
+  
+  .legal-container p,
+  .legal-container li {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  
+  .gdpr-notice,
+  .ccpa-notice {
+    padding: 20px;
+  }
+  
+  .policy-highlight {
+    padding: 24px 20px;
+  }
+  
+  .policy-highlight p:first-child {
+    font-size: 20px;
+  }
+
   .offerings,
   .why-choose-grid {
     grid-template-columns: 1fr;
@@ -586,5 +635,66 @@
 
   .country-list {
     grid-template-columns: 1fr;
+  }
+  
+  .cookie-content {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .cookie-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+  
+  .btn-accept,
+  .btn-reject,
+  .btn-customize {
+    width: 100%;
+  }
+  
+  .faq-cta {
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .legal-page {
+    padding: 20px 10px;
+  }
+  
+  .legal-container {
+    padding: 20px 15px;
+  }
+  
+  .legal-container h1 {
+    font-size: 22px;
+  }
+  
+  .legal-container h2 {
+    font-size: 18px;
+  }
+  
+  .last-updated {
+    font-size: 13px;
+  }
+  
+  .contact-info li {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .acknowledgment {
+    padding: 15px;
+  }
+  
+  .faq-question {
+    padding: 14px;
+    font-size: 15px;
+  }
+  
+  .faq-answer {
+    padding: 0 14px 14px;
   }
 }

@@ -418,23 +418,66 @@
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .admin-sliders {
+    padding: 20px 15px;
+  }
+  
+  .admin-sliders-header h1 {
+    font-size: 26px;
+  }
+  
+  .slider-thumbnail {
+    width: 100px;
+    height: 50px;
+  }
+}
+
 @media (max-width: 768px) {
   .admin-sliders {
-    padding: 20px;
+    padding: 15px 10px;
   }
 
   .admin-sliders-header {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+    align-items: stretch;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .admin-sliders-header h1 {
+    font-size: 22px;
+  }
+  
+  .btn-add-slider {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
   }
 
   .sliders-table {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .sliders-table table {
-    min-width: 800px;
+    min-width: 700px;
+  }
+  
+  .sliders-table th,
+  .sliders-table td {
+    padding: 12px 10px;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .btn-edit,
+  .btn-delete {
+    padding: 8px 10px;
+    font-size: 12px;
   }
 
   .form-row {
@@ -443,5 +486,69 @@
 
   .modal-content {
     max-width: 95%;
+    margin: 10px;
+  }
+  
+  .modal-header {
+    padding: 18px;
+  }
+  
+  .modal-header h2 {
+    font-size: 20px;
+  }
+  
+  .slider-form {
+    padding: 18px;
+  }
+  
+  .modal-footer {
+    flex-direction: column-reverse;
+    padding: 18px;
+    gap: 10px;
+  }
+  
+  .btn-cancel,
+  .btn-save,
+  .btn-delete-confirm {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .image-preview {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .admin-sliders {
+    padding: 12px 8px;
+  }
+  
+  .admin-sliders-header h1 {
+    font-size: 20px;
+  }
+  
+  .slider-thumbnail {
+    width: 80px;
+    height: 40px;
+  }
+  
+  .sliders-table th,
+  .sliders-table td {
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+  
+  .order-number {
+    font-size: 14px;
+  }
+  
+  .status-badge {
+    font-size: 10px;
+    padding: 3px 10px;
+  }
+  
+  .slider-form {
+    padding: 14px;
   }
 }

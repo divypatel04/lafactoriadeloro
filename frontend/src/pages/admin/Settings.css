@@ -223,55 +223,129 @@
 
 @media (max-width: 768px) {
   .settings-page {
-    padding: 15px;
+    padding: 15px 10px;
   }
 
   .settings-header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 15px;
+    margin-bottom: 20px;
   }
 
   .settings-header h1 {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .btn-save-settings {
     width: 100%;
+    padding: 14px 20px;
   }
 
   .settings-container {
     grid-template-columns: 1fr;
+    gap: 15px;
   }
 
   .settings-tabs {
     position: static;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    padding: 15px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 12px;
   }
 
   .tab-button {
     flex-direction: column;
     text-align: center;
-    padding: 12px 8px;
+    padding: 10px 6px;
+    gap: 5px;
   }
 
   .tab-icon {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .tab-label {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .settings-content {
-    padding: 20px;
+    padding: 18px;
+  }
+  
+  .settings-section h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .settings-section h3 {
+    font-size: 16px;
+    margin: 20px 0 15px;
   }
 
   .form-row {
     grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .form-group {
+    margin-bottom: 18px;
+  }
+  
+  .settings-footer .btn-save-settings {
+    padding: 14px 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .settings-page {
+    padding: 10px 8px;
+  }
+  
+  .settings-header h1 {
+    font-size: 20px;
+  }
+  
+  .settings-tabs {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    padding: 10px;
+  }
+  
+  .tab-button {
+    padding: 8px 4px;
+  }
+  
+  .tab-icon {
+    font-size: 18px;
+  }
+  
+  .tab-label {
+    font-size: 10px;
+  }
+  
+  .settings-content {
+    padding: 14px 12px;
+  }
+  
+  .settings-section h2 {
+    font-size: 18px;
+  }
+  
+  .form-group label {
+    font-size: 13px;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  
+  .checkbox-label {
+    padding: 8px;
   }
 }
 

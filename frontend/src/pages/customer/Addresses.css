@@ -267,43 +267,131 @@
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .addresses-page {
+    padding: 30px 15px;
+  }
+  
+  .addresses-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+  }
+}
+
 @media (max-width: 768px) {
   .addresses-page {
-    padding: 20px 15px;
+    padding: 20px 12px;
   }
 
   .addresses-header {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+    align-items: stretch;
+    gap: 15px;
+    margin-bottom: 20px;
   }
 
   .addresses-header h1 {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .btn-add-address {
     width: 100%;
+    text-align: center;
+    padding: 14px 20px;
   }
 
   .address-form-card {
-    padding: 20px;
+    padding: 18px;
+  }
+  
+  .address-form-card h2 {
+    font-size: 18px;
+    margin-bottom: 18px;
   }
 
   .form-row {
     grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .form-group label {
+    font-size: 13px;
+  }
+  
+  .form-group input {
+    padding: 11px 14px;
   }
 
   .form-actions {
     flex-direction: column;
+    gap: 10px;
   }
 
   .btn-save,
   .btn-cancel {
     width: 100%;
+    padding: 14px 24px;
   }
 
   .addresses-grid {
     grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .address-card {
+    padding: 18px;
+  }
+  
+  .address-info h3 {
+    font-size: 16px;
+  }
+  
+  .address-info p {
+    font-size: 13px;
+  }
+  
+  .address-actions {
+    gap: 10px;
+  }
+  
+  .btn-edit,
+  .btn-delete {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  
+  .empty-addresses {
+    padding: 50px 15px;
+  }
+  
+  .empty-icon {
+    font-size: 50px;
+  }
+  
+  .empty-addresses p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .addresses-page {
+    padding: 15px 10px;
+  }
+  
+  .addresses-header h1 {
+    font-size: 20px;
+  }
+  
+  .address-form-card {
+    padding: 15px;
+  }
+  
+  .address-card {
+    padding: 15px;
+  }
+  
+  .default-badge {
+    padding: 3px 10px;
+    font-size: 11px;
   }
 }

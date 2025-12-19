@@ -350,24 +350,69 @@ textarea.form-control {
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .admin-newsletter-page {
+    padding: 20px 15px;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .search-box {
+    min-width: 250px;
+  }
+}
+
 @media (max-width: 768px) {
+  .admin-newsletter-page {
+    padding: 15px 10px;
+  }
+
   .admin-header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .admin-header h1 {
+    font-size: 22px;
   }
 
   .admin-actions {
     width: 100%;
     flex-direction: column;
+    gap: 10px;
   }
 
   .admin-actions button {
     width: 100%;
+    padding: 14px 20px;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .stat-card {
+    padding: 18px;
+  }
+  
+  .stat-icon {
+    font-size: 32px;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .stat-content h3 {
+    font-size: 26px;
   }
 
   .filters-section {
     flex-direction: column;
+    gap: 12px;
   }
 
   .search-box {
@@ -377,18 +422,90 @@ textarea.form-control {
   .filter-buttons {
     width: 100%;
     overflow-x: auto;
+    flex-wrap: wrap;
+  }
+  
+  .filter-btn {
+    flex: 1;
+    min-width: fit-content;
+    padding: 10px 16px;
   }
 
   .table-container {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .subscribers-table {
     min-width: 600px;
   }
+  
+  .subscribers-table th,
+  .subscribers-table td {
+    padding: 12px 10px;
+  }
 
   .modal-content {
     max-width: 100%;
     margin: 10px;
+  }
+  
+  .modal-header {
+    padding: 18px;
+  }
+  
+  .modal-header h2 {
+    font-size: 20px;
+  }
+  
+  .modal-content form {
+    padding: 18px;
+  }
+  
+  .modal-actions {
+    flex-direction: column-reverse;
+    gap: 10px;
+    padding: 15px 18px;
+  }
+  
+  .modal-actions button {
+    width: 100%;
+  }
+  
+  .pagination {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .admin-newsletter-page {
+    padding: 12px 8px;
+  }
+  
+  .admin-header h1 {
+    font-size: 20px;
+  }
+  
+  .stat-card {
+    padding: 15px;
+  }
+  
+  .stat-content h3 {
+    font-size: 22px;
+  }
+  
+  .stat-content p {
+    font-size: 13px;
+  }
+  
+  .filter-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  
+  .status-badge {
+    font-size: 11px;
+    padding: 4px 10px;
   }
 }

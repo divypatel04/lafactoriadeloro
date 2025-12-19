@@ -590,40 +590,125 @@
 @media (max-width: 1024px) {
   .orders-stats {
     grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .admin-orders {
+    padding: 30px 15px;
   }
 }
 
 @media (max-width: 768px) {
   .admin-orders {
-    padding: 20px 15px;
+    padding: 20px 12px;
   }
 
   .orders-container h1 {
-    font-size: 24px;
+    font-size: 22px;
+    margin-bottom: 20px;
   }
 
   .orders-stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  
+  .stat-card {
+    padding: 20px 15px;
+    min-height: 100px;
+  }
+  
+  .stat-card h3 {
+    font-size: 26px;
+  }
+  
+  .stat-card p {
+    font-size: 12px;
+  }
+  
+  .orders-filters {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .filter-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+  
+  .orders-table-wrapper {
+    padding: 12px;
+    overflow-x: auto;
+    margin: 0 -12px;
+    width: calc(100% + 24px);
   }
 
   .orders-table {
     font-size: 12px;
+    min-width: 800px;
   }
 
   .orders-table th,
   .orders-table td {
-    padding: 8px 6px;
+    padding: 10px 8px;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .btn-view,
+  .btn-update-status,
+  .btn-tracking {
+    width: 100%;
+    text-align: center;
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .admin-orders {
+    padding: 15px 10px;
+  }
+  
+  .orders-container h1 {
+    font-size: 20px;
+  }
+  
+  .orders-stats {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .stat-card {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-height: auto;
+    padding: 16px;
+  }
+  
+  .stat-card h3 {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .stat-card p {
+    margin: 0;
+  }
+  
+  .filter-btn {
+    padding: 6px 12px;
+    font-size: 11px;
+    border-radius: 20px;
   }
 }
 
 @media (max-width: 480px) {
-  .orders-stats {
-    grid-template-columns: 1fr;
-  }
-
   .modal-content {
-    padding: 25px;
+    padding: 20px 15px;
+    max-width: 95%;
   }
 
   .modal-large {
@@ -645,6 +730,6 @@
   }
 
   .details-section {
-    padding: 16px;
+    padding: 15px;
   }
 }

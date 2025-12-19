@@ -293,22 +293,52 @@
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .orders-page {
+    padding: 30px 15px;
+  }
+  
+  .orders-header h1 {
+    font-size: 28px;
+  }
+  
+  .order-card {
+    padding: 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .orders-page {
-    padding: 20px 15px;
+    padding: 20px 12px;
+  }
+
+  .orders-header {
+    margin-bottom: 20px;
   }
 
   .orders-header h1 {
-    font-size: 24px;
+    font-size: 22px;
+  }
+  
+  .orders-header p {
+    font-size: 14px;
   }
 
   .orders-filters {
     gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
   }
 
   .filter-btn {
-    padding: 8px 16px;
-    font-size: 13px;
+    padding: 8px 14px;
+    font-size: 12px;
+    flex: 1 1 auto;
+    min-width: fit-content;
+  }
+  
+  .orders-list {
+    gap: 15px;
   }
 
   .order-card {
@@ -318,16 +348,111 @@
   .order-card-header {
     flex-direction: column;
     gap: 12px;
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+  }
+  
+  .order-info h3 {
+    font-size: 16px;
+  }
+  
+  .order-date {
+    font-size: 13px;
+  }
+  
+  .order-status {
+    padding: 5px 12px;
+    font-size: 12px;
+  }
+  
+  .order-item-preview {
+    gap: 10px;
+  }
+  
+  .order-item-preview img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .item-name {
+    font-size: 13px;
+  }
+  
+  .item-variant,
+  .item-quantity {
+    font-size: 11px;
   }
 
   .order-card-footer {
     flex-direction: column;
-    gap: 16px;
+    gap: 15px;
     align-items: stretch;
+  }
+  
+  .order-total {
+    justify-content: space-between;
+  }
+  
+  .total-amount {
+    font-size: 18px;
+  }
+  
+  .order-actions {
+    flex-direction: row;
+    justify-content: stretch;
   }
 
   .btn-view-order {
-    width: 100%;
+    flex: 1;
     text-align: center;
+    padding: 12px 20px;
+  }
+  
+  .btn-download-small {
+    padding: 12px;
+  }
+  
+  .empty-orders {
+    padding: 50px 15px;
+  }
+  
+  .empty-icon {
+    font-size: 50px;
+  }
+  
+  .empty-orders p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .orders-page {
+    padding: 15px 10px;
+  }
+  
+  .orders-header h1 {
+    font-size: 20px;
+  }
+  
+  .filter-btn {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+  
+  .order-card {
+    padding: 14px 12px;
+  }
+  
+  .order-info h3 {
+    font-size: 14px;
+  }
+  
+  .order-item-preview img {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .total-amount {
+    font-size: 16px;
   }
 }

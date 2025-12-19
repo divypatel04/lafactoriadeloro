@@ -206,20 +206,114 @@
   color: #666;
 }
 
+@media (max-width: 1024px) {
+  .success-card {
+    padding: 50px 35px;
+  }
+}
+
 @media (max-width: 768px) {
   .success-card {
     padding: 40px 20px;
   }
 
+  .success-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 40px;
+    margin-bottom: 25px;
+  }
+
   .success-card h1 {
     font-size: 24px;
+  }
+  
+  .success-message {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+  
+  .order-summary {
+    padding: 20px;
+    margin: 30px 0;
+  }
+  
+  .order-summary h2 {
+    font-size: 20px;
+  }
+  
+  .info-row {
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
   }
 
   .success-actions {
     flex-direction: column;
+    gap: 12px;
+    margin: 30px 0 20px;
   }
 
-  .success-actions .btn {
+  .success-actions .btn,
+  .btn-download {
     width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
+  }
+  
+  .order-item {
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .order-item img {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .item-details h4 {
+    font-size: 15px;
+  }
+  
+  .item-details p {
+    font-size: 13px;
+  }
+  
+  .order-notification {
+    padding: 16px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 576px) {
+  .success-card {
+    padding: 30px 15px;
+  }
+  
+  .success-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 35px;
+  }
+  
+  .success-card h1 {
+    font-size: 22px;
+  }
+  
+  .order-summary {
+    padding: 16px;
+  }
+  
+  .order-summary h2 {
+    font-size: 18px;
+  }
+  
+  .order-items h3 {
+    font-size: 16px;
+  }
+  
+  .order-item img {
+    width: 60px;
+    height: 60px;
   }
 }
