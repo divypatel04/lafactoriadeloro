@@ -78,6 +78,12 @@ const AdminSidebar = ({ isOpen, onClose }) => {
       icon: '📧',
       label: 'Email Settings',
       exact: false
+    },
+    {
+      path: '/admin/settings',
+      icon: '⚙️',
+      label: 'Settings',
+      exact: false
     }
   ];
 
