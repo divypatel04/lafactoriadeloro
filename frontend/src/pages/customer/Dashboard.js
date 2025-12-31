@@ -85,8 +85,8 @@ const Dashboard = () => {
             <p>Welcome back, {user?.firstName}!</p>
           </div>
 
-        {/* Stats Cards */}
-        <div className="dashboard-stats">
+          {/* Stats Cards */}
+          <div className="dashboard-stats">
           <div className="stat-card">
             <div className="stat-icon">📦</div>
             <div className="stat-info">
@@ -115,10 +115,9 @@ const Dashboard = () => {
               <p>Wishlist Items</p>
             </div>
           </div>
-        </div>
 
-        {/* Quick Links */}
-        <div className="dashboard-quick-links">
+          {/* Quick Links */}
+          <div className="dashboard-quick-links">
           <Link to="/account/orders" className="quick-link">
             <span className="link-icon">📦</span>
             <span className="link-text">My Orders</span>
@@ -183,6 +182,7 @@ const Dashboard = () => {
               </table>
             </div>
           )}
+        </div>
         </div>
       </div>
     </CustomerLayout>
