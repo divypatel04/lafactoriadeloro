@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { wishlistService, cartService, uploadService } from '../../services';
 import useStore from '../../store/useStore';
+import CustomerLayout from '../../components/layout/CustomerLayout';
 import './Wishlist.css';
 
 const Wishlist = () => {
@@ -67,7 +68,8 @@ const Wishlist = () => {
   }
 
   return (
-    <div className="wishlist-page">
+    <CustomerLayout>
+      <div className="wishlist-page">
       <div className="wishlist-container">
         <h1>My Wishlist</h1>
         <p className="wishlist-count">{wishlist.length} item{wishlist.length !== 1 ? 's' : ''}</p>
@@ -130,6 +132,7 @@ const Wishlist = () => {
         )}
       </div>
     </div>
+    </CustomerLayout>
   );
 };
 

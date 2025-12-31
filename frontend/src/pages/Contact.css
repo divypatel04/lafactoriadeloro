@@ -13,6 +13,13 @@
   align-items: start;
 }
 
+@media (max-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
 .contact-info h2,
 .contact-form-section h2 {
   font-size: 28px;

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useStore from '../../store/useStore';
-import './AdminSidebar.css';
+import './CustomerSidebar.css';
 
-const AdminSidebar = ({ isOpen, onClose }) => {
+const CustomerSidebar = ({ isOpen, onClose }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { logout, user } = useStore();
@@ -20,63 +20,33 @@ const AdminSidebar = ({ isOpen, onClose }) => {
 
   const menuItems = [
     {
-      path: '/admin',
+      path: '/account',
       icon: '📊',
       label: 'Dashboard',
       exact: true
     },
     {
-      path: '/admin/products',
-      icon: '💍',
-      label: 'Products',
-      exact: false
-    },
-    {
-      path: '/admin/categories',
-      icon: '📁',
-      label: 'Categories',
-      exact: false
-    },
-    {
-      path: '/admin/pricing',
-      icon: '💰',
-      label: 'Pricing Config',
-      exact: false
-    },
-    {
-      path: '/admin/sliders',
-      icon: '🖼️',
-      label: 'Sliders',
-      exact: false
-    },
-    {
-      path: '/admin/orders',
+      path: '/account/orders',
       icon: '📦',
-      label: 'Orders',
+      label: 'My Orders',
       exact: false
     },
     {
-      path: '/admin/customers',
-      icon: '👥',
-      label: 'Customers',
+      path: '/account/wishlist',
+      icon: '❤️',
+      label: 'Wishlist',
       exact: false
     },
     {
-      path: '/admin/coupons',
-      icon: '🎫',
-      label: 'Coupons',
+      path: '/account/addresses',
+      icon: '📍',
+      label: 'Addresses',
       exact: false
     },
     {
-      path: '/admin/newsletter',
-      icon: '📬',
-      label: 'Newsletter',
-      exact: false
-    },
-    {
-      path: '/admin/email-settings',
-      icon: '📧',
-      label: 'Email Settings',
+      path: '/account/profile',
+      icon: '👤',
+      label: 'Profile',
       exact: false
     }
   ];
@@ -89,9 +59,17 @@ const AdminSidebar = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className={`admin-sidebar ${isOpen ? 'mobile-open' : ''}`}>
-      <div className="sidebar-header">
-        <h2>La Factoria Admin</h2>
+    <div className={`customer-sidebar ${isOpen ? 'mobile-open' : ''}`}>
+      <div className="customer-sidebar-header">
+        <div className="customer-info">
+          <div className="customer-avatar">
+            {user?.firstName?.charAt(0)?.toUpperCase() || 'U'}
+          </div>
+          <div className="customer-details">
+            <h3>{user?.firstName} {user?.lastName}</h3>
+            <p>{user?.email}</p>
+          </div>
+        </div>
         <button 
           className="sidebar-close-btn"
           onClick={onClose}
@@ -100,7 +78,8 @@ const AdminSidebar = ({ isOpen, onClose }) => {
           ✕
         </button>
       </div>
-      <nav className="sidebar-nav">
+      
+      <nav className="customer-sidebar-nav">
         <ul>
           {menuItems.map((item) => (
             <li key={item.path} className={isActive(item) ? 'active' : ''}>
@@ -112,16 +91,15 @@ const AdminSidebar = ({ isOpen, onClose }) => {
           ))}
         </ul>
       </nav>
-      <div className="sidebar-footer">
-        {user && <p className="admin-email">{user.email}</p>}
+      
+      <div className="customer-sidebar-footer">
         <button onClick={handleLogout} className="logout-btn">
           <span className="menu-icon">🚪</span>
           <span>Logout</span>
         </button>
-        <p className="copyright">© 2024 La Factoria</p>
       </div>
     </div>
   );
 };
 
-export default AdminSidebar;
+export default CustomerSidebar;

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { orderService, uploadService } from '../../services';
 import { generateOrderReceipt } from '../../utils/pdfGenerator';
+import CustomerLayout from '../../components/layout/CustomerLayout';
 import './Orders.css';
 
 const Orders = () => {
@@ -73,10 +74,11 @@ const Orders = () => {
   }
 
   return (
-    <div className="orders-page">
-      <div className="orders-container">
-        <div className="orders-header">
-          <h1>My Orders</h1>
+    <CustomerLayout>
+      <div className="orders-page">
+        <div className="orders-container">
+          <div className="orders-header">
+            <h1>My Orders</h1>
           <p>{orders.length} total order{orders.length !== 1 ? 's' : ''}</p>
         </div>
 
@@ -205,6 +207,7 @@ const Orders = () => {
         )}
       </div>
     </div>
+    </CustomerLayout>
   );
 };
 

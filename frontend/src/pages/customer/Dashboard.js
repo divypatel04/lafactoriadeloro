@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useStore from '../../store/useStore';
 import { orderService, wishlistService } from '../../services';
+import CustomerLayout from '../../components/layout/CustomerLayout';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -76,12 +77,13 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="customer-dashboard">
-      <div className="dashboard-container">
-        <div className="dashboard-header">
-          <h1>My Account</h1>
-          <p>Welcome back, {user?.firstName}!</p>
-        </div>
+    <CustomerLayout>
+      <div className="customer-dashboard">
+        <div className="dashboard-container">
+          <div className="dashboard-header">
+            <h1>My Account</h1>
+            <p>Welcome back, {user?.firstName}!</p>
+          </div>
 
         {/* Stats Cards */}
         <div className="dashboard-stats">
@@ -183,7 +185,7 @@ const Dashboard = () => {
           )}
         </div>
       </div>
-    </div>
+    </CustomerLayout>
   );
 };
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { userService } from '../../services';
 import useStore from '../../store/useStore';
+import CustomerLayout from '../../components/layout/CustomerLayout';
 import './Addresses.css';
 
 const Addresses = () => {
@@ -105,7 +106,8 @@ const Addresses = () => {
   };
 
   return (
-    <div className="addresses-page">
+    <CustomerLayout>
+      <div className="addresses-page">
       <div className="addresses-container">
         <div className="addresses-header">
           <h1>My Addresses</h1>
@@ -278,6 +280,7 @@ const Addresses = () => {
         )}
       </div>
     </div>
+    </CustomerLayout>
   );
 };
 

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import AdminSidebar from './AdminSidebar';
-import './AdminLayout.css';
+import CustomerSidebar from './CustomerSidebar';
+import './CustomerLayout.css';
 
-const AdminLayout = ({ children }) => {
+const CustomerLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -14,29 +14,29 @@ const AdminLayout = ({ children }) => {
   };
 
   return (
-    <div className="admin-layout">
-      <AdminSidebar isOpen={sidebarOpen} onClose={closeSidebar} />
+    <div className="customer-layout">
+      <CustomerSidebar isOpen={sidebarOpen} onClose={closeSidebar} />
       
       {/* Mobile overlay */}
       <div 
-        className={`admin-overlay ${sidebarOpen ? 'active' : ''}`}
+        className={`customer-overlay ${sidebarOpen ? 'active' : ''}`}
         onClick={closeSidebar}
       ></div>
       
-      <div className="admin-content">
+      <div className="customer-content">
         {/* Mobile header */}
-        <div className="admin-mobile-header">
+        <div className="customer-mobile-header">
           <button 
-            className="admin-mobile-toggle" 
+            className="customer-mobile-toggle" 
             onClick={toggleSidebar}
             aria-label="Toggle sidebar"
           >
             ☰
           </button>
-          <h1 className="admin-mobile-title">Admin Dashboard</h1>
+          <h1 className="customer-mobile-title">My Account</h1>
         </div>
         
-        <div className="admin-content-wrapper">
+        <div className="customer-content-wrapper">
           {children}
         </div>
       </div>
@@ -44,4 +44,4 @@ const AdminLayout = ({ children }) => {
   );
 };
 
-export default AdminLayout;
+export default CustomerLayout;

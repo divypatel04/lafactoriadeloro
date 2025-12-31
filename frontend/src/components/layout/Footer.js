@@ -1,13 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { newsletterService } from '../../services';
+import { newsletterService, settingsService } from '../../services';
 import './Footer.css';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
+  const [contactInfo, setContactInfo] = useState({
+    email: 'samitom11jewelry@gmail.com',
+    phone: '+1 (646)-884-1771',
+    address: '7021 Washington SQ. South New York, NY 10012'
+  });
+
+  useEffect(() => {
+    loadContactInfo();
+  }, []);
+
+  const loadContactInfo = async () => {
+    try {
+      const response = await settingsService.getSettings();
+      if (response.success && response.data) {
+        const { contactEmail, contactPhone, address } = response.data;
+        setContactInfo({
+          email: contactEmail || 'samitom11jewelry@gmail.com',
+          phone: contactPhone || '+1 (646)-884-1771',
+          address: address ? 
+            `${address.street || ''} ${address.city || ''}, ${address.state || ''} ${address.zipCode || ''}`.trim() || 
+            '7021 Washington SQ. South New York, NY 10012' 
+            : '7021 Washington SQ. South New York, NY 10012'
+        });
+      }
+    } catch (error) {
+      console.error('Failed to load contact info:', error);
+      // Keep default values if fetch fails
+    }
+  };
 
   const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
@@ -85,9 +114,9 @@ const Footer = () => {
                 </button>
               </form>
               <div className="contact-info">
-                <p><strong>Email:</strong> samitom11jewelry@gmail.com</p>
-                <p><strong>Phone:</strong> +1 (646)-884-1771</p>
-                <p><strong>Address:</strong> 7021 Washington SQ. South New York, NY 10012</p>
+                <p><strong>Email:</strong> {contactInfo.email}</p>
+                <p><strong>Phone:</strong> {contactInfo.phone}</p>
+                <p><strong>Address:</strong> {contactInfo.address}</p>
               </div>
             </div>
           </div>

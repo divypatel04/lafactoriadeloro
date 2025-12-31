@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import useStore from '../../store/useStore';
 import { authService, userService } from '../../services';
+import CustomerLayout from '../../components/layout/CustomerLayout';
 import './Profile.css';
 
 const Profile = () => {
@@ -104,7 +105,8 @@ const Profile = () => {
   };
 
   return (
-    <div className="profile-page">
+    <CustomerLayout>
+      <div className="profile-page">
       <div className="profile-container">
         <h1>My Profile</h1>
 
@@ -207,6 +209,7 @@ const Profile = () => {
         </div>
       </div>
     </div>
+    </CustomerLayout>
   );
 };
 

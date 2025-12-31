@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import api from '../services/api';
+import { settingsService } from '../services';
 import './Contact.css';
 
 export default function Contact() {
@@ -13,6 +14,60 @@ export default function Contact() {
   });
 
   const [sending, setSending] = useState(false);
+  const [contactInfo, setContactInfo] = useState({
+    email: 'samitom11jewelry@gmail.com',
+    phone: '+1 (646)-884-1771',
+    address: '7021 Washington SQ. South New York, NY 10012',
+    businessHours: 'Monday - Friday: 9:00 AM - 6:00 PM<br />Saturday: 10:00 AM - 4:00 PM<br />Sunday: Closed'
+  });
+
+  useEffect(() => {
+    loadContactInfo();
+  }, []);
+
+  const loadContactInfo = async () => {
+    try {
+      const response = await settingsService.getSettings();
+      if (response.success && response.data) {
+        const { contactEmail, contactPhone, address, businessHours } = response.data;
+        
+        let addressString = '7021 Washington SQ. South New York, NY 10012';
+        if (address && address.street) {
+          addressString = `${address.street || ''}<br />${address.city || ''}, ${address.state || ''} ${address.zipCode || ''}`.trim();
+        }
+
+        let hoursString = 'Monday - Friday: 9:00 AM - 6:00 PM<br />Saturday: 10:00 AM - 4:00 PM<br />Sunday: Closed';
+        if (businessHours) {
+          // Format business hours from settings
+          const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+          const hoursArray = [];
+          days.forEach(day => {
+            if (businessHours[day]) {
+              const dayData = businessHours[day];
+              const dayName = day.charAt(0).toUpperCase() + day.slice(1);
+              if (dayData.closed) {
+                hoursArray.push(`${dayName}: Closed`);
+              } else if (dayData.open && dayData.close) {
+                hoursArray.push(`${dayName}: ${dayData.open} - ${dayData.close}`);
+              }
+            }
+          });
+          if (hoursArray.length > 0) {
+            hoursString = hoursArray.join('<br />');
+          }
+        }
+
+        setContactInfo({
+          email: contactEmail || 'samitom11jewelry@gmail.com',
+          phone: contactPhone || '+1 (646)-884-1771',
+          address: addressString,
+          businessHours: hoursString
+        });
+      }
+    } catch (error) {
+      console.error('Failed to load contact info:', error);
+    }
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -75,7 +130,7 @@ export default function Contact() {
                   <div className="contact-icon">📍</div>
                   <div>
                     <h3>Visit Us</h3>
-                    <p>7021 Washington SQ.<br />South New York, NY 10012</p>
+                    <p dangerouslySetInnerHTML={{ __html: contactInfo.address }}></p>
                   </div>
                 </div>
 
@@ -83,7 +138,7 @@ export default function Contact() {
                   <div className="contact-icon">📞</div>
                   <div>
                     <h3>Call Us</h3>
-                    <p>+1 (646)-884-1771<br />Mon-Fri: 9am - 8pm EST</p>
+                    <p>{contactInfo.phone}<br />Mon-Fri: 9am - 8pm EST</p>
                   </div>
                 </div>
 
@@ -91,7 +146,7 @@ export default function Contact() {
                   <div className="contact-icon">✉️</div>
                   <div>
                     <h3>Email Us</h3>
-                    <p>samitom11jewelry@gmail.com</p>
+                    <p>{contactInfo.email}</p>
                   </div>
                 </div>
 
@@ -99,9 +154,7 @@ export default function Contact() {
                   <div className="contact-icon">🕒</div>
                   <div>
                     <h3>Business Hours</h3>
-                    <p>Monday - Friday: 9:00 AM - 6:00 PM<br />
-                    Saturday: 10:00 AM - 4:00 PM<br />
-                    Sunday: Closed</p>
+                    <p dangerouslySetInnerHTML={{ __html: contactInfo.businessHours }}></p>
                   </div>
                 </div>
               </div>

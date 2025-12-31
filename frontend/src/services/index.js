@@ -331,3 +331,4 @@ export { default as uploadService } from './upload.service';
 export { default as reviewService } from './reviewService';
 export { default as couponService } from './couponService';
 export { default as newsletterService } from './newsletter.service';
+export { default as settingsService } from './settings.service';

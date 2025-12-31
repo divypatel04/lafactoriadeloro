@@ -204,7 +204,7 @@ export const generateOrderReceipt = (order) => {
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(...lightGray);
   doc.text('Thank you for your purchase!', 105, pageHeight - 20, { align: 'center' });
-  doc.text('For questions about your order, please contact us at samitom11jewelry@gmail.com', 105, pageHeight - 15, { align: 'center' });
+  doc.text('For questions about your order, please contact us via our website', 105, pageHeight - 15, { align: 'center' });
   doc.text(`Generated on ${new Date().toLocaleDateString('en-US')}`, 105, pageHeight - 10, { align: 'center' });
   
   // Save the PDF

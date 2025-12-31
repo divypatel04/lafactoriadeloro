@@ -1,7 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { settingsService } from '../services';
 import './LegalPages.css';
 
 const About = () => {
+  const [contactInfo, setContactInfo] = useState({
+    email: 'info@lafactoriadeloro.com',
+    phone: '(123) 456-7890'
+  });
+
+  useEffect(() => {
+    loadContactInfo();
+  }, []);
+
+  const loadContactInfo = async () => {
+    try {
+      const response = await settingsService.getSettings();
+      if (response.success && response.data) {
+        const { contactEmail, contactPhone } = response.data;
+        setContactInfo({
+          email: contactEmail || 'info@lafactoriadeloro.com',
+          phone: contactPhone || '(123) 456-7890'
+        });
+      }
+    } catch (error) {
+      console.error('Failed to load contact info:', error);
+    }
+  };
+
   return (
     <div className="legal-page about-page">
       <div className="legal-container">
@@ -123,8 +148,8 @@ const About = () => {
             perfect piece or creating something uniquely yours.
           </p>
           <div className="contact-details">
-            <p><strong>Email:</strong> info@lafactoriadeloro.com</p>
-            <p><strong>Phone:</strong> (123) 456-7890</p>
+            <p><strong>Email:</strong> {contactInfo.email}</p>
+            <p><strong>Phone:</strong> {contactInfo.phone}</p>
             <p><strong>Hours:</strong> Monday - Saturday: 10:00 AM - 7:00 PM | Sunday: 12:00 PM - 5:00 PM</p>
           </div>
         </section>

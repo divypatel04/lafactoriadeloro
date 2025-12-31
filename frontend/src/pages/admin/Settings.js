@@ -186,32 +186,68 @@ const Settings = () => {
             <div className="settings-section">
               <h2>Contact & Address Information</h2>
               
+              <div className="info-banner" style={{
+                background: '#e3f2fd',
+                border: '1px solid #2196F3',
+                borderRadius: '8px',
+                padding: '16px',
+                marginBottom: '24px',
+                display: 'flex',
+                alignItems: 'start',
+                gap: '12px'
+              }}>
+                <span style={{ fontSize: '24px' }}>ℹ️</span>
+                <div>
+                  <strong style={{ display: 'block', marginBottom: '4px', color: '#1976D2' }}>
+                    Global Contact Information
+                  </strong>
+                  <p style={{ margin: 0, color: '#555', fontSize: '14px', lineHeight: '1.5' }}>
+                    The contact information you enter here will be automatically displayed throughout your website, 
+                    including the footer, contact page, and about page. Update these fields to change contact details 
+                    across all pages at once.
+                  </p>
+                </div>
+              </div>
+              
               <div className="form-row">
                 <div className="form-group">
-                  <label>Contact Email</label>
+                  <label>Contact Email *</label>
                   <input
                     type="email"
                     value={settings.contactEmail || ''}
                     onChange={(e) => setSettings({ ...settings, contactEmail: e.target.value })}
+                    placeholder="info@yourbusiness.com"
                   />
+                  <small style={{ color: '#666', fontSize: '12px' }}>
+                    This email will be displayed on your website and used for customer inquiries
+                  </small>
                 </div>
                 <div className="form-group">
-                  <label>Contact Phone</label>
+                  <label>Contact Phone *</label>
                   <input
                     type="tel"
                     value={settings.contactPhone || ''}
                     onChange={(e) => setSettings({ ...settings, contactPhone: e.target.value })}
+                    placeholder="+1 (555) 123-4567"
                   />
+                  <small style={{ color: '#666', fontSize: '12px' }}>
+                    Include country code for international customers
+                  </small>
                 </div>
               </div>
 
               <h3>Business Address</h3>
+              <p style={{ color: '#666', fontSize: '14px', marginBottom: '16px' }}>
+                This address will be displayed on your contact page and footer
+              </p>
+              
               <div className="form-group">
-                <label>Street Address</label>
+                <label>Street Address *</label>
                 <input
                   type="text"
                   value={settings.address?.street || ''}
                   onChange={(e) => handleInputChange('address', 'street', e.target.value)}
+                  placeholder="123 Main Street"
                 />
               </div>
 
