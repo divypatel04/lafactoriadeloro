@@ -44,6 +44,7 @@ import AdminSliders from './pages/admin/AdminSliders';
 import AdminCustomers from './pages/admin/Customers';
 import PricingConfig from './pages/admin/PricingConfigNew';
 import EmailSettings from './pages/admin/EmailSettings';
+import ContactInfo from './pages/admin/ContactInfo';
 import Coupons from './pages/admin/Coupons';
 import AdminNewsletter from './pages/admin/Newsletter';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -174,6 +175,11 @@ function AppContent() {
             <Route path="/admin/email-settings" element={
               <AdminRoute>
                 <EmailSettings />
+              </AdminRoute>
+            } />
+            <Route path="/admin/contact-info" element={
+              <AdminRoute>
+                <ContactInfo />
               </AdminRoute>
             } />
             <Route path="/admin/coupons" element={

@@ -80,6 +80,12 @@ const AdminSidebar = ({ isOpen, onClose }) => {
       exact: false
     },
     {
+      path: '/admin/contact-info',
+      icon: '📞',
+      label: 'Contact Info',
+      exact: false
+    },
+    {
       path: '/admin/settings',
       icon: '⚙️',
       label: 'Settings',
