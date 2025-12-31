@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import api from '../../services/api';
+import AdminLayout from '../../components/admin/AdminLayout';
 import './Settings.css';
 
 const Settings = () => {
@@ -73,15 +74,24 @@ const Settings = () => {
   ];
 
   if (loading) {
-    return <div className="settings-loading">Loading settings...</div>;
+    return (
+      <AdminLayout>
+        <div className="settings-loading">Loading settings...</div>
+      </AdminLayout>
+    );
   }
 
   if (!settings) {
-    return <div className="settings-error">Failed to load settings</div>;
+    return (
+      <AdminLayout>
+        <div className="settings-error">Failed to load settings</div>
+      </AdminLayout>
+    );
   }
 
   return (
-    <div className="settings-page">
+    <AdminLayout>
+      <div className="settings-page">
       <div className="settings-header">
         <h1>Site Settings</h1>
         <button 
@@ -772,6 +782,7 @@ const Settings = () => {
         </button>
       </div>
     </div>
+    </AdminLayout>
   );
 };
 
